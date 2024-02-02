@@ -5,11 +5,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import NewFaultRoot from "./stacks/NewFaultStack";
 import BigSelectionButton from "./components/buttons/BigSelectionButton";
+import { styles } from "./styles";
 
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>ברוך הבא!</Text>
+      <Text style={styles.boldText}>ברוך הבא!</Text>
       <BigSelectionButton
         colors={["#E15954","#FD5B5B"]}
         logo={require('./assets/Tools-01.png')}
