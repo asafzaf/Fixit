@@ -14,7 +14,7 @@ function NewFaultRoot({ navigation }) {
           name="Open Fault"
           title="פתיחת תקלה חדשה"
           component={NewFaultScreen}
-          options={{ headerShown: true, title: "פתיחת תקלה חדשה" }}
+          options={{ title: "פתיחת תקלה חדשה" }}
         />
         <Stack.Screen
           name="Inside"
