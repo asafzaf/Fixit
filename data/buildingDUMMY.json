@@ -1,0 +1,215 @@
+{
+  "buildings": [
+    {
+      "buildingID": "100",
+      "buildingName": "Fernik",
+      "floors": [
+        {
+          "floorNumber": 0,
+          "spaces": [
+            {
+              "spaceID": "1",
+              "spaceName": "אודיטוריום",
+              "spaceType": "אולם",
+              "facillites": [
+                {
+                  "name": "מקרן",
+                  "amount": 2
+                },
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "2",
+              "spaceName": "כיתה 1",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "3",
+              "spaceName": "כיתה 2",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "4",
+              "spaceName": "כיתה 3",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            }
+          ]
+        },
+        {
+          "floorNumber": 1,
+          "spaces": [
+            {
+              "spaceID": "5",
+              "spaceName": "כיתה 4",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "6",
+              "spaceName": "כיתה 5",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "7",
+              "spaceName": "כיתה 6",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "buildingID": "200",
+      "buildingName": "Mitchell",
+      "floors": [
+        {
+          "floorNumber": 0,
+          "spaces": [
+            {
+              "spaceID": "1",
+              "spaceName": "אודיטוריום",
+              "spaceType": "אולם",
+              "facillites": [
+                {
+                  "name": "מקרן",
+                  "amount": 2
+                },
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "2",
+              "spaceName": "כיתה 1",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "3",
+              "spaceName": "כיתה 2",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            },
+            {
+              "spaceID": "4",
+              "spaceName": "כיתה 3",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                },
+                {
+                  "name": "מקרן",
+                  "amount": 1
+                }
+              ],
+              "faults": []
+            }
+          ]
+        },
+        {
+          "floorNumber": 1,
+          "spaces": [
+            {
+              "spaceID": "5",
+              "spaceName": "כיתה 4",
+              "spaceType": "כיתה",
+              "facillites": [
+                {
+                  "name": "מחשב",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
