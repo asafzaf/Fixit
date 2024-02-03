@@ -1,0 +1,24 @@
+{
+  "toilet": {
+    "name": "toilet",
+    "type": "room",
+    "subtype": "toilet",
+    "description": "A room containing a toilet",
+    "facilities": ["toilet", "sink", "mirror", "paper holder", "soap holder", "doors", "venta"]
+  },
+  "office": "office",
+  "kitchen": "kitchen",
+  "classroom": "classroom",
+  "storage": "storage",
+  "stairs": "stairs",
+  "elevator": "elevator",
+  "hlway": "hlway",
+  "room": "room",
+  "entrance": "entrance",
+  "exit": "exit",
+  "garage": "garage",
+  "gate": "gate",
+  "parking": "parking",
+  "garden": "garden",
+  "balcony": "balcony"
+}
