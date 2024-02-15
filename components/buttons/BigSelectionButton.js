@@ -2,15 +2,16 @@ import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 function BigSelectionButton(props) {
-  const logo = props.logo ? props.logo : null;
+  const logo = props.logo ? (<Image style={{height:100,width:100}} source={props.logo} />) : null;
+  const colors = props.colors ? props.colors : ["#2768FF", "#2768FF"];
   return (
     <TouchableOpacity
       style={styles.container}
       onPress={props.onPress}
     >
-      <LinearGradient style={styles.container} colors={[...props.colors]}>
+      <LinearGradient style={styles.container} colors={[...colors]}>
         <Text style={styles.text}>{props.title}</Text>
-        {logo && <Image style={{height:100,width:100}} source={logo} />}
+        {logo}
       </LinearGradient>
     </TouchableOpacity>
   );
