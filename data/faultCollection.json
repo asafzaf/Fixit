@@ -9,26 +9,31 @@
       "colors": ["#DEBD03", "#FFE032"],
       "types": [
         {
+          "id": "101",
           "name": "Exposed socket",
           "name_hebrew": "שקע חשוף",
           "description": "Exposed socket"
         },
         {
+          "id": "102",
           "name": "Exposed wire",
           "name_hebrew": "חוט חשוף",
           "description": "Exposed wire"
         },
         {
+          "id": "103",
           "name": "Exposed switch",
           "name_hebrew": "מתג חשוף",
           "description": "Exposed switch"
         },
         {
+          "id": "104",
           "name": "Missing electricity",
           "name_hebrew": "אין חשמל",
           "description": "Missing electricity"
         },
         {
+          "id": "105",
           "name": "No light",
           "name_hebrew": "אין אור",
           "description": "No light"
@@ -44,31 +49,37 @@
       "colors": ["#03A9DE", "#35CAFB"],
       "types": [
         {
+          "id": "201",
           "name": "Leak",
           "name_hebrew": "נזילה",
           "description": "Leak"
         },
         {
+          "id": "202",
           "name": "Flood",
           "name_hebrew": "שטפון",
           "description": "Flood"
         },
         {
+          "id": "203",
           "name": "No water",
           "name_hebrew": "אין מים",
           "description": "No water"
         },
         {
+          "id": "204",
           "name": "No hot water",
           "name_hebrew": "אין מים חמים",
           "description": "No hot water"
         },
         {
+          "id": "205",
           "name": "No cold water",
           "name_hebrew": "אין מים קרים",
           "description": "No cold water"
         },
         {
+          "id": "206",
           "name": "No water pressure",
           "name_hebrew": "אין לחץ מים",
           "description": "No water pressure"
@@ -84,96 +95,115 @@
       "colors": ["#03DEA9", "#35FBCA"],
       "types": [
         {
+          "id": "301",
           "name": "Clogged toilet",
           "name_hebrew": "שירותים מוצפים",
           "description": "Clogged toilet"
         },
         {
+          "id": "302",
           "name": "Clogged sink",
           "name_hebrew": "כיור מוצף",
           "description": "Clogged sink"
         },
         {
+          "id": "303",
           "name": "broken mirror",
           "name_hebrew": "מראה שבורה",
           "description": "broken mirror"
         },
         {
+          "id": "304",
           "name": "broken toilet",
           "name_hebrew": "שירותים שבורים",
           "description": "broken toilet"
         },
         {
+          "id": "305",
           "name": "broken sink",
           "name_hebrew": "כיור שבור",
           "description": "broken sink"
         },
         {
+          "id": "306",
           "name": "broken faucet",
           "name_hebrew": "ברז שבור",
           "description": "broken faucet"
         },
         {
+          "id": "307",
           "name": "broken toilet paper holder",
           "name_hebrew": "מחזיק נייר שירותים שבור",
           "description": "broken toilet paper holder"
         },
         {
+          "id": "308",
           "name": "broken soap holder",
           "name_hebrew": "מחזיק סבון שבור",
           "description": "broken soap holder"
         },
         {
+          "id": "309",
           "name": "broken door",
           "name_hebrew": "דלת שבורה",
           "description": "broken door"
         },
         {
+          "id": "310",
           "name": "broken lock",
           "name_hebrew": "מנעול שבור",
           "description": "broken lock"
         },
         {
+          "id": "311",
           "name": "broken light",
           "name_hebrew": "אור שבור",
           "description": "broken light"
         },
         {
+          "id": "312",
           "name": "broken window",
           "name_hebrew": "חלון שבור",
           "description": "broken window"
         },
         {
+          "id": "313",
           "name": "broken wall",
           "name_hebrew": "קיר שבור",
           "description": "broken wall"
         },
         {
+          "id": "314",
           "name": "broken floor",
           "name_hebrew": "רצפה שבורה",
           "description": "broken floor"
         },
         {
+          "id": "315",
           "name": "broken ceiling",
           "name_hebrew": "תקרה שבורה",
           "description": "broken ceiling"
         },
         {
+          "id": "316",
           "name": "broken roof",
           "name_hebrew": "גג שבור",
           "description": "broken roof"
         },
         {
+          "id": "317",
           "name": "broken ventana",
           "name_hebrew": "פתח אוורור שבור",
           "description": "broken ventana"
         },
         {
+          "id": "318",
           "name": "ventana not working",
           "name_hebrew": "פתח אוורור לא עובד",
           "description": "ventana not working"
         },
         {
+          "id": "319",
           "name": "broken heater",
           "name_hebrew": "מכונת חימום שבורה",
           "description": "broken heater"
@@ -189,51 +219,61 @@
       "colors": ["#B68A4B", "#D9B97A"],
       "types": [
         {
+          "id": "401",
           "name": "Elevator not working",
           "name_hebrew": "מעלית לא עובדת",
           "description": "Elevator not working"
         },
         {
+          "id": "402",
           "name": "Elevator stuck",
           "name_hebrew": "מעלית תקועה",
           "description": "Elevator stuck"
         },
         {
+          "id": "403",
           "name": "Elevator door stuck",
           "name_hebrew": "דלת מעלית תקועה",
           "description": "Elevator door stuck"
         },
         {
+          "id": "404",
           "name": "Elevator door broken",
           "name_hebrew": "דלת מעלית שבורה",
           "description": "Elevator door broken"
         },
         {
+          "id": "405",
           "name": "Elevator button broken",
           "name_hebrew": "כפתור מעלית שבור",
           "description": "Elevator button broken"
         },
         {
+          "id": "406",
           "name": "Elevator light broken",
           "name_hebrew": "אור מעלית שבור",
           "description": "Elevator light broken"
         },
         {
+          "id": "407",
           "name": "Elevator floor indicator broken",
           "name_hebrew": "מחוון קומה מעלית שבור",
           "description": "Elevator floor indicator broken"
         },
         {
+          "id": "408",
           "name": "Elevator alarm broken",
           "name_hebrew": "אזעקת מעלית שבורה",
           "description": "Elevator alarm broken"
         },
         {
+          "id": "409",
           "name": "Elevator making strange noise",
           "name_hebrew": "מעלית חורקת / רעש מוזר",
           "description": "Elevator making strange noise"
         },
         {
+          "id": "410",
           "name": "Elevator shaking",
           "name_hebrew": "מעלית רועדת",
           "description": "Elevator shaking"
@@ -249,56 +289,67 @@
       "colors": ["#DB6F59", "#FBAE9E"],
       "types": [
         {
+          "id": "501",
           "name": "Broken door",
           "name_hebrew": "דלת שבורה",
           "description": "Broken door"
         },
         {
+          "id": "502",
           "name": "Broken lock",
           "name_hebrew": "מנעול שבור",
           "description": "Broken lock"
         },
         {
+          "id": "503",
           "name": "Broken light",
           "name_hebrew": "אור שבור",
           "description": "Broken light"
         },
         {
+          "id": "504",
           "name": "Broken window",
           "name_hebrew": "חלון שבור",
           "description": "Broken window"
         },
         {
+          "id": "505",
           "name": "Stuck window",
           "name_hebrew": "חלון תקוע",
           "description": "Stuck window"
         },
         {
+          "id": "506",
           "name": "Broken wall",
           "name_hebrew": "קיר שבור",
           "description": "Broken wall"
         },
         {
+          "id": "507",
           "name": "Broken floor",
           "name_hebrew": "רצפה שבורה",
           "description": "Broken floor"
         },
         {
+          "id": "508",
           "name": "Broken ceiling",
           "name_hebrew": "תקרה שבורה",
           "description": "Broken ceiling"
         },
         {
+          "id": "509",
           "name": "Broken roof",
           "name_hebrew": "גג שבור",
           "description": "Broken roof"
         },
         {
+          "id": "510",
           "name": "Broken air conditioner",
           "name_hebrew": "מזגן שבור",
           "description": "Broken air conditioner"
         },
         {
+          "id": "511",
           "name": "Broken heater",
           "name_hebrew": "מכונת חימום שבורה",
           "description": "Broken heater"
@@ -314,36 +365,43 @@
       "color": "#FBBC3E",
       "types": [
         {
+          "id": "601",
           "name": "Broken TV",
           "name_hebrew": "טלוויזיה שבורה",
           "description": "Broken TV"
         },
         {
+          "id": "602",
           "name": "Broken computer",
           "name_hebrew": "מחשב שבור",
           "description": "Broken computer"
         },
         {
+          "id": "603",
           "name": "Broken printer",
           "name_hebrew": "מדפסת שבורה",
           "description": "Broken printer"
         },
         {
+          "id": "604",
           "name": "Broken air conditioner",
           "name_hebrew": "מזגן שבור",
           "description": "Broken air conditioner"
         },
         {
+          "id": "605",
           "name": "Air conditioner not working",
           "name_hebrew": "מזגן לא עובד",
           "description": "Air conditioner not working"
         },
         {
+          "id": "606",
           "name": "Projector not working",
           "name_hebrew": "מקרן לא פועל",
           "description": "Projector not working"
         },
         {
+          "id": "607",
           "name": "Rolling screen not working",
           "name_hebrew": "מסך נגלל לא פועל",
           "description": "Rolling screen not working"
