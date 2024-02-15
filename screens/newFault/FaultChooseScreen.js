@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import faultCollection from "../../data/faultCollection";
+import { LinearGradient } from "expo-linear-gradient";
 
 const FaultChooseScreen = ({ navigation, route }) => {
   const buildingId = route.params.buildingId;
@@ -59,41 +60,58 @@ const FaultChooseScreen = ({ navigation, route }) => {
           alignItems: "center",
           justifyContent: "center",
         }}
-      ><View style={styles.container}>
-
-        <Text style={styles.text}>Domain: {pickedDomain.name}</Text>
-      </View>
-      <View style={{ height: 70, margin: 10 , borderBottomWidth:1, borderBottomColor: 'black'}}>
-        <Text style={{color:'black', fontSize:20}}>Choose a Fault:</Text>
-        <TextInput
-              style={{
-                height: 40,
-                borderColor: "gray",
-                borderWidth: 1,
-                // flex: 1,
-                width: 200,
-              }}
-              onChangeText={(text) => setName2(text)}
-              value={name2}
-            />
-      </View>
+      >
+        <View style={styles.container}>
+          <Text style={styles.text}>Domain: {pickedDomain.name}</Text>
+        </View>
+        <View
+          style={{
+            height: 70,
+            margin: 10,
+            borderBottomWidth: 1,
+            borderBottomColor: "black",
+          }}
+        >
+          <Text style={{ color: "black", fontSize: 20 }}>Choose a Fault:</Text>
+          <TextInput
+            style={{
+              height: 40,
+              borderColor: "gray",
+              borderWidth: 1,
+              // flex: 1,
+              width: 200,
+            }}
+            onChangeText={(text) => setName2(text)}
+            value={name2}
+          />
+        </View>
         <FlatList
-          data={filterSuggestions2(pickedDomain,name2)}
+          data={filterSuggestions2(pickedDomain, name2)}
           renderItem={({ item }) => (
             <View>
-              <TouchableOpacity style={styles.container} onPress={() => {
-                navigation.navigate("Confirm", {
-                  buildingId: buildingId,
-                  buildingName: buildingName,
-                  spaceId: spaceId,
-                  spaceName: spaceName,
-                  data: {
-                    domain: pickedDomain,
-                    fault: item,
-                  },
-                });
-              }}>
-                <Text style={styles.text}>{item}</Text>
+              <TouchableOpacity
+                style={styles.container}
+                onPress={() => {
+                  navigation.navigate("Confirm", {
+                    buildingId: buildingId,
+                    buildingName: buildingName,
+                    spaceId: spaceId,
+                    spaceName: spaceName,
+                    data: {
+                      domain: pickedDomain,
+                      fault: item,
+                    },
+                  });
+                }}
+              >
+                <LinearGradient
+                  style={styles.container}
+                  colors={
+                    item.colors ? [...item.colors] : ["#2768FF", "#2768FF"]
+                  }
+                >
+                  <Text style={styles.text}>{item}</Text>
+                </LinearGradient>
               </TouchableOpacity>
             </View>
           )}

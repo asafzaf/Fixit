@@ -362,7 +362,7 @@
       "name_hebrew": "מכשירי חשמל",
       "description": "Electonic devices",
       "icon": "electronic-divices.png",
-      "color": "#FBBC3E",
+      "color": ["#FBBC3E", "#FDDA69"],
       "types": [
         {
           "id": "601",
