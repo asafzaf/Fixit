@@ -1,23 +1,22 @@
 {
-    "outsideName": "Fernik Area",
-    "outsideNameHeb": "סביבת פרניק",
-    "outsideDescription": "The area around the village of Fernik is a beautiful place to visit. The village is located in the heart of the Galilee, and is surrounded by beautiful nature. The area is known for its beautiful landscapes, and is a great place to visit for a day trip. The area is also home to many historical sites, and is a great place to visit for those who are interested in history. The area is also home to many beautiful hiking trails, and is a great place to visit for those who love the outdoors.",
-    "spaces": [
-      {
-        "spaceName": "Karnaf",
-        "spaceNameHeb": "קרנף",
-        "spaceType": "cafeteria"
-      },
-      {
-        "spaceName": "Fernik Parking Lot",
-        "spaceNameHeb": "חניון פרניק",
-        "spaceType": "parking"
-      },
-      {
-        "spaceName": "Gate Fernik",
-        "spaceNameHeb": "שער כניסה פרניק",
-        "spaceType": "entrance"
-      }
-    ]
-  }
-  
+  "outsideName": "Fernik Area",
+  "outsideNameHeb": "סביבת פרניק",
+  "outsideDescription": "The area around Fernik building",
+  "spaces": [
+    {
+      "spaceName": "Karnaf",
+      "spaceNameHeb": "קרנף",
+      "spaceType": "cafeteria"
+    },
+    {
+      "spaceName": "Fernik Parking Lot",
+      "spaceNameHeb": "חניון פרניק",
+      "spaceType": "parking"
+    },
+    {
+      "spaceName": "Gate Fernik",
+      "spaceNameHeb": "שער כניסה פרניק",
+      "spaceType": "entrance"
+    }
+  ]
+}
