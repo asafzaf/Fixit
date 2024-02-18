@@ -61,31 +61,38 @@ const FaultChooseScreen = ({ navigation, route }) => {
           justifyContent: "center",
         }}
       >
-        <View style={styles.container}>
-          <Text style={styles.text}>Domain: {pickedDomain.name}</Text>
+        <View>
+          <Text style={styles.title}>Fault Domain: {pickedDomain.name}</Text>
         </View>
         <View
           style={{
-            height: 70,
-            margin: 10,
-            borderBottomWidth: 1,
-            borderBottomColor: "black",
+            height: 100,
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
           }}
         >
-          <Text style={{ color: "black", fontSize: 20 }}>Choose a Fault:</Text>
+          <Text style={{ height: 30, margin: 10, fontSize: 20 }}>
+            Choose Fault Sub-Domain
+          </Text>
           <TextInput
             style={{
               height: 40,
               borderColor: "gray",
               borderWidth: 1,
-              // flex: 1,
-              width: 200,
+              width: 250,
+              borderRadius: 10,
+              backgroundColor: "white",
+              color: "#8E8E8E",
+              padding: 10,
             }}
             onChangeText={(text) => setName2(text)}
             value={name2}
+            placeholder="Search Fault Type..."
           />
         </View>
         <FlatList
+          style={{ marginTop: 20 }}
           data={filterSuggestions2(pickedDomain, name2)}
           renderItem={({ item }) => (
             <View>
@@ -133,23 +140,27 @@ const FaultChooseScreen = ({ navigation, route }) => {
           style={{
             height: 100,
             alignItems: "center",
-            flex: 1,
-            flexDirection: "row",
-            borderBottomWidth: 1,
-            borderBottomColor: "black",
+            justifyContent: "center",
+            flexDirection: "column",
           }}
         >
-          <Text style={{ height: 30, margin: 10 }}>Choose a Domain:</Text>
+          <Text style={{ height: 30, margin: 10, fontSize: 20 }}>
+            Choose Fault Domain:
+          </Text>
           <TextInput
             style={{
               height: 40,
               borderColor: "gray",
               borderWidth: 1,
-              flex: 1,
-              width: 200,
+              width: 250,
+              borderRadius: 10,
+              backgroundColor: "white",
+              color: "#8E8E8E",
+              padding: 10,
             }}
             onChangeText={(text) => setName(text)}
             value={name}
+            placeholder="Search Fault Type..."
           />
         </View>
         <View
@@ -157,10 +168,9 @@ const FaultChooseScreen = ({ navigation, route }) => {
             height: 100,
             padding: 20,
             alignItems: "center",
+            justifyContent: "center",
             flex: 4,
             flexDirection: "column",
-            borderBottomWidth: 1,
-            borderBottomColor: "black",
           }}
         >
           <FlatList
@@ -179,8 +189,8 @@ const FaultChooseScreen = ({ navigation, route }) => {
             )}
             keyExtractor={(item) => item}
           />
-          <Button title="Submit" onPress={handleSubmit} />
         </View>
+        {/* <Button title="Submit" onPress={handleSubmit} /> */}
       </View>
     );
   }
@@ -188,7 +198,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 200,
+    width: 250,
     height: 50,
     backgroundColor: "#2768FF",
     justifyContent: "center",
@@ -202,6 +212,12 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontSize: 20,
+    fontWeight: "bold",
+  },
+  title: {
+    color: "black",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 
