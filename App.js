@@ -9,52 +9,35 @@ import FixitHeader from "./components/header";
 
 function HomeScreen({ navigation }) {
   return (
-    <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "flex-start" }}
-    >
+    <View style={{ alignItems: "center", justifyContent: "flex-start" }}>
       <FixitHeader></FixitHeader>
       <View
         style={{
+          marginTop: 100,
+          height: "50%",
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
+          justifyContent: "space-between",
+          gap: 100,
         }}
       >
-        <View
-          style={
-            {
-              // flex: 1,
-              // flexDirection: "column",
-              // justifyContent: "space-between",
-            }
-          }
-        >
-          <HomePageBtn
-            colors={["#0100D8", "#3C3BFA"]}
-            logo={require("./assets/Tools-01.png")}
-            title="Open New Fault"
-            onPress={() =>
-              navigation.navigate("Root", { screen: "Open Fault" })
-            }
-          ></HomePageBtn>
-          <HomePageBtn
-            colors={["#0100D8", "#3C3BFA"]}
-            logo={require("./assets/Tools-01.png")}
-            title="Faults Status"
-            onPress={() =>
-              navigation.navigate("Root", { screen: "Open Fault" })
-            }
-          ></HomePageBtn>
-          <HomePageBtn
-            colors={["#0100D8", "#3C3BFA"]}
-            logo={require("./assets/Tools-01.png")}
-            title="History"
-            onPress={() =>
-              navigation.navigate("Root", { screen: "Open Fault" })
-            }
-          ></HomePageBtn>
-        </View>
+        <HomePageBtn
+          colors={["#0100D8", "#3C3BFA"]}
+          logo={require("./assets/Tools-01.png")}
+          title="Open New Fault"
+          onPress={() => navigation.navigate("Root", { screen: "Open Fault" })}
+        ></HomePageBtn>
+        <HomePageBtn
+          colors={["#0100D8", "#3C3BFA"]}
+          logo={require("./assets/Tools-01.png")}
+          title="Faults Status"
+          onPress={() => navigation.navigate("Root", { screen: "Open Fault" })}
+        ></HomePageBtn>
+        <HomePageBtn
+          colors={["#0100D8", "#3C3BFA"]}
+          logo={require("./assets/Tools-01.png")}
+          title="History"
+          onPress={() => navigation.navigate("Root", { screen: "Open Fault" })}
+        ></HomePageBtn>
       </View>
     </View>
   );
