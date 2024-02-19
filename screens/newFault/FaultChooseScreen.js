@@ -8,7 +8,7 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import faultCollection from "../../data/faultCollection";
+import faultCollection from "../../data/faultDomainsDUMMY.json";
 import { LinearGradient } from "expo-linear-gradient";
 
 const FaultChooseScreen = ({ navigation, route }) => {
