@@ -8,7 +8,7 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import faultCollection from "../../data/faultCollection";
+import faultDomainsDUMMY from "../../data/faultDomainsDUMMY.json";
 import { LinearGradient } from "expo-linear-gradient";
 
 const FaultChooseScreen = ({ navigation, route }) => {
@@ -21,7 +21,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const [pickedDomain, setPickedDomain] = useState("");
   const [name2, setName2] = useState("");
 
-  const domainObjList = faultCollection.domains;
+  const domainObjList = faultDomainsDUMMY.data.faultDomains;
 
   const pickDomain = (name) => {
     const domain = domainObjList.find((domain) => domain.name === name);
