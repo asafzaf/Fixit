@@ -16,7 +16,7 @@ function InsidePlaceScreen({ navigation }) {
         <Text style={styles.small_title}>Choose Building</Text>
         <View style={{ height: 600, width: 400, alignItems: "center" }}>
           <ScrollView style={{ height: 300 }}>
-            {buildingDUMMY.buildings.map((building) => (
+            {buildingDUMMY.data.buildings.map((building) => (
               <View key={building.buildingID}>
                 <BigSelectionButton
                   key={building.buildingID}
