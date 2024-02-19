@@ -6,9 +6,23 @@ import FixitHeader from "../../components/header";
 
 function NewFaultScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        // backgroundColor: "red",
+      }}
+    >
       <FixitHeader></FixitHeader>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "flex-start",
+          marginTop: 30,
+        }}
+      >
         <Text style={styles.small_title}>Where Am I ?</Text>
         <BigSelectionButton
           colors={["#0100D8", "#4A49FF"]}
@@ -23,7 +37,7 @@ function NewFaultScreen({ navigation }) {
           onPress={() => navigation.push("Outside")}
         ></BigSelectionButton>
         <Button
-          title="Back to Home Page"
+          title="Go Back To Home Page"
           onPress={() => navigation.popToTop()}
         />
       </View>
