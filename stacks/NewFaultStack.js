@@ -30,31 +30,31 @@ function NewFaultRoot({ navigation }) {
         name="Inside"
         title="Inside"
         component={insideBuilding}
-        options={{ title: "I'm Inside" }}
+        options={{ title: "Open New Fault" }}
       />
       <Stack.Screen
         name="Outside"
         title="Outside"
         component={OutsidePlaceScreen}
-        options={{ title: "Outside Fault" }}
+        options={{ title: "Open New Fault" }}
       />
       <Stack.Screen
         name="SpaceChooser"
         title="Choose Space"
         component={spaceInBuilding}
-        options={{ title: "Choose Space" }}
+        options={{ title: "Open New Fault" }}
       />
       <Stack.Screen
         name="FaultChoose"
         title="Choose Fault Type"
         component={FaultChooseScreen}
-        options={{ title: "Choose Fault Type" }}
+        options={{ title: "Open New Fault" }}
       />
       <Stack.Screen
         name="Confirm"
         title="Fault Confirmation"
         component={ConfirmFaultScreen}
-        options={{ title: "Confirm" }}
+        options={{ title: "Open New Fault" }}
       />
     </Stack.Navigator>
   );
