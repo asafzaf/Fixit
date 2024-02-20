@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { styles } from "../../styles";
+import TitleHeader from "../../components/headerTitle";
 
 function ConfirmFaultScreen({ navigation, route }) {
   const buildingId = route.params.buildingId;
@@ -11,8 +12,18 @@ function ConfirmFaultScreen({ navigation, route }) {
   const spaceName = route.params.spaceName;
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>
+    <View
+      style={{ flex: 1, alignItems: "center", justifyContent: "flex-start" }}
+    >
+      <TitleHeader title={"Confirm Fault"}></TitleHeader>
+      <Text
+        style={{
+          fontSize: 20,
+          color: "black",
+          fontWeight: "bold",
+          marginTop: 20,
+        }}
+      >
         Fault Details
       </Text>
       <Text style={styles.text}>Domain: {domainName}</Text>
