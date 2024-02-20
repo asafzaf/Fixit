@@ -8,8 +8,15 @@ function NewFaultScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <FixitHeader></FixitHeader>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.small_title}>Where Am I ?</Text>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "flex-start",
+          marginTop: 50,
+        }}
+      >
+        <Text style={styles.small_title}>Where Are You ?</Text>
         <BigSelectionButton
           colors={["#0100D8", "#4A49FF"]}
           logo={require("../../assets/House-03-WF.png")}
