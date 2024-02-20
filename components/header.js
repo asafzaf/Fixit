@@ -11,6 +11,7 @@ function FixitHeader({ navigation }) {
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
+        height: 110,
       }}
     >
       <View style={{ alignItems: "center", justifyContent: "center" }}>

@@ -18,8 +18,8 @@ function BigSelectionButton(props) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 180,
     backgroundColor: "#2768FF",
     justifyContent: "center",
     alignItems: "center",
