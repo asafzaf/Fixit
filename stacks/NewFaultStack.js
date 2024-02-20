@@ -14,12 +14,6 @@ const Stack = createNativeStackNavigator();
 function NewFaultRoot({ navigation }) {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen
-        name="Open Fault"
-        title="Open New Fault"
-        component={OpenNewFaultScreen}
-        options={{ title: "Open New Fault" }}
-      /> */}
       <Stack.Screen
         name="Open Fault"
         title="Open New Fault"
