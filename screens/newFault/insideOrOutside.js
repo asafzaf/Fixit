@@ -1,19 +1,21 @@
+// 1st PAGE OF THE FAULT REPORTING PROCESS
+
 import { Button, StyleSheet, Text, View } from "react-native";
 import * as React from "react";
 import BigSelectionButton from "../../components/buttons/BigSelectionButton";
 import { styles } from "../../styles";
-import FixitHeader from "../../components/header";
+import TitleHeader from "../../components/headerTitle";
 
 function NewFaultScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <FixitHeader></FixitHeader>
+      <TitleHeader title={"Open New Fault"}></TitleHeader>
       <View
         style={{
           flex: 1,
           alignItems: "center",
           justifyContent: "flex-start",
-          marginTop: 50,
+          marginTop: 100,
         }}
       >
         <Text style={styles.small_title}>Where Are You ?</Text>

@@ -1,11 +1,18 @@
 import { Text, View } from "react-native";
 import BigSelectionButton from "../../components/buttons/BigSelectionButton";
 import { styles } from "../../styles";
-import FixitHeader from "../../components/header";
+// import FixitHeader from "../../components/header";
 
 function OpenNewFaultScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        marginTop: 100,
+      }}
+    >
       <Text style={styles.small_title}>ברוך הבא!</Text>
       <BigSelectionButton
         colors={["#0100D8", "#0100FF"]}
