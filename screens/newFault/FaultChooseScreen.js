@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import faultCollection from "../../data/faultDomainsDUMMY.json";
 import { LinearGradient } from "expo-linear-gradient";
+import TitleHeader from "../../components/headerTitle";
 
 const FaultChooseScreen = ({ navigation, route }) => {
   const buildingId = route.params.buildingId;
@@ -58,10 +59,11 @@ const FaultChooseScreen = ({ navigation, route }) => {
           flex: 1,
           alignItems: "center",
           justifyContent: "flex-start",
-          marginTop: 100,
         }}
       >
-        <View>
+        <TitleHeader title={"Open New Fault"}></TitleHeader>
+
+        <View style={{ marginTop: 20 }}>
           <Text style={styles.title}>Fault Domain: {pickedDomain.name}</Text>
         </View>
         <View
@@ -131,11 +133,11 @@ const FaultChooseScreen = ({ navigation, route }) => {
       <View
         style={{
           flex: 1,
-          padding: 20,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
+        <TitleHeader title={"Open New Fault"}></TitleHeader>
         <View
           style={{
             height: 100,
@@ -199,15 +201,15 @@ const FaultChooseScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     width: 250,
-    height: 50,
+    height: 70,
     backgroundColor: "#2768FF",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20,
-    margin: 10,
+    borderRadius: 15,
+    margin: 20,
     elevation: 10,
     shadowColor: "black",
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
   },
   text: {
     color: "white",
