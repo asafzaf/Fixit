@@ -1,26 +1,37 @@
-import { Button, Text, View } from "react-native";
+import { Button, Text, View, FlatList } from "react-native";
 import * as React from "react";
 import { styles } from "../../styles";
 import TitleHeader from "../../components/headerTitle";
 import faultsList from "../../data/faultsDUMMY.json";
+import FaultsGrid from "../../components/FaultsGrid";
+
+function renderFaults({ item }) {
+  return (
+    <FaultsGrid
+      id={item._id}
+      domain={item.domainNameEng}
+      subDomain={item.typeNameEng}
+      location={item.spaceName}
+    />
+  );
+}
 
 function HistoryScreen({ navigation }) {
   return (
     <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "flex-start" }}
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        marginTop: 50,
+      }}
     >
-      <TitleHeader title={"History"}></TitleHeader>
-      <View>
-        {faultsList.data.faults.map((fault) => (
-          <View>
-            <Text style={styles.small_title}>{"ID: " + fault._id}</Text>
-            <Text style={styles.small_title}>
-              {"Type: " + fault.typeNameEng}
-            </Text>
-            {/* {building} */}
-          </View>
-        ))}
-      </View>
+      <FlatList
+        data={faultsList.data.faults}
+        keyEtrator={(item) => item._id}
+        renderItem={renderFaults}
+      />
+      {/* <TitleHeader title={"History"}></TitleHeader> */}
       <Button
         title="Back To Home Screen"
         onPress={() => navigation.popToTop()}
