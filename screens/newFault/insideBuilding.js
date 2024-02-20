@@ -28,7 +28,7 @@ function InsidePlaceScreen({ navigation }) {
               <View key={building._id}>
                 <BigSelectionButton
                   key={building._id}
-                  title={building.buildingName}
+                  title={building.buildingName + " Building"}
                   colors={[colors[i], colors[i + 1]]}
                   {...(i += 2)}
                   onPress={() => {
