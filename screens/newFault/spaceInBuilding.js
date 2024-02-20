@@ -33,7 +33,7 @@ function SpaceChooceScreen({ navigation, route }) {
           // justifyContent: "flex-start",
         }}
       >
-        <Text style={styles.small_title}>Choose Space</Text>
+        <Text style={styles.small_title}>Select a space type</Text>
         <View
           style={
             {

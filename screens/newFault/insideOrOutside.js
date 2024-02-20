@@ -18,7 +18,7 @@ function NewFaultScreen({ navigation }) {
           marginTop: 100,
         }}
       >
-        <Text style={styles.small_title}>Where Are You ?</Text>
+        <Text style={styles.small_title}>Where are you ?</Text>
         <BigSelectionButton
           colors={["#0100D8", "#4A49FF"]}
           logo={require("../../assets/House-03-WF.png")}

@@ -21,13 +21,13 @@ function InsidePlaceScreen({ navigation }) {
     >
       <TitleHeader title={"Open New Fault"}></TitleHeader>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.small_title}>Choose Building</Text>
+        <Text style={styles.small_title}>In which building?</Text>
         <View style={{ height: 600, width: 400, alignItems: "center" }}>
           <ScrollView style={{ height: 300 }}>
             {buildingDUMMY.data.buildings.map((building) => (
               <View key={building.buildingID}>
                 <BigSelectionButton
-                  key={building.buildingID}
+                  key={building._id}
                   title={building.buildingName}
                   colors={[colors[i], colors[i + 1]]}
                   {...(i += 2)}
