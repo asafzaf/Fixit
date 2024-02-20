@@ -3,19 +3,35 @@
 import { ScrollView, FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
 import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
-import buildingDUMMY from "../../data/buildingDUMMY";
 import TitleHeader from "../../components/headerTitle";
+import SpacesGrid from "../../components/SpacesGrid";
+import SpacesList from "../../data/spaceType.json";
 
 colors = ["#6416F8", "#8E52FF", "#FFA31A", "#FDBB59", "#E7008C", "#FE59BD"];
 let i = 0;
+
+function renderSpaces({ item }) {
+  if (i >= colors.length) {
+    i = 0;
+  }
+  let color1 = colors[i];
+  let color2 = colors[i + 1];
+  i += 2;
+  return (
+    <SpacesGrid
+      name={item.name}
+      description={item.description}
+      color1={color1}
+      color2={color2}
+    />
+  );
+}
 
 function SpaceChooceScreen({ navigation, route }) {
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
   const data = route.params.data;
-  if (i >= colors.length) {
-    i = 0;
-  }
+
   return (
     <View
       style={{
@@ -28,34 +44,20 @@ function SpaceChooceScreen({ navigation, route }) {
       <View
         style={{
           marginTop: 20,
-          // flex: 2,
           alignItems: "center",
-          // justifyContent: "flex-start",
         }}
       >
         <Text style={styles.small_title}>Select a space type</Text>
-        <View
-          style={
-            {
-              // width: 300,
-              // flex: 1,
-              // flexWrap: "wrap",
-              // alignItems: "center",
-              // justifyContent: "center",
-              // marginHorizontal: "auto",
-            }
-          }
-        >
-          <ScrollView
-            style={
-              {
-                // width: "100%",
-                // flex: 4,
-                // backgroundColor: "white",
-                // marginHorizontal: "auto",
-              }
-            }
-          >
+        {/* ---------------------------------------- */}
+        <FlatList
+          data={SpacesList.data.spaceTypes}
+          keyEtrator={(item) => item._id}
+          renderItem={renderSpaces}
+          numColumns={2}
+        />
+
+        {/* <View>
+          <ScrollView>
             {data.map((floor) =>
               floor.spaces.map((space) => (
                 <View key={space.spaceID}>
@@ -77,7 +79,8 @@ function SpaceChooceScreen({ navigation, route }) {
               ))
             )}
           </ScrollView>
-        </View>
+        </View> */}
+        {/* ---------------------------------------- */}
       </View>
     </View>
   );
