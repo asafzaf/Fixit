@@ -9,12 +9,6 @@ import HomePageBtn from "./components/buttons/HomePageBtn";
 import FixitHeader from "./components/header";
 
 function HomeScreen({ navigation }) {
-  // function pressHistoryHandler() {
-  //   navigation.navigate("History");
-  // }
-  // function pressStatusHandler() {
-  //   navigation.navigate("Status");
-  // }
   return (
     <View
       style={{
@@ -47,7 +41,6 @@ function HomeScreen({ navigation }) {
             colors={["#0100D8", "#3C3BFA"]}
             logo={require("./assets/statusIcon.png")}
             title="Faults Status"
-            // onPress={pressStatusHandler}
             onPress={() =>
               navigation.navigate("MainStack", { screen: "Status" })
             }
@@ -56,7 +49,6 @@ function HomeScreen({ navigation }) {
             colors={["#0100D8", "#3C3BFA"]}
             logo={require("./assets/historyIcon.png")}
             title="History"
-            // onPress={pressHistoryHandler}
             onPress={() =>
               navigation.navigate("MainStack", { screen: "History" })
             }
