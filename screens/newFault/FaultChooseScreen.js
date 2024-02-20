@@ -21,7 +21,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const [pickedDomain, setPickedDomain] = useState("");
   const [name2, setName2] = useState("");
 
-  const domainObjList = faultCollection.domains;
+  const domainObjList = faultCollection.data.faultDomains;
 
   const pickDomain = (name) => {
     const domain = domainObjList.find((domain) => domain.name === name);
