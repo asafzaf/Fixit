@@ -48,18 +48,18 @@ function HomeScreen({ navigation }) {
             logo={require("./assets/statusIcon.png")}
             title="Faults Status"
             // onPress={pressStatusHandler}
-            // onPress={() =>
-            //   navigation.navigate("mainStack", { screen: "Status" })
-            // }
+            onPress={() =>
+              navigation.navigate("MainStack", { screen: "Status" })
+            }
           ></HomePageBtn>
           <HomePageBtn
             colors={["#0100D8", "#3C3BFA"]}
             logo={require("./assets/historyIcon.png")}
             title="History"
             // onPress={pressHistoryHandler}
-            // onPress={() =>
-            //   navigation.navigate("mainStack", { screen: "History" })
-            // }
+            onPress={() =>
+              navigation.navigate("MainStack", { screen: "History" })
+            }
           ></HomePageBtn>
         </View>
       </View>
@@ -80,12 +80,12 @@ function App() {
             component={HomeScreen}
             options={{ title: "" }}
           />
-          {/* <Stack.Screen
-            name="mainStack"
+          <Stack.Screen
+            name="MainStack"
             title=""
             component={MainStack}
             options={{ headerShown: false }}
-          /> */}
+          />
           <Stack.Screen
             name="Root"
             title="Open New Fault"
