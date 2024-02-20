@@ -18,37 +18,37 @@ function NewFaultRoot({ navigation }) {
         name="Open Fault"
         title="Open New Fault"
         component={insideOrOutside}
-        options={{ title: "Open New Fault" }}
+        options={{ title: "Step 1" }}
       />
       <Stack.Screen
         name="Inside"
         title="Inside"
         component={insideBuilding}
-        options={{ title: "I'm Inside" }}
+        options={{ title: "Step 2" }}
       />
       <Stack.Screen
         name="Outside"
         title="Outside"
         component={OutsidePlaceScreen}
-        options={{ title: "Outside Fault" }}
+        options={{ title: "Step 2" }}
       />
       <Stack.Screen
         name="SpaceChooser"
         title="Choose Space"
         component={spaceInBuilding}
-        options={{ title: "Choose Space" }}
+        options={{ title: "Step 3" }}
       />
       <Stack.Screen
         name="FaultChoose"
         title="Choose Fault Type"
         component={FaultChooseScreen}
-        options={{ title: "Choose Fault Type" }}
+        options={{ title: "Step 4" }}
       />
       <Stack.Screen
         name="Confirm"
         title="Fault Confirmation"
         component={ConfirmFaultScreen}
-        options={{ title: "Confirm" }}
+        options={{ title: "Step 5" }}
       />
     </Stack.Navigator>
   );
