@@ -1,8 +1,9 @@
 import { Button, Text, View, FlatList } from "react-native";
 import * as React from "react";
 import TitleHeader from "../../components/headerTitle";
-import faultsList from "../../data/faultsDUMMY.json";
+// import faultsList from "../../data/faultsDUMMY.json";
 import FaultsGrid from "../../components/FaultsGrid";
+import { getAllFaults } from "../../utilities/http";
 
 function renderFaults({ item }) {
   return (
@@ -16,6 +17,17 @@ function renderFaults({ item }) {
 }
 
 function HistoryScreen({ navigation }) {
+  const [fetchedFaults, setFetchedFaults] = React.useState([]);
+
+  React.useEffect(() => {
+    async function getFaults() {
+      const faults = await getAllFaults();
+      setFetchedFaults(faults);
+    }
+
+    getFaults();
+  }, []);
+
   return (
     <View
       style={{
@@ -26,7 +38,7 @@ function HistoryScreen({ navigation }) {
     >
       <TitleHeader title={"History"}></TitleHeader>
       <FlatList
-        data={faultsList.data.faults}
+        data={fetchedFaults}
         keyEtrator={(item) => item._id}
         renderItem={renderFaults}
       />
