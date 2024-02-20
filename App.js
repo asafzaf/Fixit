@@ -27,10 +27,14 @@ function HomeScreen({ navigation }) {
       <View
         style={{
           flex: 1,
-          margin: 100,
+          margin: 50,
         }}
       >
-        <View>
+        <View
+          style={{
+            marginBottom: 150,
+          }}
+        >
           <HomePageBtn
             colors={["#0100D8", "#3C3BFA"]}
             logo={require("./assets/addFaultIcon.png")}
