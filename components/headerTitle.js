@@ -4,7 +4,8 @@ function TitleHeader({ title }) {
   return (
     <View
       style={{
-        backgroundColor: "white",
+        // backgroundColor: "white",
+        // borderBottomColor: "black",
         width: "100%",
         justifyContent: "center",
         alignItems: "center",

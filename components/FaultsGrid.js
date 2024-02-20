@@ -1,5 +1,4 @@
 import { Pressable, View, Text } from "react-native";
-// import { styles } from "../styles";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
