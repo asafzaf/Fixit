@@ -3,7 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 function HomePageBtn(props) {
   const logo = props.logo ? (
-    <Image style={{ height: 100, width: 100 }} source={props.logo} />
+    <Image style={{ height: 70, width: 70 }} source={props.logo} />
   ) : null;
   const colors = props.colors ? props.colors : ["#2768FF", "#2768FF"];
   return (
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 22,
     fontWeight: "bold",
+    marginLeft: 20,
   },
 });
 
