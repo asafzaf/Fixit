@@ -35,9 +35,24 @@ const styles = StyleSheet.create({
   },
 });
 
-function SpacesGrid({ name, description, color1, Data, navigation }) {
+function SpacesGrid({
+  name,
+  id,
+  description,
+  color1,
+  navigation,
+  buildingId,
+  buildingName,
+  buildingData,
+}) {
   function spaceHandler() {
-    navigation.navigate("SpaceChooser");
+    navigation.navigate("SpaceChooser", {
+      spaceId: name,
+      spaceName: id,
+      buildingId: buildingId,
+      buildingName: buildingName,
+      buildingData: buildingData,
+    });
   }
   return (
     <View>
