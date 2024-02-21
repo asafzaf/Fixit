@@ -32,7 +32,7 @@ function InsidePlaceScreen({ navigation }) {
                   colors={[colors[i], colors[i + 1]]}
                   {...(i += 2)}
                   onPress={() => {
-                    navigation.navigate("SpaceChooser", {
+                    navigation.navigate("SpaceTypeChooser", {
                       buildingId: building.buildingID,
                       buildingName: building.buildingName,
                       data: building.floors,
