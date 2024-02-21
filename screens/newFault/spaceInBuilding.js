@@ -6,7 +6,6 @@ import SmallSelectionButton from "../../components/buttons/smallSelectionButton"
 import TitleHeader from "../../components/headerTitle";
 import SpacesGrid from "../../components/SpacesGrid";
 import SpacesList from "../../data/spaceType.json";
-import Data from "../../data/buildingDUMMY";
 
 spacesColors = [
   "#6416F8",
@@ -32,10 +31,14 @@ function SpaceChooceScreen({ navigation, route }) {
     return (
       <SpacesGrid
         name={item.name}
+        id={item._id}
         description={item.description}
         color1={color1}
-        data={Data}
+        // data={Data}
         navigation={navigation}
+        buildingId={buildingId}
+        buildingName={buildingName}
+        buildingData={data}
       />
     );
   }
