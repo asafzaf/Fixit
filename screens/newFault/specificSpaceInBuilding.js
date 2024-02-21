@@ -10,8 +10,7 @@ colors = ["#6416F8", "#8E52FF", "#FFA31A", "#FDBB59", "#E7008C", "#FE59BD"];
 let i = 0;
 
 function SpaceChooceScreen({ navigation, route }) {
-  const spaceId = route.params.spaceId;
-  const spaceName = route.params.spaceName;
+  const spaceTypeName = route.params.spaceName;
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
   const data = route.params.buildingData;
@@ -19,6 +18,21 @@ function SpaceChooceScreen({ navigation, route }) {
   if (i >= colors.length) {
     i = 0;
   }
+  //     const floors = [];
+  //   const relevantSpaces = (data, spaceTypeName) => {
+
+  //     data.map((floor) => {
+  //       floor.spaces.filter((space) => space.spaceType === spaceTypeName);
+  //     });
+  //     return allSpaces;
+  //   };
+
+  //   const spaces = relevantSpaces(data, spaceTypeName);
+  //   for (const space of spaces) {
+  //     console.log(space);
+  //   }
+  //   console.log(spaces);
+
   return (
     <View
       style={{
@@ -34,7 +48,7 @@ function SpaceChooceScreen({ navigation, route }) {
           alignItems: "center",
         }}
       >
-        <Text style={styles.small_title}>Select a {spaceName}</Text>
+        <Text style={styles.small_title}>Select a {spaceTypeName}</Text>
         <View>
           <ScrollView>
             {data.map((floor) =>
