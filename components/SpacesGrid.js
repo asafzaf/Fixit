@@ -47,8 +47,8 @@ function SpacesGrid({
 }) {
   function spaceHandler() {
     navigation.navigate("SpaceChooser", {
-      spaceId: name,
-      spaceName: id,
+      spaceId: id,
+      spaceName: name,
       buildingId: buildingId,
       buildingName: buildingName,
       buildingData: buildingData,
