@@ -30,7 +30,6 @@ function ConfirmFaultScreen({ navigation, route }) {
       <Text style={styles.text}>fault: {faultName}</Text>
       <Text style={styles.text}>buildintID: {buildingId}</Text>
       <Text style={styles.text}>buildingName: {buildingName}</Text>
-      <Text style={styles.text}>spaceID: {spaceId}</Text>
       <Text style={styles.text}>spaceName: {spaceName}</Text>
     </View>
   );

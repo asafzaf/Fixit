@@ -26,7 +26,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
 
   const pickDomain = (name) => {
     const domain = domainObjList.find((domain) => domain.name === name);
-    console.log(domain);
+    // console.log(domain);
     setPickedDomain(domain);
   };
 
@@ -40,7 +40,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
 
   const filterSuggestions2 = (domain, text) => {
     const lowerCaseText = text.toLowerCase();
-    console.log(domain.types);
+    // console.log(domain.types);
     const objects = domain.types.filter((fault) =>
       fault.name.toLowerCase().includes(lowerCaseText)
     );
@@ -49,7 +49,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
 
   const handleSubmit = () => {
     // Handle form submission here
-    console.log("Name:", name);
+    // console.log("Name:", name);
   };
 
   if (pickedDomain) {

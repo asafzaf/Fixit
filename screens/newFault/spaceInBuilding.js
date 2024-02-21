@@ -34,7 +34,6 @@ function SpaceChooceScreen({ navigation, route }) {
         id={item._id}
         description={item.description}
         color1={color1}
-        // data={Data}
         navigation={navigation}
         buildingId={buildingId}
         buildingName={buildingName}
