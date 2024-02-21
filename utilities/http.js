@@ -14,7 +14,6 @@ export async function getAllFaults() {
       typeNameEng: fault.typeNameEng,
       spaceName: fault.spaceName,
     };
-    console.log(faultObj);
     faults.push(faultObj);
   }
   return faults;

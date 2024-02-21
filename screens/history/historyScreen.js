@@ -1,7 +1,6 @@
 import { Button, Text, View, FlatList } from "react-native";
 import * as React from "react";
 import TitleHeader from "../../components/headerTitle";
-// import faultsList from "../../data/faultsDUMMY.json";
 import FaultsGrid from "../../components/FaultsGrid";
 import { getAllFaults } from "../../utilities/http";
 
@@ -37,11 +36,13 @@ function HistoryScreen({ navigation }) {
       }}
     >
       <TitleHeader title={"History"}></TitleHeader>
-      <FlatList
-        data={fetchedFaults}
-        keyEtrator={(item) => item._id}
-        renderItem={renderFaults}
-      />
+      <View style={{ height: "80%" }}>
+        <FlatList
+          data={fetchedFaults}
+          keyEtrator={(item) => item._id}
+          renderItem={renderFaults}
+        />
+      </View>
       <Button
         title="Back To Home Screen"
         onPress={() => navigation.popToTop()}
