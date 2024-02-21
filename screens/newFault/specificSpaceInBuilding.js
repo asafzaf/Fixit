@@ -15,23 +15,37 @@ function SpaceChooceScreen({ navigation, route }) {
   const buildingName = route.params.buildingName;
   const data = route.params.buildingData;
 
+  console.log(data);
+  console.log("**********************************");
+console.log(buildingId);
+console.log("**********************************");
+
+  const array1 = [];
+
+  for (const floor of data.floors) {
+
+    for (const space of floor.spaces) {
+      console.log(
+        space.spaceType,
+        spaceTypeName,
+        space.spaceType == spaceTypeName
+      );
+      if (space.spaceType == spaceTypeName) {
+        array1.push(space);
+        console.log(space);
+      }
+    }
+  }
+
+  for (const staircase of data.staircases) {
+    if (staircase.spaceType == spaceTypeName) {
+      array1.push(staircase);
+    }
+  }
+
   if (i >= colors.length) {
     i = 0;
   }
-  //     const floors = [];
-  //   const relevantSpaces = (data, spaceTypeName) => {
-
-  //     data.map((floor) => {
-  //       floor.spaces.filter((space) => space.spaceType === spaceTypeName);
-  //     });
-  //     return allSpaces;
-  //   };
-
-  //   const spaces = relevantSpaces(data, spaceTypeName);
-  //   for (const space of spaces) {
-  //     console.log(space);
-  //   }
-  //   console.log(spaces);
 
   return (
     <View
@@ -51,26 +65,24 @@ function SpaceChooceScreen({ navigation, route }) {
         <Text style={styles.small_title}>Select a {spaceTypeName}</Text>
         <View>
           <ScrollView>
-            {data.map((floor) =>
-              floor.spaces.map((space) => (
-                <View key={space.spaceID}>
-                  <SmallSelectionButton
-                    key={space.spaceID}
-                    title={space.spaceName}
-                    colors={[colors[i], colors[i + 1]]}
-                    {...(i += 2)}
-                    onPress={() => {
-                      navigation.navigate("FaultChoose", {
-                        spaceId: space.spaceID,
-                        spaceName: space.spaceName,
-                        buildingId: buildingId,
-                        buildingName: buildingName,
-                      });
-                    }}
-                  />
-                </View>
-              ))
-            )}
+            {array1.map((space) => (
+              <View key={space.spaceID}>
+                <SmallSelectionButton
+                  key={space.spaceID}
+                  title={space.spaceName}
+                  colors={[colors[i], colors[i + 1]]}
+                  {...(i += 2)}
+                  onPress={() => {
+                    navigation.navigate("FaultChoose", {
+                      spaceId: space.spaceID,
+                      spaceName: space.spaceName,
+                      buildingId: buildingId,
+                      buildingName: buildingName,
+                    });
+                  }}
+                />
+              </View>
+            ))}
           </ScrollView>
         </View>
       </View>

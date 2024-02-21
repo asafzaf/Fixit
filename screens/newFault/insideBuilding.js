@@ -33,9 +33,9 @@ function InsidePlaceScreen({ navigation }) {
                   {...(i += 2)}
                   onPress={() => {
                     navigation.navigate("SpaceTypeChooser", {
-                      buildingId: building.buildingID,
+                      buildingId: building._id,
                       buildingName: building.buildingName,
-                      data: building.floors,
+                      data: building,
                     });
                   }}
                 />

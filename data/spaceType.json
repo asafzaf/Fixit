@@ -41,7 +41,7 @@
       {
         "_id": "65d247b97dd1e7228a192647",
         "hebrew": "מדרגות",
-        "name": "Stairs",
+        "name": "Staircase",
         "type": "room",
         "description": "A room containing stairs"
       },
@@ -153,7 +153,7 @@
       {
         "_id": "65d248757dd1e7228a192667",
         "hebrew": "חדר ישיבות",
-        "name": "MeetingRoom",
+        "name": "Meeting Room",
         "type": "room",
         "description": "A room containing a lot of chairs"
       }
