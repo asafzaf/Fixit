@@ -35,10 +35,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function SpacesGrid({ name, description, color1, color2 }) {
+function SpacesGrid({ name, description, color1, Data, navigation }) {
+  function spaceHandler() {
+    navigation.navigate("SpaceChooser");
+  }
   return (
     <View>
-      <Pressable style={({ pressed }) => [pressed ? styles.btnPressed : null]}>
+      <Pressable
+        style={({ pressed }) => [pressed ? styles.btnPressed : null]}
+        onPress={spaceHandler}
+      >
         <View style={[styles.item, { backgroundColor: color1 }]}>
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.text}>{description}</Text>
