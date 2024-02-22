@@ -1,0 +1,162 @@
+{
+  "status": "success",
+  "results": 22,
+  "data": {
+    "spaceTypes": [
+      {
+        "_id": "65d2477c7dd1e7228a19263d",
+        "hebrew": "שירותים",
+        "name": "Toilet",
+        "type": "room",
+        "description": "A room containing a toilet and a sink"
+      },
+      {
+        "_id": "65d247947dd1e7228a19263f",
+        "hebrew": "משרד",
+        "name": "Office",
+        "type": "room",
+        "description": "A room containing a desk and a chair"
+      },
+      {
+        "_id": "65d2479d7dd1e7228a192641",
+        "hebrew": "מטבח",
+        "name": "Kitchen",
+        "type": "room",
+        "description": "A room containing a stove, a sink and a fridge"
+      },
+      {
+        "_id": "65d247a77dd1e7228a192643",
+        "hebrew": "כיתה",
+        "name": "Classroom",
+        "type": "room",
+        "description": "A room containing a desk and a chair"
+      },
+      {
+        "_id": "65d247b07dd1e7228a192645",
+        "hebrew": "מחסן",
+        "name": "Storage",
+        "type": "room",
+        "description": "A room containing a lot of stuff"
+      },
+      {
+        "_id": "65d247b97dd1e7228a192647",
+        "hebrew": "מדרגות",
+        "name": "Staircase",
+        "type": "room",
+        "description": "A room containing stairs"
+      },
+      {
+        "_id": "65d247c67dd1e7228a192649",
+        "hebrew": "מעלית",
+        "name": "Elevator",
+        "type": "room",
+        "description": "A room containing an elevator"
+      },
+      {
+        "_id": "65d247ce7dd1e7228a19264b",
+        "hebrew": "מסדרון",
+        "name": "Halway",
+        "type": "room",
+        "description": "A room containing a lot of doors"
+      },
+      {
+        "_id": "65d247d67dd1e7228a19264d",
+        "hebrew": "חדר",
+        "name": "Room",
+        "type": "room",
+        "description": "A room containing a bed and a closet"
+      },
+      {
+        "_id": "65d247de7dd1e7228a19264f",
+        "hebrew": "כניסה",
+        "name": "Entrance",
+        "type": "room",
+        "description": "A room containing a door"
+      },
+      {
+        "_id": "65d247e67dd1e7228a192651",
+        "hebrew": "יציאה",
+        "name": "Exit",
+        "type": "room",
+        "description": "A room containing a door"
+      },
+      {
+        "_id": "65d247f17dd1e7228a192653",
+        "hebrew": "מוסך",
+        "name": "Garage",
+        "type": "room",
+        "description": "A room containing a car"
+      },
+      {
+        "_id": "65d247fc7dd1e7228a192655",
+        "hebrew": "שער",
+        "name": "Gate",
+        "type": "room",
+        "description": "A room containing a gate"
+      },
+      {
+        "_id": "65d248067dd1e7228a192657",
+        "hebrew": "חנייה",
+        "name": "Parking",
+        "type": "room",
+        "description": "A room containing a car"
+      },
+      {
+        "_id": "65d2480d7dd1e7228a192659",
+        "hebrew": "גינה",
+        "name": "Garden",
+        "type": "room",
+        "description": "A room containing a lot of plants"
+      },
+      {
+        "_id": "65d2481d7dd1e7228a19265b",
+        "hebrew": "מרפסת",
+        "name": "Balcony",
+        "type": "room",
+        "description": "A room containing a lot of plants"
+      },
+      {
+        "_id": "65d248437dd1e7228a19265d",
+        "hebrew": "חצר",
+        "name": "Patio",
+        "type": "room",
+        "description": "A room containing a lot of plants"
+      },
+      {
+        "_id": "65d2484d7dd1e7228a19265f",
+        "hebrew": "גג",
+        "name": "Roof",
+        "type": "room",
+        "description": "A room containing a lot of plants"
+      },
+      {
+        "_id": "65d248557dd1e7228a192661",
+        "hebrew": "מקלט",
+        "name": "Shelter",
+        "type": "room",
+        "description": "A room containing a lot of plants"
+      },
+      {
+        "_id": "65d248627dd1e7228a192663",
+        "hebrew": "אודיטוריום",
+        "name": "Oditorium",
+        "type": "room",
+        "description": "A room containing a lot of chairs"
+      },
+      {
+        "_id": "65d2486d7dd1e7228a192665",
+        "hebrew": "מעבדה",
+        "name": "Lab",
+        "type": "room",
+        "description": "A room containing a lot of computers"
+      },
+      {
+        "_id": "65d248757dd1e7228a192667",
+        "hebrew": "חדר ישיבות",
+        "name": "Meeting Room",
+        "type": "room",
+        "description": "A room containing a lot of chairs"
+      }
+    ]
+  }
+}
