@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 // import { styles } from "../../styles";
 import TitleHeader from "../../components/headerTitle";
+import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
 
 function ConfirmFaultScreen({ navigation, route }) {
   const buildingId = route.params.buildingId;
@@ -17,6 +18,7 @@ function ConfirmFaultScreen({ navigation, route }) {
   const spaceName = route.params.spaceName;
 
   const [description, setDescription] = useState("");
+  const [urgency, setUrgency] = useState("");
 
   return (
     <View style={styles.container}>
@@ -28,6 +30,7 @@ function ConfirmFaultScreen({ navigation, route }) {
         <Text style={styles.text}>Building Name: {buildingName}</Text>
         <Text style={styles.text}>Space Type Name: {spaceTypeName}</Text>
         <Text style={styles.text}>Space Name: {spaceName}</Text>
+        <Text style={styles.text}>Urgency: {urgency}</Text>
         <View style={{ marginTop: 20 }}>
           <Text style={styles.sectionTitle}>Fault Description</Text>
           <TextInput
@@ -51,6 +54,7 @@ function ConfirmFaultScreen({ navigation, route }) {
             }}
           />
         </View>
+        <UrgencyLevelsButtons setUrgency={setUrgency}></UrgencyLevelsButtons>
       </ScrollView>
     </View>
   );
