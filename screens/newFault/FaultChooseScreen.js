@@ -5,7 +5,6 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import faultCollection from "../../data/faultDomainsDUMMY.json";
@@ -17,6 +16,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const buildingName = route.params.buildingName;
   const spaceId = route.params.spaceId;
   const spaceName = route.params.spaceName;
+  const spaceTypeName = route.params.spaceTypeName;
 
   const [name, setName] = useState("");
   const [pickedDomain, setPickedDomain] = useState("");
@@ -26,11 +26,11 @@ const FaultChooseScreen = ({ navigation, route }) => {
 
   const pickDomain = (name) => {
     const domain = domainObjList.find((domain) => domain.name === name);
-    // console.log(domain);
     setPickedDomain(domain);
   };
 
   const filterSuggestions = (text) => {
+    //Domain
     const lowerCaseText = text.toLowerCase();
     const objects = domainObjList.filter((domain) =>
       domain.name.toLowerCase().includes(lowerCaseText)
@@ -39,8 +39,8 @@ const FaultChooseScreen = ({ navigation, route }) => {
   };
 
   const filterSuggestions2 = (domain, text) => {
+    //SubDomain
     const lowerCaseText = text.toLowerCase();
-    // console.log(domain.types);
     const objects = domain.types.filter((fault) =>
       fault.name.toLowerCase().includes(lowerCaseText)
     );
@@ -106,6 +106,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
                     buildingName: buildingName,
                     spaceId: spaceId,
                     spaceName: spaceName,
+                    spaceTypeName: spaceTypeName,
                     data: {
                       domain: pickedDomain,
                       fault: item,

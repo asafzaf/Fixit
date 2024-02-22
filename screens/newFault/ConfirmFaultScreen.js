@@ -7,7 +7,7 @@ function ConfirmFaultScreen({ navigation, route }) {
   const buildingName = route.params.buildingName;
   const data = route.params.data;
   const domainName = data.domain.name;
-  const faultName = data.fault;
+  const subDomain = data.fault;
   const spaceId = route.params.spaceId;
   const spaceName = route.params.spaceName;
 
@@ -27,10 +27,11 @@ function ConfirmFaultScreen({ navigation, route }) {
         Fault Details
       </Text>
       <Text style={styles.text}>Domain: {domainName}</Text>
-      <Text style={styles.text}>fault: {faultName}</Text>
+      <Text style={styles.text}>Sub-Domain: {subDomain}</Text>
       <Text style={styles.text}>buildintID: {buildingId}</Text>
       <Text style={styles.text}>buildingName: {buildingName}</Text>
       <Text style={styles.text}>spaceName: {spaceName}</Text>
+      <Text style={styles.text}>spaceId: {spaceId}</Text>
     </View>
   );
 }
