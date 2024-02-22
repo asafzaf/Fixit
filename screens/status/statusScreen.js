@@ -6,12 +6,7 @@ import LoadingOverlay from "../../components/UI/LoadingOverlay";
 import FaultStatusGrid from "../../components/FaultStatusGrid";
 
 function renderFaults({ item }) {
-  return (
-    <FaultStatusGrid
-      id={item._id}
-      // status={item.status}
-    />
-  );
+  return <FaultStatusGrid id={item._id} status={item.status} />;
 }
 
 function StatusScreen({ navigation }) {
@@ -32,25 +27,34 @@ function StatusScreen({ navigation }) {
     getFaults();
   }, []);
 
-  console.log(fetchedFaults);
-
   if (isFetching) {
     return <LoadingOverlay />;
   }
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <TitleHeader title={"Status"}></TitleHeader>
-      <View style={{ height: "80%" }}>
+      <View
+        style={{
+          // height: "60%",
+          width: "85%",
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <FlatList
           data={fetchedFaults}
           keyEtrator={(item) => item._id}
           renderItem={renderFaults}
         />
       </View>
-      <Button
-        title="Back To Home Screen"
-        onPress={() => navigation.popToTop()}
-      />
+      <View style={{ marginBottom: 70 }}>
+        <Button
+          title="Back To Home Screen"
+          onPress={() => navigation.popToTop()}
+        />
+      </View>
     </View>
   );
 }
