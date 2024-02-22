@@ -15,17 +15,20 @@ import { Keyboard } from "react-native";
 import { postFault } from "../../utilities/http";
 
 function ConfirmFaultScreen({ navigation, route }) {
+  const domainId = route.params.domain._id;
+  const domainNameEng = route.params.domain.name;
+  const domainNameHeb = route.params.domain.name_hebrew;
+  const faultTypeId = route.params.fault.id;
+  const faultTypeNameEng = route.params.fault.name;
+  const faultTypeNameHeb = route.params.fault.name_hebrew;
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
-  const data = route.params.data;
   const spaceTypeId = route.params.spaceTypeId;
-  const spaceTypeName = route.params.spaceTypeName;
-  const domainName = route.params.domain.name;
-  const domainId = route.params.domain._id;
-  const faultName = route.params.fault.name;
-  const faultId = route.params.fault._id;
+  const spaceTypeNameEng = route.params.spaceTypeName;
+  const spaceTypeNameHeb = route.params.spaceTypeNameHebrew;
   const spaceNumber = route.params.spaceId;
   const spaceName = route.params.spaceName;
+  const reportByUser = '5c9f3e3e3588da6b7dd3f02d';
 
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
@@ -33,18 +36,23 @@ function ConfirmFaultScreen({ navigation, route }) {
   const openFault = async () => {
     const fault = {
       domainId,
-      domainName,
-      faultId,
-      faultName,
+      domainNameEng,
+      domainNameHeb,
+      faultTypeId,
+      faultTypeNameEng,
+      faultTypeNameHeb,
       buildingId,
       buildingName,
       spaceTypeId,
-      spaceTypeName,
-      description,
-      urgency,
+      spaceTypeNameEng,
+      spaceTypeNameHeb,
       spaceName,
       spaceNumber,
+      reportByUser,
+      description,
+      urgency
     };
+    const result = await postFault(fault);
   };
 
   return (
@@ -52,10 +60,10 @@ function ConfirmFaultScreen({ navigation, route }) {
       <ScrollView>
         <TitleHeader title={"Confirm Fault"}></TitleHeader>
         <Text style={styles.sectionTitle}>Fault Details</Text>
-        <Text style={styles.text}>Domain: {domainName}</Text>
-        <Text style={styles.text}>Fault: {faultName}</Text>
+        <Text style={styles.text}>Domain: {domainNameEng}</Text>
+        <Text style={styles.text}>Fault: {faultTypeNameEng}</Text>
         <Text style={styles.text}>Building Name: {buildingName}</Text>
-        <Text style={styles.text}>Space Type Name: {spaceTypeName}</Text>
+        <Text style={styles.text}>Space Type Name: {spaceTypeNameEng}</Text>
         <Text style={styles.text}>Space Name: {spaceName}</Text>
         <Text style={styles.text}>Urgency: {urgency}</Text>
         <View style={{ marginTop: 20 }}>
@@ -82,7 +90,7 @@ function ConfirmFaultScreen({ navigation, route }) {
           />
         </View>
         <UrgencyLevelsButtons setUrgency={setUrgency}></UrgencyLevelsButtons>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={openFault}>
           <Text style={styles.textButton}>Open Fault</Text>
         </TouchableOpacity>
       </ScrollView>

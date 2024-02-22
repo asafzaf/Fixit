@@ -20,6 +20,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const spaceName = route.params.spaceName;
   const spaceTypeId = route.params.spaceTypeId;
   const spaceTypeName = route.params.spaceTypeName;
+  const spaceTypeNameHebrew = route.params.spaceTypeNameHebrew;
 
   const [name, setName] = useState("");
   const [pickedDomain, setPickedDomain] = useState("");
@@ -51,7 +52,6 @@ const FaultChooseScreen = ({ navigation, route }) => {
     const domain = domainObjList.find(
       (domain) => domain.name === domainObj.name
     );
-    // console.log(domain);
     setPickedDomain(domain);
   };
 
@@ -132,6 +132,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
                     buildingName: buildingName,
                     spaceTypeId: spaceTypeId,
                     spaceTypeName: spaceTypeName,
+                    spaceTypeNameHebrew: spaceTypeNameHebrew,
                     spaceId: spaceId,
                     spaceName: spaceName,
                     domain: pickedDomain,

@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
 
 function SpacesGrid({
   name,
+  hebrew,
   id,
   description,
   navigation,
@@ -58,6 +59,7 @@ function SpacesGrid({
     navigation.navigate("SpaceChooser", {
       spaceTypeId: id,
       spaceTypeName: name,
+      spaceTypeNameHebrew: hebrew,
       buildingId: buildingId,
       buildingName: buildingName,
       buildingData: buildingData,
