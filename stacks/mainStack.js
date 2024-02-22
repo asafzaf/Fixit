@@ -12,8 +12,8 @@ function MainStack() {
     <>
       <StatusBar style="dark" />
       <Stack.Navigator>
-        <Stack.Screen name="Faults History" component={HistoryScreen} />
-        <Stack.Screen name="Faults Status" component={StatusScreen} />
+        <Stack.Screen name="History" title="Faults History" component={HistoryScreen} />
+        <Stack.Screen name="Status" title="Faults Status" component={StatusScreen} />
       </Stack.Navigator>
     </>
   );
