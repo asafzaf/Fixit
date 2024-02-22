@@ -26,7 +26,9 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const domainObjList = faultCollection.data.faultDomains;
 
   const pickDomain = (domainObj) => {
-    const domain = domainObjList.find((domain) => domain.name === domainObj.name);
+    const domain = domainObjList.find(
+      (domain) => domain.name === domainObj.name
+    );
     // console.log(domain);
     setPickedDomain(domain);
   };
@@ -90,8 +92,13 @@ const FaultChooseScreen = ({ navigation, route }) => {
               color: "#8E8E8E",
               padding: 10,
             }}
+            enterKeyHint="next"
+            enablesReturnKeyAutomatically={true}
             onChangeText={(text) => setName2(text)}
             value={name2}
+            onSubmitEditing={() => {
+              Keyboard.dismiss();
+            }}
             placeholder="Search Fault Type..."
           />
         </View>
@@ -161,6 +168,11 @@ const FaultChooseScreen = ({ navigation, route }) => {
               backgroundColor: "white",
               color: "#8E8E8E",
               padding: 10,
+            }}
+            enterKeyHint="next"
+            enablesReturnKeyAutomatically={true}
+            onSubmitEditing={() => {
+              Keyboard.dismiss();
             }}
             onChangeText={(text) => setName(text)}
             value={name}
