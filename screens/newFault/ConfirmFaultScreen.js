@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 // import { styles } from "../../styles";
 import TitleHeader from "../../components/headerTitle";
 import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
+import { Keyboard } from "react-native";
+import { postFault } from "../../utilities/http";
 
 function ConfirmFaultScreen({ navigation, route }) {
   const buildingId = route.params.buildingId;
@@ -14,11 +24,28 @@ function ConfirmFaultScreen({ navigation, route }) {
   const domainId = route.params.domain._id;
   const faultName = route.params.fault.name;
   const faultId = route.params.fault._id;
-  const spaceId = route.params.spaceId;
+  const spaceNumber = route.params.spaceId;
   const spaceName = route.params.spaceName;
 
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
+
+  const openFault = async () => {
+    const fault = {
+      domainId,
+      domainName,
+      faultId,
+      faultName,
+      buildingId,
+      buildingName,
+      spaceTypeId,
+      spaceTypeName,
+      description,
+      urgency,
+      spaceName,
+      spaceNumber,
+    };
+  };
 
   return (
     <View style={styles.container}>
@@ -55,6 +82,9 @@ function ConfirmFaultScreen({ navigation, route }) {
           />
         </View>
         <UrgencyLevelsButtons setUrgency={setUrgency}></UrgencyLevelsButtons>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textButton}>Open Fault</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -78,6 +108,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginBottom: 5,
+  },
+  textButton: {
+    fontSize: 16,
+    color: "white",
+    fontWeight: "bold",
+    justifyContent: "center",
+  },
+  button: {
+    marginTop: 20,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: "blue",
+    color: "white",
+    width: 200,
+    height: 50,
+    alignItems: "center",
+    alignSelf: "center",
+    justifyContent: "center",
   },
 });
 
