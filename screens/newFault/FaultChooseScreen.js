@@ -122,6 +122,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
         <FlatList
           style={{ marginTop: 20 }}
           data={filterSuggestions2(pickedDomain, name2)}
+          keyEtrator={(item) => item.id}
           renderItem={({ item }) => (
             <View>
               <TouchableOpacity
@@ -209,6 +210,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
         >
           <FlatList
             data={filterSuggestions(name)}
+            keyEtrator={(item) => item.id}
             renderItem={({ item }) => (
               <View>
                 <TouchableOpacity
