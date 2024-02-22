@@ -96,5 +96,5 @@ export async function getAllFaultDomains() {
 
 export async function postFault(fault) {
   const response = await axios.post(BACKEND_URL + "/api/v1/fault/", fault);
-  return response;
+  return response.request._response;
 }
