@@ -78,55 +78,67 @@ function ConfirmFaultScreen({ navigation, route }) {
       >
         <View style={ModalStyles.centeredView}>
           <View style={ModalStyles.modalView}>
-            <Text style={ModalStyles.modalText}>{result.status === "success" ? ("Fault Created Successfully!"): ("Error Creating New Fault")}</Text>
+            <Text style={ModalStyles.modalText}>
+              {result.status === "success"
+                ? "Fault Created Successfully!"
+                : "Error Creating New Fault"}
+            </Text>
             <Pressable
               style={[ModalStyles.button, ModalStyles.buttonClose]}
-              onPress={() => 
-                navigation.navigate("Home")
-              }
+              onPress={() => navigation.navigate("Home")}
             >
               <Text style={ModalStyles.textStyle}>Go Back</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
-      <ScrollView>
-        <TitleHeader title={"Confirm Fault"}></TitleHeader>
-        <Text style={styles.sectionTitle}>Fault Details</Text>
-        <Text style={styles.text}>Domain: {domainNameEng}</Text>
-        <Text style={styles.text}>Fault: {faultTypeNameEng}</Text>
-        <Text style={styles.text}>Building Name: {buildingName}</Text>
-        <Text style={styles.text}>Space Type Name: {spaceTypeNameEng}</Text>
-        <Text style={styles.text}>Space Name: {spaceName}</Text>
-        <Text style={styles.text}>Urgency: {urgency}</Text>
-        <View style={{ marginTop: 20 }}>
-          <Text style={styles.sectionTitle}>Fault Description</Text>
-          <TextInput
-            style={{
-              height: 100,
-              width: 300,
-              borderColor: "gray",
-              borderWidth: 1,
-              borderRadius: 10,
-              padding: 10,
-            }}
-            onChangeText={(text) => {
-              setDescription(text);
-            }}
-            enterKeyHint="next"
-            enablesReturnKeyAutomatically={true}
-            multiline
-            placeholder="Enter a description of the fault"
-            onSubmitEditing={() => {
-              Keyboard.dismiss();
-            }}
-          />
-        </View>
-        <UrgencyLevelsButtons setUrgency={setUrgency}></UrgencyLevelsButtons>
-        <TouchableOpacity style={styles.button} onPress={openFault}>
-          <Text style={styles.textButton}>Open Fault</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <View style={{ marginRight: 20 }}>
+        <ScrollView>
+          <TitleHeader title={"Confirm Fault"}></TitleHeader>
+          <View>
+            <Text style={styles.sectionTitle}>Fault Details</Text>
+            <Text style={styles.text}>Domain: {domainNameEng}</Text>
+            <Text style={styles.text}>Fault: {faultTypeNameEng}</Text>
+            <Text style={styles.text}>Building Name: {buildingName}</Text>
+            <Text style={styles.text}>Space Type Name: {spaceTypeNameEng}</Text>
+            <Text style={styles.text}>Space Name: {spaceName}</Text>
+            <Text style={styles.text}>Urgency: {urgency}</Text>
+          </View>
+          <View style={{ marginTop: 20 }}>
+            <Text style={styles.sectionTitle}>Fault Description</Text>
+            <TextInput
+              style={{
+                height: 100,
+                width: 300,
+                borderColor: "gray",
+                borderWidth: 1,
+                borderRadius: 10,
+                padding: 10,
+              }}
+              onChangeText={(text) => {
+                setDescription(text);
+              }}
+              enterKeyHint="next"
+              enablesReturnKeyAutomatically={true}
+              multiline
+              placeholder="Enter a description of the fault"
+              onSubmitEditing={() => {
+                Keyboard.dismiss();
+              }}
+            />
+          </View>
+          <View>
+            <UrgencyLevelsButtons
+              setUrgency={setUrgency}
+            ></UrgencyLevelsButtons>
+            <View>
+              <TouchableOpacity style={styles.button} onPress={openFault}>
+                <Text style={styles.textButton}>Open Fault</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 }
