@@ -3,6 +3,7 @@ import * as React from "react";
 import TitleHeader from "../../components/headerTitle";
 import FaultsGrid from "../../components/FaultsGrid";
 import { getAllFaults } from "../../utilities/http";
+import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 function renderFaults({ item }) {
   return (
@@ -16,16 +17,26 @@ function renderFaults({ item }) {
 }
 
 function HistoryScreen({ navigation }) {
+  const [isFetching, setIsFetching] = React.useState(true);
+
   const [fetchedFaults, setFetchedFaults] = React.useState([]);
 
   React.useEffect(() => {
     async function getFaults() {
+      setIsFetching(true);
+
       const faults = await getAllFaults();
+      setIsFetching(false);
+
       setFetchedFaults(faults);
     }
 
     getFaults();
   }, []);
+
+  if (isFetching) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <View
