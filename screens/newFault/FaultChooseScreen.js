@@ -11,6 +11,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import TitleHeader from "../../components/headerTitle";
 import { getAllFaultDomains } from "../../utilities/http";
+import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 const FaultChooseScreen = ({ navigation, route }) => {
   const buildingId = route.params.buildingId;
@@ -24,17 +25,26 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const [pickedDomain, setPickedDomain] = useState("");
   const [name2, setName2] = useState("");
 
+  const [isFetching, setIsFetching] = React.useState(true);
+
   const [fetchedFaultDomains, setfetchedFaultDomains] = useState([]);
 
   useEffect(() => {
     async function getDomains() {
+      setIsFetching(true);
+
       const domains = await getAllFaultDomains();
+      setIsFetching(false);
+
       setfetchedFaultDomains(domains);
     }
 
     getDomains();
   }, []);
 
+  if (isFetching) {
+    return <LoadingOverlay />;
+  }
   const domainObjList = fetchedFaultDomains;
 
   const pickDomain = (domainObj) => {

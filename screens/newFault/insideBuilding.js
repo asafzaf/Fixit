@@ -7,6 +7,7 @@ import BigSelectionButton from "../../components/buttons/BigSelectionButton";
 // import buildingDUMMY from "../../data/buildingDUMMY";
 import TitleHeader from "../../components/headerTitle";
 import { getAllBuildings } from "../../utilities/http";
+import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 colors = ["#6416F8", "#8E52FF", "#FFA31A", "#FDBB59", "#E7008C", "#FE59BD"];
 let i = 0;
@@ -14,16 +15,25 @@ let i = 0;
 function InsidePlaceScreen({ navigation }) {
   if (i >= colors.length) i = 0;
 
+  const [isFetching, setIsFetching] = React.useState(true);
+
   const [fetchedBuildings, setfetchedBuildings] = React.useState([]);
 
   React.useEffect(() => {
     async function getBuldings() {
+      setIsFetching(true);
       const buildings = await getAllBuildings();
+      setIsFetching(false);
+
       setfetchedBuildings(buildings);
     }
 
     getBuldings();
   }, []);
+
+  if (isFetching) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <View

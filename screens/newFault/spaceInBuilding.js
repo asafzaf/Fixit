@@ -8,6 +8,7 @@ import TitleHeader from "../../components/headerTitle";
 import SpacesGrid from "../../components/SpacesGrid";
 // import SpacesList from "../../data/spaceType.json";
 import { getAllSpacesTypes } from "../../utilities/http";
+import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 spacesColors = [
   "#6416F8",
@@ -24,16 +25,24 @@ function SpaceChooceScreen({ navigation, route }) {
   const buildingName = route.params.buildingName;
   const data = route.params.data;
 
+  const [isFetching, setIsFetching] = React.useState(true);
+
   const [fetchedSpaceTypes, setfetchedSpaceTypes] = React.useState([]);
 
   React.useEffect(() => {
     async function getSpaceTypes() {
+      setIsFetching(true);
       const spaceTypes = await getAllSpacesTypes();
+      setIsFetching(false);
       setfetchedSpaceTypes(spaceTypes);
     }
 
     getSpaceTypes();
   }, []);
+
+  if (isFetching) {
+    return <LoadingOverlay />;
+  }
 
   function renderSpaces({ item }) {
     if (i >= spacesColors.length) {
