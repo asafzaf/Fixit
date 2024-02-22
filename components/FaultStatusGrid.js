@@ -56,8 +56,6 @@ function FaultsGrid({ id, status }) {
       ? closedColor
       : inProgressColor;
 
-  console.log(color);
-  console.log(status);
   return (
     <View>
       <Pressable>
