@@ -44,7 +44,14 @@ function InsidePlaceScreen({ navigation }) {
       }}
     >
       <TitleHeader title={"Open New Fault"}></TitleHeader>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 100,
+        }}
+      >
         <Text style={styles.small_title}>In which building?</Text>
         <ScrollView>
           <View style={{ height: 600, width: 400, alignItems: "center" }}>

@@ -10,9 +10,30 @@ export async function getAllFaults() {
     // console.log(fault);
     const faultObj = {
       _id: fault._id,
+      domainId: fault.domainId,
       domainNameEng: fault.domainNameEng,
-      typeNameEng: fault.typeNameEng,
+      domainNameHeb: fault.domainNameHeb,
+      faultTypeId: fault.faultTypeId,
+      faultTypeNameEng: fault.faultTypeNameEng,
+      faultTypeNameHeb: fault.faultTypeNameHeb,
+      buildingId: fault.buildingId,
+      buildingName: fault.buildingName,
+      outSide: fault.outSide,
+      outSideId: fault.outSideId,
+      outSideName: fault.outSideName,
+      floor: fault.floor,
+      spaceTypeId: fault.spaceTypeId,
+      spaceTypeNameEng: fault.spaceTypeNameEng,
+      spaceTypeNameHeb: fault.spaceTypeNameHeb,
+      spaceNumber: fault.spaceNumber,
       spaceName: fault.spaceName,
+      description: fault.description,
+      status: fault.status,
+      urgency: fault.urgency,
+      reportByUser: fault.reportByUser,
+      assignedToUser: fault.assignedToUser,
+      resolvedAt: fault.resolvedAt,
+      createdAt: fault.createdAt,
     };
     faults.push(faultObj);
   }
