@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   FlatList,
@@ -7,9 +7,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import faultCollection from "../../data/faultDomainsDUMMY.json";
+// import faultCollection from "../../data/faultDomainsDUMMY.json";
 import { LinearGradient } from "expo-linear-gradient";
 import TitleHeader from "../../components/headerTitle";
+import { getAllFaultDomains } from "../../utilities/http";
 
 const FaultChooseScreen = ({ navigation, route }) => {
   const buildingId = route.params.buildingId;
@@ -23,7 +24,18 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const [pickedDomain, setPickedDomain] = useState("");
   const [name2, setName2] = useState("");
 
-  const domainObjList = faultCollection.data.faultDomains;
+  const [fetchedFaultDomains, setfetchedFaultDomains] = useState([]);
+
+  useEffect(() => {
+    async function getDomains() {
+      const domains = await getAllFaultDomains();
+      setfetchedFaultDomains(domains);
+    }
+
+    getDomains();
+  }, []);
+
+  const domainObjList = fetchedFaultDomains;
 
   const pickDomain = (domainObj) => {
     const domain = domainObjList.find(
@@ -49,11 +61,6 @@ const FaultChooseScreen = ({ navigation, route }) => {
       fault.name.toLowerCase().includes(lowerCaseText)
     );
     return objects;
-  };
-
-  const handleSubmit = () => {
-    // Handle form submission here
-    // console.log("Name:", name);
   };
 
   if (pickedDomain) {
@@ -206,7 +213,6 @@ const FaultChooseScreen = ({ navigation, route }) => {
             keyExtractor={(item) => item}
           />
         </View>
-        {/* <Button title="Submit" onPress={handleSubmit} /> */}
       </View>
     );
   }

@@ -1,5 +1,7 @@
 // // 4rd PAGE OF THE FAULT REPORTING PROCESS
 
+// ADD TO LOWER CASE !!!!!
+
 import { FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
 import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
@@ -25,9 +27,9 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
       //   spaceTypeName,
       //   space.spaceType == spaceTypeName
       // );
-      console.log("space", space);
+      // console.log("space", space);
       if (space.spaceType == spaceTypeName) {
-        console.log("pushing space");
+        // console.log("pushing space");
         dataDisplay.push(space);
       }
     }
