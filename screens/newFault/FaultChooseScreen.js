@@ -16,6 +16,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const buildingName = route.params.buildingName;
   const spaceId = route.params.spaceId;
   const spaceName = route.params.spaceName;
+  const spaceTypeId = route.params.spaceTypeId;
   const spaceTypeName = route.params.spaceTypeName;
 
   const [name, setName] = useState("");
@@ -105,6 +106,8 @@ const FaultChooseScreen = ({ navigation, route }) => {
                   navigation.navigate("Confirm", {
                     buildingId: buildingId,
                     buildingName: buildingName,
+                    spaceTypeId: spaceTypeId,
+                    spaceTypeName: spaceTypeName,
                     spaceId: spaceId,
                     spaceName: spaceName,
                     domain: pickedDomain,

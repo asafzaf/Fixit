@@ -31,14 +31,13 @@ function ConfirmFaultScreen({ navigation, route }) {
         Fault Details
       </Text>
       <Text style={styles.text}>Domain: {domainName}</Text>
-      <Text style={styles.text}>Sub-Domain: {subDomain}</Text>
+      <Text style={styles.text}>Fault: {faultName}</Text>
       <Text style={styles.text}>buildintID: {buildingId}</Text>
       <Text style={styles.text}>buildingName: {buildingName}</Text>
       <Text style={styles.text}>spaceTypeId: {spaceTypeId}</Text>
       <Text style={styles.text}>spaceTypeName: {spaceTypeName}</Text>
       <Text style={styles.text}>spaceId: {spaceId}</Text>
       <Text style={styles.text}>spaceName: {spaceName}</Text>
-      <Text style={styles.text}>spaceId: {spaceId}</Text>
     </View>
   );
 }

@@ -11,8 +11,7 @@ let i = 0;
 
 function ChooceSpecificSpaceScreen({ navigation, route }) {
   const spaceTypeId = route.params.spaceTypeId;
-  const spaceTypeName = route.params.spaceName;
-  const spaceId = route.params.spaceId;
+  const spaceTypeName = route.params.spaceTypeName;
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
   const data = route.params.buildingData;
@@ -26,7 +25,9 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
       //   spaceTypeName,
       //   space.spaceType == spaceTypeName
       // );
+      console.log("space", space);
       if (space.spaceType == spaceTypeName) {
+        console.log("pushing space");
         dataDisplay.push(space);
       }
     }
@@ -53,7 +54,7 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
         buildingId={buildingId}
         buildingName={buildingName}
         name={item.spaceName}
-        spaceId={item.spaceId}
+        spaceId={item.spaceNumber}
       />
     );
   }
