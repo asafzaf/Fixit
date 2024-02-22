@@ -35,3 +35,40 @@ export async function getAllBuildings() {
   }
   return buildings;
 }
+
+export async function getAllSpacesTypes() {
+  const spacesTypes = [];
+  const response = await axios.get(BACKEND_URL + "/api/v1/space-type/");
+  const data = JSON.parse(response.request._response);
+  for (const spaceType of data.data.spaceTypes) {
+    const spaceTypeObj = {
+      _id: spaceType._id,
+      hebrew: spaceType.hebrew,
+      name: spaceType.name,
+      type: spaceType.type,
+      description: spaceType.description,
+    };
+    spacesTypes.push(spaceTypeObj);
+  }
+  return spacesTypes;
+}
+
+export async function getAllFaultDomains() {
+  const domains = [];
+  const response = await axios.get(BACKEND_URL + "/api/v1/fault-domain/");
+  const data = JSON.parse(response.request._response);
+  for (const domain of data.data.faultDomains) {
+    const domainObj = {
+      _id: domain._id,
+      id: domain.id,
+      name: domain.name,
+      name_hebrew: domain.name_hebrew,
+      description: domain.description,
+      icon: domain.icon,
+      colors: domain.colors,
+      types: domain.types,
+    };
+    domains.push(domainObj);
+  }
+  return domains;
+}
