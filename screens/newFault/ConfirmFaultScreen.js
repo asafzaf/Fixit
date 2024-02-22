@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   ScrollView,
@@ -7,6 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Modal,
+  Pressable,
 } from "react-native";
 // import { styles } from "../../styles";
 import TitleHeader from "../../components/headerTitle";
@@ -28,10 +30,12 @@ function ConfirmFaultScreen({ navigation, route }) {
   const spaceTypeNameHeb = route.params.spaceTypeNameHebrew;
   const spaceNumber = route.params.spaceId;
   const spaceName = route.params.spaceName;
-  const reportByUser = '5c9f3e3e3588da6b7dd3f02d';
+  const reportByUser = "5c9f3e3e3588da6b7dd3f02d";
 
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [result, setResult] = useState("");
 
   const openFault = async () => {
     const fault = {
@@ -50,13 +54,42 @@ function ConfirmFaultScreen({ navigation, route }) {
       spaceNumber,
       reportByUser,
       description,
-      urgency
+      urgency,
     };
     const result = await postFault(fault);
+    setResult(JSON.parse(result));
   };
 
+  useEffect(() => {
+    if (result) {
+      setModalVisible(true);
+    }
+  }, [result]);
+
   return (
-    <View style={styles.container}>
+    <View style={ModalStyles.container}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={ModalStyles.centeredView}>
+          <View style={ModalStyles.modalView}>
+            <Text style={ModalStyles.modalText}>{result.status === "success" ? ("Fault Created Successfully!"): ("Error Creating New Fault")}</Text>
+            <Pressable
+              style={[ModalStyles.button, ModalStyles.buttonClose]}
+              onPress={() => 
+                navigation.navigate("Home")
+              }
+            >
+              <Text style={ModalStyles.textStyle}>Go Back</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
       <ScrollView>
         <TitleHeader title={"Confirm Fault"}></TitleHeader>
         <Text style={styles.sectionTitle}>Fault Details</Text>
@@ -134,6 +167,50 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     justifyContent: "center",
+  },
+});
+
+const ModalStyles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 55,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 
