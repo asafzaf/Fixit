@@ -37,6 +37,7 @@ function SpecificSpacesGrid({
   buildingId,
   buildingName,
   name,
+  spaceId,
 }) {
   function spaceHandler() {
     navigation.navigate("FaultChoose", {
@@ -45,6 +46,7 @@ function SpecificSpacesGrid({
       spaceTypeName: spaceTypeName,
       buildingId: buildingId,
       buildingName: buildingName,
+      spaceId: spaceId,
     });
   }
   return (

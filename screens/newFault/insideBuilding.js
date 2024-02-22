@@ -1,16 +1,30 @@
 // 2nd PAGE OF THE FAULT REPORTING PROCESS
 
+import * as React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { styles } from "../../styles";
 import BigSelectionButton from "../../components/buttons/BigSelectionButton";
-import buildingDUMMY from "../../data/buildingDUMMY";
+// import buildingDUMMY from "../../data/buildingDUMMY";
 import TitleHeader from "../../components/headerTitle";
+import { getAllBuildings } from "../../utilities/http";
 
 colors = ["#6416F8", "#8E52FF", "#FFA31A", "#FDBB59", "#E7008C", "#FE59BD"];
 let i = 0;
 
 function InsidePlaceScreen({ navigation }) {
   if (i >= colors.length) i = 0;
+
+  const [fetchedBuildings, setfetchedBuildings] = React.useState([]);
+
+  React.useEffect(() => {
+    async function getBuldings() {
+      const buildings = await getAllBuildings();
+      setfetchedBuildings(buildings);
+    }
+
+    getBuldings();
+  }, []);
+
   return (
     <View
       style={{
@@ -24,7 +38,7 @@ function InsidePlaceScreen({ navigation }) {
         <Text style={styles.small_title}>In which building?</Text>
         <View style={{ height: 600, width: 400, alignItems: "center" }}>
           <ScrollView style={{ height: 300 }}>
-            {buildingDUMMY.data.buildings.map((building) => (
+            {fetchedBuildings.map((building) => (
               <View key={building._id}>
                 <BigSelectionButton
                   key={building._id}

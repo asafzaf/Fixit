@@ -12,6 +12,7 @@ let i = 0;
 function ChooceSpecificSpaceScreen({ navigation, route }) {
   const spaceTypeId = route.params.spaceTypeId;
   const spaceTypeName = route.params.spaceName;
+  const spaceId = route.params.spaceId;
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
   const data = route.params.buildingData;
@@ -52,6 +53,7 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
         buildingId={buildingId}
         buildingName={buildingName}
         name={item.spaceName}
+        spaceId={item.spaceId}
       />
     );
   }
