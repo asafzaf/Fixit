@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
 
 function FaultsGrid({ id, status }) {
   let color =
-    status === ("Pending" || "pending")
+    status.toLowerCase() === "pending"
       ? pendingColor
-      : status === ("Closed" || "closed")
+      : status.toLowerCase() === "closed"
       ? closedColor
       : inProgressColor;
 
