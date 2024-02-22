@@ -10,16 +10,6 @@ import SpacesGrid from "../../components/SpacesGrid";
 import { getAllSpacesTypes } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
-spacesColors = [
-  "#6416F8",
-  "#FFA31A",
-  "#E7008C",
-  "#6416F8",
-  "#B339FE",
-  "#00B5CC",
-];
-let i = 0;
-
 function SpaceChooceScreen({ navigation, route }) {
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
@@ -45,18 +35,11 @@ function SpaceChooceScreen({ navigation, route }) {
   }
 
   function renderSpaces({ item }) {
-    if (i >= spacesColors.length) {
-      i = 0;
-    }
-    let color1 = spacesColors[i];
-    i += 1;
-
     return (
       <SpacesGrid
         name={item.name}
         id={item._id}
         description={item.description}
-        color1={color1}
         navigation={navigation}
         buildingId={buildingId}
         buildingName={buildingName}

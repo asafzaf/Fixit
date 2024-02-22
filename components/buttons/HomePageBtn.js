@@ -1,4 +1,4 @@
-import { Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 function HomePageBtn(props) {
@@ -7,12 +7,14 @@ function HomePageBtn(props) {
   ) : null;
   const colors = props.colors ? props.colors : ["#2768FF", "#2768FF"];
   return (
-    <TouchableOpacity style={styles.container} onPress={props.onPress}>
-      <LinearGradient style={styles.container} colors={[...colors]}>
-        {logo}
-        <Text style={styles.text}>{props.title}</Text>
-      </LinearGradient>
-    </TouchableOpacity>
+    <View style={{ marginTop: 40 }}>
+      <TouchableOpacity style={styles.container} onPress={props.onPress}>
+        <LinearGradient style={styles.container} colors={[...colors]}>
+          {logo}
+          <Text style={styles.text}>{props.title}</Text>
+        </LinearGradient>
+      </TouchableOpacity>
+    </View>
   );
 }
 

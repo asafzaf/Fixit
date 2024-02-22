@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
@@ -29,30 +29,32 @@ function HomeScreen({ navigation }) {
             marginBottom: 150,
           }}
         >
-          <HomePageBtn
-            colors={["#0100D8", "#3C3BFA"]}
-            logo={require("./assets/addFaultIcon.png")}
-            title="Open New Fault"
-            onPress={() =>
-              navigation.navigate("Root", { screen: "Open Fault" })
-            }
-          ></HomePageBtn>
-          <HomePageBtn
-            colors={["#0100D8", "#3C3BFA"]}
-            logo={require("./assets/statusIcon.png")}
-            title="Faults Status"
-            onPress={() =>
-              navigation.navigate("MainStack", { screen: "Status" })
-            }
-          ></HomePageBtn>
-          <HomePageBtn
-            colors={["#0100D8", "#3C3BFA"]}
-            logo={require("./assets/historyIcon.png")}
-            title="History"
-            onPress={() =>
-              navigation.navigate("MainStack", { screen: "History" })
-            }
-          ></HomePageBtn>
+          <ScrollView>
+            <HomePageBtn
+              colors={["#0100D8", "#3C3BFA"]}
+              logo={require("./assets/addFaultIcon.png")}
+              title="Open New Fault"
+              onPress={() =>
+                navigation.navigate("Root", { screen: "Open Fault" })
+              }
+            ></HomePageBtn>
+            <HomePageBtn
+              colors={["#0100D8", "#3C3BFA"]}
+              logo={require("./assets/statusIcon.png")}
+              title="Faults Status"
+              onPress={() =>
+                navigation.navigate("MainStack", { screen: "Status" })
+              }
+            ></HomePageBtn>
+            <HomePageBtn
+              colors={["#0100D8", "#3C3BFA"]}
+              logo={require("./assets/historyIcon.png")}
+              title="History"
+              onPress={() =>
+                navigation.navigate("MainStack", { screen: "History" })
+              }
+            ></HomePageBtn>
+          </ScrollView>
         </View>
       </View>
     </View>

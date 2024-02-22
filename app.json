@@ -7,13 +7,11 @@
     "icon": "./assets/fixit-logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/fixit-logo.png",
+      "image": "./assets/fixit-logo-2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
