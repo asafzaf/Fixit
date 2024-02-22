@@ -8,7 +8,7 @@ import SmallSelectionButton from "../../components/buttons/smallSelectionButton"
 import TitleHeader from "../../components/headerTitle";
 import SpecificSpacesGrid from "../../components/SpecificSpaceGrid";
 
-Colors = ["#6416F8", "#8E52FF", "#FFA31A", "#FDBB59", "#E7008C", "#FE59BD"];
+Colors = ["#6416F8", "#FFA31A", "#E7008C", "#6416F8", "#B339FE", "#00B5CC"];
 let i = 0;
 
 function ChooceSpecificSpaceScreen({ navigation, route }) {
@@ -22,14 +22,7 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
 
   for (const floor of data.floors) {
     for (const space of floor.spaces) {
-      // console.log(
-      //   space.spaceType,
-      //   spaceTypeName,
-      //   space.spaceType == spaceTypeName
-      // );
-      // console.log("space", space);
       if (space.spaceType == spaceTypeName) {
-        // console.log("pushing space");
         dataDisplay.push(space);
       }
     }

@@ -1,6 +1,16 @@
 import { Pressable, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 
+spacesColors = [
+  "#6416F8",
+  "#FFA31A",
+  "#E7008C",
+  "#6416F8",
+  "#B339FE",
+  "#00B5CC",
+];
+let i = 0;
+
 const styles = StyleSheet.create({
   item: {
     margin: 10,
@@ -39,15 +49,12 @@ function SpacesGrid({
   name,
   id,
   description,
-  color1,
   navigation,
   buildingId,
   buildingName,
   buildingData,
 }) {
   function spaceHandler() {
-    // console.log("Space id: ", id);
-    // console.log("Space name: ", name);
     navigation.navigate("SpaceChooser", {
       spaceTypeId: id,
       spaceTypeName: name,
@@ -56,6 +63,13 @@ function SpacesGrid({
       buildingData: buildingData,
     });
   }
+
+  if (i >= spacesColors.length) {
+    i = 0;
+  }
+  let color1 = spacesColors[i];
+  i += 1;
+
   return (
     <View>
       <Pressable
