@@ -35,9 +35,11 @@ function SpaceChooceScreen({ navigation, route }) {
   }
 
   function renderSpaces({ item }) {
+    console.log(item.hebrew);
     return (
       <SpacesGrid
         name={item.name}
+        hebrew={item.hebrew}
         id={item._id}
         description={item.description}
         navigation={navigation}
