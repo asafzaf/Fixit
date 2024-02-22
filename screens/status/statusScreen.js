@@ -1,4 +1,5 @@
 import { Button, StyleSheet, Text, View } from "react-native";
+import TitleHeader from "../../components/headerTitle";
 
 function StatusScreen({ navigation }) {
   return (
