@@ -109,8 +109,13 @@ const FaultChooseScreen = ({ navigation, route }) => {
               color: "#8E8E8E",
               padding: 10,
             }}
+            enterKeyHint="next"
+            enablesReturnKeyAutomatically={true}
             onChangeText={(text) => setName2(text)}
             value={name2}
+            onSubmitEditing={() => {
+              Keyboard.dismiss();
+            }}
             placeholder="Search Fault Type..."
           />
         </View>
@@ -180,6 +185,11 @@ const FaultChooseScreen = ({ navigation, route }) => {
               backgroundColor: "white",
               color: "#8E8E8E",
               padding: 10,
+            }}
+            enterKeyHint="next"
+            enablesReturnKeyAutomatically={true}
+            onSubmitEditing={() => {
+              Keyboard.dismiss();
             }}
             onChangeText={(text) => setName(text)}
             value={name}
