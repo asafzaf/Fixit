@@ -10,6 +10,7 @@ Colors = ["#6416F8", "#8E52FF", "#FFA31A", "#FDBB59", "#E7008C", "#FE59BD"];
 let i = 0;
 
 function ChooceSpecificSpaceScreen({ navigation, route }) {
+  const spaceTypeId = route.params.spaceTypeId;
   const spaceTypeName = route.params.spaceName;
   const buildingId = route.params.buildingId;
   const buildingName = route.params.buildingName;
@@ -46,6 +47,7 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
       <SpecificSpacesGrid
         color1={color1}
         navigation={navigation}
+        spaceTypeId={spaceTypeId}
         spaceTypeName={spaceTypeName}
         buildingId={buildingId}
         buildingName={buildingName}

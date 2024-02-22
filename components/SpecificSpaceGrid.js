@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
 function SpecificSpacesGrid({
   color1,
   navigation,
+  spaceTypeId,
   spaceTypeName,
   buildingId,
   buildingName,
@@ -40,6 +41,7 @@ function SpecificSpacesGrid({
   function spaceHandler() {
     navigation.navigate("FaultChoose", {
       spaceName: name,
+      spaceTypeId: spaceTypeId,
       spaceTypeName: spaceTypeName,
       buildingId: buildingId,
       buildingName: buildingName,

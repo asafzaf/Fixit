@@ -24,8 +24,8 @@ const FaultChooseScreen = ({ navigation, route }) => {
 
   const domainObjList = faultCollection.data.faultDomains;
 
-  const pickDomain = (name) => {
-    const domain = domainObjList.find((domain) => domain.name === name);
+  const pickDomain = (domainObj) => {
+    const domain = domainObjList.find((domain) => domain.name === domainObj.name);
     // console.log(domain);
     setPickedDomain(domain);
   };
@@ -35,7 +35,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
     const objects = domainObjList.filter((domain) =>
       domain.name.toLowerCase().includes(lowerCaseText)
     );
-    return objects.map((domain) => domain.name);
+    return objects;
   };
 
   const filterSuggestions2 = (domain, text) => {
@@ -44,7 +44,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
     const objects = domain.types.filter((fault) =>
       fault.name.toLowerCase().includes(lowerCaseText)
     );
-    return objects.map((fault) => fault.name);
+    return objects;
   };
 
   const handleSubmit = () => {
@@ -106,10 +106,8 @@ const FaultChooseScreen = ({ navigation, route }) => {
                     buildingName: buildingName,
                     spaceId: spaceId,
                     spaceName: spaceName,
-                    data: {
-                      domain: pickedDomain,
-                      fault: item,
-                    },
+                    domain: pickedDomain,
+                    fault: item,
                   });
                 }}
               >
@@ -119,7 +117,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
                     item.colors ? [...item.colors] : ["#2768FF", "#2768FF"]
                   }
                 >
-                  <Text style={styles.text}>{item}</Text>
+                  <Text style={styles.text}>{item.name}</Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>
@@ -185,7 +183,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
                     pickDomain(item);
                   }}
                 >
-                  <Text style={styles.text}>{item}</Text>
+                  <Text style={styles.text}>{item.name}</Text>
                 </TouchableOpacity>
               </View>
             )}
