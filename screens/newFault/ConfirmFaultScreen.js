@@ -15,6 +15,7 @@ import TitleHeader from "../../components/headerTitle";
 import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
 import { Keyboard } from "react-native";
 import { postFault } from "../../utilities/http";
+import Slider from "@react-native-community/slider";
 
 function ConfirmFaultScreen({ navigation, route }) {
   const domainId = route.params.domain._id;
@@ -65,6 +66,20 @@ function ConfirmFaultScreen({ navigation, route }) {
       setModalVisible(true);
     }
   }, [result]);
+
+  const displayUrgency = () => {
+    if (urgency === 1) {
+      return "Lowest";
+    } else if (urgency === 2) {
+      return "Low";
+    } else if (urgency === 3) {
+      return "Medium";
+    } else if (urgency === 4) {
+      return "High";
+    } else if (urgency === 5) {
+      return "Critical";
+    }
+  };
 
   return (
     <View style={ModalStyles.container}>
@@ -128,9 +143,27 @@ function ConfirmFaultScreen({ navigation, route }) {
             />
           </View>
           <View>
-            <UrgencyLevelsButtons
+            <View style={{ flexDirection: "row", marginTop: 20 }}>
+              <Text style={styles.sectionTitle}>Urgency Level</Text>
+            </View>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Slider
+                style={{ width: 200, height: 40, marginLeft: 20 }}
+                minimumValue={1}
+                maximumValue={5}
+                step={1}
+                value={urgency}
+                onValueChange={(value) => setUrgency(value)}
+                minimumTrackTintColor="#C10D0D"
+                maximumTrackTintColor="#2BC214"
+              />
+              <Text style={styles.urgencyText}>{displayUrgency()}</Text>
+            </View>
+          </View>
+          <View>
+            {/* <UrgencyLevelsButtons
               setUrgency={setUrgency}
-            ></UrgencyLevelsButtons>
+            ></UrgencyLevelsButtons> */}
             <View>
               <TouchableOpacity style={styles.button} onPress={openFault}>
                 <Text style={styles.textButton}>Open Fault</Text>
@@ -161,6 +194,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginBottom: 5,
+  },
+  urgencyText: {
+    fontSize: 16,
+    color: "black",
+    marginBottom: 5,
+    marginLeft: 20,
   },
   textButton: {
     fontSize: 16,
