@@ -2,80 +2,125 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AuthForm from "./AuthForm";
+import FixitHeader from "../header";
 
 function AuthContent({ isLogin, onAuthenticate }) {
   const navigation = useNavigation();
   const [credentialsInvalid, setCredentialsInvalid] = React.useState({
-    email: "",
-    password: "",
-    confirmEmail: "",
-    confirmPassword: "",
+    new_name: false,
+    email: false,
+    password: false,
+    confirmEmail: false,
+    confirmPassword: false,
   });
 
   const switchAuthModeHandler = () => {
     if (isLogin) {
-      navigation.navigate("Signup");
+      navigation.replace("Signup");
     } else {
-      navigation.navigate("Login");
+      navigation.replace("Login");
     }
   };
 
-  const submitHandler = () => {
-    let { email, password, confirmEmail, confirmPassword } = credentials;
+  const submitHandler = (credentials) => {
+    let { email, password, confirmEmail, confirmPassword, new_name } =
+      credentials;
     email = email.trim();
     password = password.trim();
 
     const emailIsValid = email.includes("@");
-    const passwordIsValid = password.length >= 6;
+    const passwordIsValid = password.length >= 8;
+    const new_nameIsValid = new_name.length > 0;
     const EmailsAreEqual = confirmEmail === email;
     const passwordsAreEqual = confirmPassword === password;
 
     if (
       !emailIsValid ||
       !passwordIsValid ||
-      (!isLogin && (!EmailsAreEqual || !passwordsAreEqual))
+      (!isLogin && (!EmailsAreEqual || !passwordsAreEqual || !new_nameIsValid))
     ) {
       setCredentialsInvalid({
-        email: emailIsValid ? "" : "Invalid email",
-        password: passwordIsValid
-          ? ""
-          : "Password must be at least 6 characters",
-        confirmEmail: isLogin ? "" : EmailsAreEqual ? "" : "Emails must match",
-        confirmPassword: isLogin
-          ? ""
-          : passwordsAreEqual
-          ? ""
-          : "Passwords must match",
+        email: !emailIsValid,
+        password: !passwordIsValid,
+        confirmEmail: !emailIsValid || !EmailsAreEqual,
+        confirmPassword: !passwordIsValid || !passwordsAreEqual,
+        new_name: !new_nameIsValid,
       });
       return;
     }
-    onAuthenticate({ email, password });
+    if (isLogin) {
+      onAuthenticate({ email, password });
+    } else {
+      onAuthenticate({ new_name, email, password, confirmPassword });
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../../assets/fixit-logo.png")}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>
-        {isLogin ? "Welcome back!" : "Create an account"}
-      </Text>
-      <Text style={styles.subtitle}>
-        {isLogin
-          ? "Log in to your account to continue"
-          : "Sign up to get started"}
-      </Text>
-      <AuthForm
-        isLogin={isLogin}
-        onSubmit={submitHandler}
-        credentialsInvalid={credentialsInvalid}
-      />
-      <TouchableOpacity style={styles.button} onPress={switchAuthModeHandler}>
-        <Text style={styles.buttonText}>
-          {isLogin ? "Create an account" : "Log in"}
-        </Text>
-      </TouchableOpacity>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+      }}
+    >
+      <FixitHeader></FixitHeader>
+      <View
+        style={{
+          flex: 1,
+          margin: 50,
+        }}
+      >
+        <View
+          style={{
+            marginBottom: 150,
+          }}
+        >
+          <Text style={styles.textBigBold}>
+            {isLogin ? "Welcome back!" : "Create an account"}
+          </Text>
+          <Text style={styles.textBold}>
+            {isLogin
+              ? "Log in to your account to continue"
+              : "Sign up to get started"}
+          </Text>
+          <AuthForm
+            isLogin={isLogin}
+            onSubmit={submitHandler}
+            credentialsInvalid={credentialsInvalid}
+          />
+          <TouchableOpacity onPress={switchAuthModeHandler}>
+            <Text
+              style={{
+                color: "blue",
+                textAlign: "center",
+                marginTop: 20,
+              }}
+            >
+              {isLogin ? "Create an account" : "Log in"}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  textBigBold: {
+    marginBottom: 15,
+    fontWeight: "bold",
+    fontSize: 24,
+  },
+  textBold: {
+    marginBottom: 5,
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+});
+
+export default AuthContent;
