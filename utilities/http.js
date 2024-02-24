@@ -98,3 +98,30 @@ export async function postFault(fault) {
   const response = await axios.post(BACKEND_URL + "/api/v1/fault/", fault);
   return response.request._response;
 }
+
+export async function createNewUser(
+  new_name,
+  email,
+  password,
+  confirmPassword
+) {
+  const response = await axios.post(BACKEND_URL + "/api/v1/user/signup", {
+    name: new_name,
+    email,
+    password,
+    passwordConfirm: confirmPassword,
+  });
+  return JSON.parse(response.request._response);
+}
+
+export async function loginUser(email, password) {
+  const response = await axios.post(BACKEND_URL + "/api/v1/user/login", {
+    email,
+    password,
+  });
+  console.log("loginUser response:")
+  console.log(response.request._response);
+  console.log("loginUser response PARSED:");
+  console.log(JSON.parse(response.request._response));
+  return JSON.parse(response.request._response);
+}
