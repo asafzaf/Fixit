@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, ScrollView } from "react-native";
 import HomePageBtn from "../../components/buttons/HomePageBtn";
 import FixitHeader from "../../components/header";
+import { AuthContext } from "../../store/auth-context";
+import { Text } from "react-native";
 
 function HomeScreenUser({ navigation }) {
+  const authCtx = useContext(AuthContext);
+
   return (
     <View
       style={{
@@ -19,6 +23,9 @@ function HomeScreenUser({ navigation }) {
           margin: 50,
         }}
       >
+        <Text style={{ fontSize: 20, marginBottom: 20 }}>
+          Hello, {authCtx.userName}!
+        </Text>
         <View
           style={{
             marginBottom: 150,
