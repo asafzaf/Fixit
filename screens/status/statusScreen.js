@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Button, FlatList, Text, View } from "react-native";
 import * as React from "react";
 import TitleHeader from "../../components/headerTitle";
 import { getAllFaults } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 import FaultStatusGrid from "../../components/FaultStatusGrid";
+import { AuthContext } from "../../store/auth-context";
+import { getFaultsByUserId } from "../../utilities/http";
 
 function renderFaults({ item }) {
   return <FaultStatusGrid id={item._id} status={item.status} />;
@@ -13,14 +16,21 @@ function StatusScreen({ navigation }) {
   const [isFetching, setIsFetching] = React.useState(true);
 
   const [fetchedFaults, setFetchedFaults] = React.useState([]);
+  const [err, setErr] = React.useState(null);
+
+  const authCtx = useContext(AuthContext);
 
   React.useEffect(() => {
     async function getFaults() {
       setIsFetching(true);
+      const faults = await getFaultsByUserId(authCtx.userId);
+      if (faults === null) {
+        setErr("Error fetching faults");
+        setIsFetching(false);
+        return;
+      }
 
-      const faults = await getAllFaults();
       setIsFetching(false);
-
       setFetchedFaults(faults);
     }
 
@@ -43,11 +53,14 @@ function StatusScreen({ navigation }) {
           alignItems: "center",
         }}
       >
-        <FlatList
-          data={fetchedFaults}
-          keyEtrator={(item) => item._id}
-          renderItem={renderFaults}
-        />
+        {err && <Text>{err}</Text>}
+        {!err && (
+          <FlatList
+            data={fetchedFaults}
+            keyEtrator={(item) => item._id}
+            renderItem={renderFaults}
+          />
+        )}
       </View>
       <View style={{ marginBottom: 70 }}>
         <Button
