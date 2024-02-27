@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Button,
   ScrollView,
@@ -16,8 +16,10 @@ import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
 import { Keyboard } from "react-native";
 import { postFault } from "../../utilities/http";
 import Slider from "@react-native-community/slider";
+import { AuthContext } from "../../store/auth-context";
 
 function ConfirmFaultScreen({ navigation, route }) {
+  const authCtx = useContext(AuthContext);
   const domainId = route.params.domain._id;
   const domainNameEng = route.params.domain.name;
   const domainNameHeb = route.params.domain.name_hebrew;
@@ -31,7 +33,7 @@ function ConfirmFaultScreen({ navigation, route }) {
   const spaceTypeNameHeb = route.params.spaceTypeNameHebrew;
   const spaceNumber = route.params.spaceId;
   const spaceName = route.params.spaceName;
-  const reportByUser = "5c9f3e3e3588da6b7dd3f02d";
+  const reportByUser = authCtx.userId;
 
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
