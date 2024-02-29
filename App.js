@@ -6,13 +6,15 @@ import { useContext } from "react";
 import HomeScreenStack from "./stacks/HomeScreenStack";
 import AuthStack from "./stacks/AuthStack";
 import AuthContextProvider, { AuthContext } from "./store/auth-context";
+import MaintenaceStack from "./stacks/MaintenaceStack";
 
 function Navigation() {
   const authCtx = useContext(AuthContext);
   return (
     <NavigationContainer>
       {!authCtx.isAuthenticated && <AuthStack />}
-      {authCtx.isAuthenticated && <HomeScreenStack />}
+      {authCtx.isAuthenticated && !authCtx.isMaintenace && <HomeScreenStack />}
+      {authCtx.isAuthenticated && authCtx.isMaintenace && <MaintenaceStack />}
     </NavigationContainer>
   );
 }
