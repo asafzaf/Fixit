@@ -16,7 +16,7 @@ function LoginScreen() {
       const result = await loginUser(email, password);
       // console.log("login function result:")
       // console.log(result);
-      authCtx.authenticate(result.token, result.data.user._id, result.data.user.name);
+      authCtx.authenticate(result.token, result.data.user._id, result.data.user.name, result.data.user.isMaintenace);
       // console.log("auth token:")
       // console.log(result.token);
       // console.log("auth data:")

@@ -22,7 +22,7 @@ function SignupScreen() {
         password,
         confirmPassword
       );
-      authCtx.authenticate(result.token, result.data._id, result.data.name);
+      authCtx.authenticate(result.token, result.data._id, result.data.name, result.data.isMaintenace);
     } catch (error) {
       Alert.alert("Error", `Could not sign up, please try again\n${error}`, [
         { text: "Okay" },
