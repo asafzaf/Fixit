@@ -10,7 +10,7 @@ const FaultItemScreen = ({ navigation, route }) => {
   const [fetchedFault, setFetchedFault] = React.useState({});
   const [err, setErr] = React.useState(null);
 
-//   const authCtx = useContext(AuthContext);
+  //   const authCtx = useContext(AuthContext);
   const faultId = route.params.faultId;
 
   React.useEffect(() => {
@@ -48,9 +48,7 @@ const FaultItemScreen = ({ navigation, route }) => {
         }}
       >
         {err && <Text>{err}</Text>}
-        {!err && (
-          <Text>{JSON.stringify(fetchedFault)}</Text>
-        )}
+        {!err && <Text>{JSON.stringify(fetchedFault)}</Text>}
       </View>
       <View style={{ marginBottom: 70 }}>
         <Button
