@@ -2,15 +2,16 @@ import { Button, Text, View, FlatList } from "react-native";
 import * as React from "react";
 import TitleHeader from "../../components/headerTitle";
 import FaultsGrid from "../../components/FaultsGrid";
-import { getAllFaults } from "../../utilities/http";
+import { getFaultsByUserId } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
+import { AuthContext } from "../../store/auth-context";
 
 function renderFaults({ item }) {
   return (
     <FaultsGrid
       id={item._id}
       domain={item.domainNameEng}
-      subDomain={item.typeNameEng}
+      faultTypeName={item.faultTypeNameEng}
       location={item.spaceName}
     />
   );
@@ -21,14 +22,23 @@ function HistoryScreen({ navigation }) {
 
   const [fetchedFaults, setFetchedFaults] = React.useState([]);
 
+  const authCtx = React.useContext(AuthContext);
+
   React.useEffect(() => {
     async function getFaults() {
       setIsFetching(true);
 
-      const faults = await getAllFaults();
+      const faults = await getFaultsByUserId(authCtx.userId);
+      if (faults === null) {
+        setIsFetching(false);
+        return;
+      }
+      const filteredRes = faults.filter((fault) => {
+        return fault.status === "closed";
+      });
       setIsFetching(false);
 
-      setFetchedFaults(faults);
+      setFetchedFaults(filteredRes);
     }
 
     getFaults();
