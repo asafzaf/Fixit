@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
   },
 });
 
-function FaultsGrid({ id, domain, subDomain, location }) {
+function FaultsGrid({ id, domain, faultTypeName, location }) {
   return (
     <View>
       <Pressable>
         <View style={styles.item}>
           <Text style={styles.text}>{"ID: " + id}</Text>
           <Text style={styles.text}>{"Domain: " + domain}</Text>
-          <Text style={styles.text}>{"Sub-Domain: " + subDomain}</Text>
+          <Text style={styles.text}>{"Sub-Domain: " + faultTypeName}</Text>
           <Text style={styles.text}>{"Location: " + location}</Text>
         </View>
       </Pressable>
