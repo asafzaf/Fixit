@@ -40,6 +40,12 @@ export async function getAllFaults() {
   return faults;
 }
 
+export async function getFaultById(faultId) {
+  const response = await axios.get(BACKEND_URL + "/api/v1/fault/" + faultId);
+  const fault = JSON.parse(response.request._response);
+  return fault;
+}
+
 export async function getFaultsByUserId(userId) {
   const faults = [];
   const response = await axios.get(BACKEND_URL + "/api/v1/fault/user/" + userId);
