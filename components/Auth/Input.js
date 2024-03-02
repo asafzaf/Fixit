@@ -18,6 +18,7 @@ function Input({
       <TextInput
         style={[styles.input, isInvalid && styles.inputInvalid]}
         keyboardType={keyboardType}
+        textAlign='left'
         secureTextEntry={secure}
         onChangeText={onUpdateValue}
         value={value}
