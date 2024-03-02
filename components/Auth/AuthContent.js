@@ -76,7 +76,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
           }}
         >
           <Text style={styles.textBigBold}>
-            {isLogin ? "Welcome back!" : "Create an account"}
+            {isLogin ? "Welcome!" : "Create an account"}
           </Text>
           <Text style={styles.textBold}>
             {isLogin
