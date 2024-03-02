@@ -7,7 +7,6 @@ export async function getAllFaults() {
   const response = await axios.get(BACKEND_URL + "/api/v1/fault/");
   const data = JSON.parse(response.request._response);
   for (const fault of data.data.faults) {
-    // console.log(fault);
     const faultObj = {
       _id: fault._id,
       domainId: fault.domainId,
@@ -51,7 +50,6 @@ export async function getFaultsByUserId(userId) {
   const response = await axios.get(BACKEND_URL + "/api/v1/fault/user/" + userId);
   const data = JSON.parse(response.request._response);
   for (const fault of data.data.fa) {
-    // console.log(fault);
     const faultObj = {
       _id: fault._id,
       domainId: fault.domainId,
@@ -163,9 +161,5 @@ export async function loginUser(email, password) {
     email,
     password,
   });
-  console.log("loginUser response:")
-  console.log(response.request._response);
-  console.log("loginUser response PARSED:");
-  console.log(JSON.parse(response.request._response));
   return JSON.parse(response.request._response);
 }
