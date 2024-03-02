@@ -2,15 +2,10 @@ import { useContext } from "react";
 import { Button, FlatList, Text, View } from "react-native";
 import * as React from "react";
 import TitleHeader from "../../components/headerTitle";
-import { getAllFaults } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 import FaultStatusGrid from "../../components/FaultStatusGrid";
 import { AuthContext } from "../../store/auth-context";
 import { getFaultsByUserId } from "../../utilities/http";
-
-function renderFaults({ item }) {
-  return <FaultStatusGrid id={item._id} status={item.status} />;
-}
 
 function StatusScreen({ navigation }) {
   const [isFetching, setIsFetching] = React.useState(true);
