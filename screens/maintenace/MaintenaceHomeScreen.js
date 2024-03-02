@@ -3,16 +3,20 @@ import { View, Text, Button, StyleSheet } from "react-native";
 import { AuthContext } from "../../store/auth-context";
 import { styles } from "../../styles";
 import StatusChart from "../../components/Maintenace/StatusChart";
+import { ScrollView } from "react-native-gesture-handler";
 
 const MaintenaceHomeScreen = ({ navigation }) => {
   const authCtx = useContext(AuthContext);
   return (
-    <View style={styles.container}>
-      <Text style={styles.small_title}>Maintenance Home Screen</Text>
-      <Text style={styles.small_title}>Welcome {authCtx.name}</Text>
-      <StatusChart />
-      <Button title="Logout" onPress={authCtx.logout} />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.small_title}>Hello, {authCtx.userName}</Text> 
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.small_title}>Maintenance Home Screen</Text>
+        <StatusChart />
+      </View>
+    </ScrollView>
   );
 };
 
