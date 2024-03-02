@@ -58,7 +58,7 @@ function StatusScreen({ navigation }) {
           <FlatList
             data={fetchedFaults}
             keyEtrator={(item) => item._id}
-            renderItem={renderFaults}
+            renderItem={({item}) => (<FaultStatusGrid id={item._id} status={item.status} navigation={navigation} />)}
           />
         )}
       </View>

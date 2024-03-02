@@ -61,7 +61,15 @@ function HistoryScreen({ navigation }) {
         <FlatList
           data={fetchedFaults}
           keyEtrator={(item) => item._id}
-          renderItem={renderFaults}
+          renderItem={({ item }) => (
+            <FaultsGrid
+              id={item._id}
+              domain={item.domainNameEng}
+              faultTypeName={item.faultTypeNameEng}
+              location={item.spaceName}
+              navigation={navigation}
+            />
+          )}
         />
       </View>
       <Button

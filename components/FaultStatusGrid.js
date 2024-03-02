@@ -1,5 +1,33 @@
 import { Pressable, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
+import React from "react";
+
+
+function FaultsGrid({ id, status, navigation }) {
+  let color =
+    status.toLowerCase() === "pending"
+      ? pendingColor
+      : status.toLowerCase() === "closed"
+      ? closedColor
+      : inProgressColor;
+
+  return (
+    <View>
+      <Pressable onPress={()=> {
+        navigation.navigate("FaultItem", {faultId: id})
+      }}>
+        <View style={styles.item}>
+          <View style={styles.id}>
+            <Text style={styles.text}>{id}</Text>
+          </View>
+          <View style={[styles.status, { backgroundColor: color }]}>
+            <Text style={styles.status_text}>{status}</Text>
+          </View>
+        </View>
+      </Pressable>
+    </View>
+  );
+}
 
 const pendingColor = "#690202";
 const closedColor = "#024A01";
@@ -47,29 +75,5 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
 });
-
-function FaultsGrid({ id, status }) {
-  let color =
-    status.toLowerCase() === "pending"
-      ? pendingColor
-      : status.toLowerCase() === "closed"
-      ? closedColor
-      : inProgressColor;
-
-  return (
-    <View>
-      <Pressable>
-        <View style={styles.item}>
-          <View style={styles.id}>
-            <Text style={styles.text}>{id}</Text>
-          </View>
-          <View style={[styles.status, { backgroundColor: color }]}>
-            <Text style={styles.status_text}>{status}</Text>
-          </View>
-        </View>
-      </Pressable>
-    </View>
-  );
-}
 
 export default FaultsGrid;
