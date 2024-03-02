@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { getFaultById } from "../../utilities/http";
 import { View, Text, Button, ActivityIndicator } from "react-native";
 import TitleHeader from "../../components/headerTitle";
-import { AuthContext } from "../../store/auth-context";
 
 const FaultItemScreen = ({ navigation, route }) => {
   const [isFetching, setIsFetching] = React.useState(true);
@@ -10,14 +9,13 @@ const FaultItemScreen = ({ navigation, route }) => {
   const [fetchedFault, setFetchedFault] = React.useState({});
   const [err, setErr] = React.useState(null);
 
-  //   const authCtx = useContext(AuthContext);
   const faultId = route.params.faultId;
 
   React.useEffect(() => {
-    async function getFaults() {
+    async function getFault() {
       setIsFetching(true);
-      const faults = await getFaultById(faultId);
-      if (faults === null) {
+      const fault = await getFaultById(faultId);
+      if (fault === null) {
         // setErr("Error fetching faults");
         setFetchedFault("Error fetching faults");
         setIsFetching(false);
@@ -25,10 +23,9 @@ const FaultItemScreen = ({ navigation, route }) => {
       }
 
       setIsFetching(false);
-      setFetchedFault(faults);
+      setFetchedFault(fault);
     }
-
-    getFaults();
+    getFault();
   }, []);
 
   if (isFetching) {
