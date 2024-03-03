@@ -157,11 +157,13 @@ export async function postFault(fault) {
   form.append("reportByUser", fault.reportByUser);
   form.append("description", fault.description);
   form.append("urgency", fault.urgency);
-  form.append("photo", {
-    uri: fault.photo,
-    type: "image/jpeg",
-    name: "photo.jpg",
-  });
+  if (fault.photo) {
+    form.append("photo", {
+      uri: fault.photo,
+      type: "image/jpeg",
+      name: "photo.jpg",
+    });
+  }
   const response = await axios.post(BACKEND_URL + "/api/v1/fault/", form, {
     headers: { "Content-Type": "multipart/form-data" },
   });
