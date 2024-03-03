@@ -17,6 +17,7 @@ import { Keyboard } from "react-native";
 import { postFault } from "../../utilities/http";
 import Slider from "@react-native-community/slider";
 import { AuthContext } from "../../store/auth-context";
+import ImagePicker from "../../components/ImagePick/ImagePicker";
 
 function ConfirmFaultScreen({ navigation, route }) {
   const authCtx = useContext(AuthContext);
@@ -39,8 +40,16 @@ function ConfirmFaultScreen({ navigation, route }) {
   const [urgency, setUrgency] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [result, setResult] = useState("");
+  const [pickedPhoto, setPickedPhoto] = useState(null);
+
+  const imageTakenHandler = (imagePath) => {
+    setPickedPhoto(imagePath);
+  };
+
+
 
   const openFault = async () => {
+
     const fault = {
       domainId,
       domainNameEng,
@@ -58,6 +67,7 @@ function ConfirmFaultScreen({ navigation, route }) {
       reportByUser,
       description,
       urgency,
+      photo: pickedPhoto,
     };
     const result = await postFault(fault);
     setResult(JSON.parse(result));
@@ -163,9 +173,7 @@ function ConfirmFaultScreen({ navigation, route }) {
             </View>
           </View>
           <View>
-            {/* <UrgencyLevelsButtons
-              setUrgency={setUrgency}
-            ></UrgencyLevelsButtons> */}
+            <ImagePicker onImageTaken={imageTakenHandler} />
             <View>
               <TouchableOpacity style={styles.button} onPress={openFault}>
                 <Text style={styles.textButton}>Open Fault</Text>
