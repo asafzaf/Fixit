@@ -37,7 +37,7 @@ function LoginScreen() {
   if (isAuthenticating) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Signing up...</Text>
+        <Text>Signing in...</Text>
         <ActivityIndicator size="large" color={"#1E44FF"} />
       </View>
     );
