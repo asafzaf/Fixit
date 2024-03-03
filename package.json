@@ -20,6 +20,8 @@
     "@react-navigation/native-stack": "^6.9.17",
     "axios": "^1.6.7",
     "expo": "~50.0.5",
+    "expo-camera": "~14.0.5",
+    "expo-image-picker": "~14.7.1",
     "expo-linear-gradient": "~12.7.1",
     "expo-status-bar": "~1.11.1",
     "metro-cache": "^0.80.6",
@@ -33,9 +35,7 @@
     "react-native-screens": "~3.29.0",
     "react-native-svg": "^15.0.0",
     "react-native-web": "~0.19.6",
-    "tall": "^8.0.0",
-    "expo-camera": "~14.0.5",
-    "expo-image-picker": "~14.7.1"
+    "tall": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

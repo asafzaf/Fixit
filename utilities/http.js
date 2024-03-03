@@ -1,4 +1,5 @@
 import axios from "axios";
+import FormData from "form-data";
 
 const BACKEND_URL = "https://fixit-gjwz.onrender.com";
 
@@ -47,7 +48,9 @@ export async function getFaultById(faultId) {
 
 export async function getFaultsByUserId(userId) {
   const faults = [];
-  const response = await axios.get(BACKEND_URL + "/api/v1/fault/user/" + userId);
+  const response = await axios.get(
+    BACKEND_URL + "/api/v1/fault/user/" + userId
+  );
   const data = JSON.parse(response.request._response);
   for (const fault of data.data.fa) {
     const faultObj = {
@@ -137,7 +140,31 @@ export async function getAllFaultDomains() {
 }
 
 export async function postFault(fault) {
-  const response = await axios.post(BACKEND_URL + "/api/v1/fault/", fault);
+  const form = new FormData();
+  form.append("domainId", fault.domainId);
+  form.append("domainNameEng", fault.domainNameEng);
+  form.append("domainNameHeb", fault.domainNameHeb);
+  form.append("faultTypeId", fault.faultTypeId);
+  form.append("faultTypeNameEng", fault.faultTypeNameEng);
+  form.append("faultTypeNameHeb", fault.faultTypeNameHeb);
+  form.append("buildingId", fault.buildingId);
+  form.append("buildingName", fault.buildingName);
+  form.append("spaceTypeId", fault.spaceTypeId);
+  form.append("spaceTypeNameEng", fault.spaceTypeNameEng);
+  form.append("spaceTypeNameHeb", fault.spaceTypeNameHeb);
+  form.append("spaceNumber", fault.spaceNumber);
+  form.append("spaceName", fault.spaceName);
+  form.append("reportByUser", fault.reportByUser);
+  form.append("description", fault.description);
+  form.append("urgency", fault.urgency);
+  form.append("photo", {
+    uri: fault.photo,
+    type: "image/jpeg",
+    name: "photo.jpg",
+  });
+  const response = await axios.post(BACKEND_URL + "/api/v1/fault/", form, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return response.request._response;
 }
 
