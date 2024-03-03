@@ -1,10 +1,11 @@
 import React from "react";
 import { getFaultById } from "../../utilities/http";
-import { View, Text, Button, ActivityIndicator } from "react-native";
+import { View, Text, Button, ActivityIndicator, Image } from "react-native";
 import TitleHeader from "../../components/headerTitle";
 
 const FaultItemScreen = ({ navigation, route }) => {
   const [isFetching, setIsFetching] = React.useState(true);
+  const [havePhoto, setHavePhoto] = React.useState(false);
 
   const [fetchedFault, setFetchedFault] = React.useState({});
   const [err, setErr] = React.useState(null);
@@ -26,6 +27,9 @@ const FaultItemScreen = ({ navigation, route }) => {
       setFetchedFault(fault);
     }
     getFault();
+    if (fetchedFault.data?.fault.photo) {
+      setHavePhoto(true);
+    }
   }, []);
 
   if (isFetching) {
@@ -45,7 +49,8 @@ const FaultItemScreen = ({ navigation, route }) => {
         }}
       >
         {err && <Text>{err}</Text>}
-        {!err && <Text>{JSON.stringify(fetchedFault)}</Text>}
+        {!isFetching && !err && <Text>{JSON.stringify(fetchedFault)}</Text>}
+        {!isFetching && !err && !havePhoto && <Image source={{ uri: 'https://fixit-gjwz.onrender.com/api/v1/image/'+ fetchedFault.data?.fault.photo.split('.')[0] }} style={{ width: 200, height: 200 }} />}
       </View>
       <View style={{ marginBottom: 70 }}>
         <Button
