@@ -22,14 +22,15 @@ const FaultItemScreen = ({ navigation, route }) => {
         setIsFetching(false);
         return;
       }
+      if (fault.data?.fault.photo) {
+        setHavePhoto(true);
+        console.log("have photo");
+      }
 
       setIsFetching(false);
       setFetchedFault(fault);
     }
     getFault();
-    if (fetchedFault.data?.fault.photo) {
-      setHavePhoto(true);
-    }
   }, []);
 
   if (isFetching) {
@@ -50,7 +51,16 @@ const FaultItemScreen = ({ navigation, route }) => {
       >
         {err && <Text>{err}</Text>}
         {!isFetching && !err && <Text>{JSON.stringify(fetchedFault)}</Text>}
-        {!isFetching && !err && !havePhoto && <Image source={{ uri: 'https://fixit-gjwz.onrender.com/api/v1/image/'+ fetchedFault.data?.fault.photo.split('.')[0] }} style={{ width: 200, height: 200 }} />}
+        {!isFetching && !err && havePhoto && (
+          <Image
+            source={{
+              uri:
+                "https://fixit-gjwz.onrender.com/api/v1/image/" +
+                fetchedFault.data?.fault.photo.split(".")[0],
+            }}
+            style={{ width: 200, height: 200 }}
+          />
+        )}
       </View>
       <View style={{ marginBottom: 70 }}>
         <Button
