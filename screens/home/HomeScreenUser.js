@@ -23,15 +23,23 @@ function HomeScreenUser({ navigation }) {
           margin: 50,
         }}
       >
-        <Text style={{ fontSize: 20, marginBottom: 20 }}>
-          Hello, {authCtx.userName}!
+        <Text
+          style={{
+            fontSize: 22,
+            fontWeight: 700,
+            marginBottom: 20,
+            textAlign: "center",
+          }}
+        >
+          Hello {authCtx.userName}!
         </Text>
         <View
           style={{
-            marginBottom: 150,
+            // marginBottom: 150,
+            width: "100vw",
           }}
         >
-          <ScrollView>
+          <ScrollView style={{ width: "100%", height: "100%" }}>
             <HomePageBtn
               colors={["#0100D8", "#3C3BFA"]}
               logo={require("../../assets/addFaultIcon.png")}
