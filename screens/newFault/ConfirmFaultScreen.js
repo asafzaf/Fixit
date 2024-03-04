@@ -21,20 +21,37 @@ import ImagePicker from "../../components/ImagePick/ImagePicker";
 
 function ConfirmFaultScreen({ navigation, route }) {
   const authCtx = useContext(AuthContext);
-  const domainId = route.params.domain._id;
-  const domainNameEng = route.params.domain.name;
-  const domainNameHeb = route.params.domain.name_hebrew;
-  const faultTypeId = route.params.fault.id;
-  const faultTypeNameEng = route.params.fault.name;
-  const faultTypeNameHeb = route.params.fault.name_hebrew;
-  const buildingId = route.params.buildingId;
-  const buildingName = route.params.buildingName;
-  const spaceTypeId = route.params.spaceTypeId;
-  const spaceTypeNameEng = route.params.spaceTypeName;
-  const spaceTypeNameHeb = route.params.spaceTypeNameHebrew;
-  const spaceNumber = route.params.spaceId;
-  const spaceName = route.params.spaceName;
+  const domainId = route.params.domain?._id ? route.params.domain._id : "";
+  const domainNameEng = route.params.domain?.name
+    ? route.params.domain.name
+    : "";
+  const domainNameHeb = route.params.domain?.name_hebrew
+    ? route.params.domain.name_hebrew
+    : "";
+  const faultTypeId = route.params.fault?.id ? route.params.fault.id : "";
+  const faultTypeNameEng = route.params.fault?.name
+    ? route.params.fault.name
+    : "";
+  const faultTypeNameHeb = route.params.fault?.name_hebrew
+    ? route.params.fault.name_hebrew
+    : "";
+  const buildingId = route.params?.buildingId ? route.params.buildingId : "";
+  const buildingName = route.params?.buildingName
+    ? route.params.buildingName
+    : "";
+  const spaceTypeId = route.params.spaceTypeId ? route.params.spaceTypeId : "";
+  const spaceTypeNameEng = route.params.spaceTypeName
+    ? route.params.spaceTypeName
+    : "";
+  const spaceTypeNameHeb = route.params.spaceTypeNameHebrew
+    ? route.params.spaceTypeNameHebrew
+    : "";
+  const spaceNumber = route.params.spaceId ? route.params.spaceId : "";
+  const spaceName = route.params.spaceName ? route.params.spaceName : "";
   const reportByUser = authCtx.userId;
+  const outSide = route.params.outside ? route.params.outside : false;
+  const outSideId = route.params.outsideId ? route.params.outsideId : "";
+  const outSideName = route.params.outsideName ? route.params.outsideName : "";
 
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
@@ -56,14 +73,17 @@ function ConfirmFaultScreen({ navigation, route }) {
       faultTypeNameHeb,
       buildingId,
       buildingName,
+      outSide,
+      outSideId,
+      outSideName,
       spaceTypeId,
       spaceTypeNameEng,
       spaceTypeNameHeb,
-      spaceName,
       spaceNumber,
-      reportByUser,
+      spaceName,
       description,
       urgency,
+      reportByUser,
       photo: pickedPhoto,
     };
     const result = await postFault(fault);
