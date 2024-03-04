@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreenUser from "../screens/home/HomeScreenUser";
 import NewFaultRoot from "./NewFaultStack";
-import MainStack from "./mainStack";
+import MainStack from "./MainStack";
 import IconButton from "../components/buttons/IconButton";
 import { AuthContext } from "../store/auth-context";
 
