@@ -48,6 +48,25 @@ function HistoryScreen({ navigation }) {
     return <LoadingOverlay />;
   }
 
+  if (fetchedFaults.length === 0)
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 40,
+        }}
+      >
+        <TitleHeader title={"History"}></TitleHeader>
+        <Text>No history found</Text>
+        <Button
+          title="Back To Home Screen"
+          onPress={() => navigation.popToTop()}
+        />
+      </View>
+    );
+
   return (
     <View
       style={{

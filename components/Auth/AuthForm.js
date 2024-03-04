@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
-
-// test
-// import Button from '../ui/Button';
+import { StyleSheet, View, ScrollView } from "react-native";
 import Input from "./Input";
 import ConfirmButton from "../buttons/ConfirmButton";
 
@@ -53,59 +50,59 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
 
   return (
     <View style={styles.form}>
-      <View>
-        {!isLogin && (
+      <ScrollView>
+        <View>
+          {!isLogin && (
+            <Input
+              label="Name"
+              onUpdateValue={updateInputValueHandler.bind(this, "new_name")}
+              value={EnteredNewName}
+              isInvalid={nameIsInvalid}
+            ></Input>
+          )}
           <Input
-            label="Name"
-            onUpdateValue={updateInputValueHandler.bind(this, "new_name")}
-            value={EnteredNewName}
-            isInvalid={nameIsInvalid}
-          ></Input>
-        )}
-        <Input
-          label="Email Address"
-          onUpdateValue={updateInputValueHandler.bind(this, "email")}
-          value={enteredEmail}
-          keyboardType="email-address"
-          isInvalid={emailIsInvalid}
-        />
-        {!isLogin && (
-          <Input
-            label="Confirm Email Address"
-            onUpdateValue={updateInputValueHandler.bind(this, "confirmEmail")}
-            value={enteredConfirmEmail}
+            label="Email Address"
+            onUpdateValue={updateInputValueHandler.bind(this, "email")}
+            value={enteredEmail}
             keyboardType="email-address"
-            isInvalid={emailsDontMatch}
+            isInvalid={emailIsInvalid}
           />
-        )}
-        <Input
-          label="Password"
-          onUpdateValue={updateInputValueHandler.bind(this, "password")}
-          secure
-          value={enteredPassword}
-          isInvalid={passwordIsInvalid}
-        />
-        {!isLogin && (
+          {!isLogin && (
+            <Input
+              label="Confirm Email Address"
+              onUpdateValue={updateInputValueHandler.bind(this, "confirmEmail")}
+              value={enteredConfirmEmail}
+              keyboardType="email-address"
+              isInvalid={emailsDontMatch}
+            />
+          )}
           <Input
-            label="Confirm Password"
-            onUpdateValue={updateInputValueHandler.bind(
-              this,
-              "confirmPassword"
-            )}
+            label="Password"
+            onUpdateValue={updateInputValueHandler.bind(this, "password")}
             secure
-            value={enteredConfirmPassword}
-            isInvalid={passwordsDontMatch}
+            value={enteredPassword}
+            isInvalid={passwordIsInvalid}
           />
-        )}
+          {!isLogin && (
+            <Input
+              label="Confirm Password"
+              onUpdateValue={updateInputValueHandler.bind(
+                this,
+                "confirmPassword"
+              )}
+              secure
+              value={enteredConfirmPassword}
+              isInvalid={passwordsDontMatch}
+            />
+          )}
+        </View>
         <View style={styles.buttons}>
           <ConfirmButton
             onPress={submitHandler}
             title={isLogin ? "Log In" : "Sign Up"}
-          >
-            {/* {isLogin ? 'Log In' : 'Sign Up'} */}
-          </ConfirmButton>
+          ></ConfirmButton>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -114,10 +111,12 @@ export default AuthForm;
 
 const styles = StyleSheet.create({
   buttons: {
-    marginTop: 12,
+    alignItems: "center",
   },
   form: {
-    width: "100%",
+    width: 300,
     maxWidth: 400,
+    marginTop: 50,
+    height: 450,
   },
 });

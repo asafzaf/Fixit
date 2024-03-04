@@ -68,8 +68,8 @@ function AuthContent({ isLogin, onAuthenticate }) {
         style={{
           // flex: 1,
           margin: 50,
-          backgroundColor: "#DCF2F1",
-          // justifyContent: "center",
+          // backgroundColor: "#DCF2F1",
+          // justifyContent: "space-between",
           // alignContent: "center",
           textAlign: "center",
         }}
@@ -77,16 +77,21 @@ function AuthContent({ isLogin, onAuthenticate }) {
         <View
           style={{
             marginBottom: 150,
+            flex: 1,
+            justifyContent: "space-around",
+            // backgroundColor: "#DCF2F1",
           }}
         >
-          <Text style={styles.textBigBold}>
-            {isLogin ? "Welcome!" : "Create an account"}
-          </Text>
-          <Text style={styles.textBold}>
-            {isLogin
-              ? "Log in to your account to continue"
-              : "Sign up to get started"}
-          </Text>
+          <View>
+            <Text style={styles.textBigBold}>
+              {isLogin ? "Welcome!" : "Create an account"}
+            </Text>
+            <Text style={styles.textBold}>
+              {isLogin
+                ? "Log in to your account to continue"
+                : "Sign up to get started"}
+            </Text>
+          </View>
           <AuthForm
             isLogin={isLogin}
             onSubmit={submitHandler}
@@ -113,7 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     textAlign: "center",
   },
   textBigBold: {

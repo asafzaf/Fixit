@@ -36,6 +36,25 @@ function StatusScreen({ navigation }) {
     return <LoadingOverlay />;
   }
 
+  if (fetchedFaults.length === 0)
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 40,
+        }}
+      >
+        <TitleHeader title={"History"}></TitleHeader>
+        <Text>No faults found</Text>
+        <Button
+          title="Back To Home Screen"
+          onPress={() => navigation.popToTop()}
+        />
+      </View>
+    );
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <TitleHeader title={"Status"}></TitleHeader>
@@ -53,7 +72,13 @@ function StatusScreen({ navigation }) {
           <FlatList
             data={fetchedFaults}
             keyEtrator={(item) => item._id}
-            renderItem={({item}) => (<FaultStatusGrid id={item._id} status={item.status} navigation={navigation} />)}
+            renderItem={({ item }) => (
+              <FaultStatusGrid
+                id={item._id}
+                status={item.status}
+                navigation={navigation}
+              />
+            )}
           />
         )}
       </View>

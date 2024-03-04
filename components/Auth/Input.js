@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet } from "react-native";
 
 // import { Colors } from '../../constants/styles';
 
@@ -18,7 +18,7 @@ function Input({
       <TextInput
         style={[styles.input, isInvalid && styles.inputInvalid]}
         keyboardType={keyboardType}
-        textAlign='left'
+        textAlign="left"
         secureTextEntry={secure}
         onChangeText={onUpdateValue}
         value={value}
@@ -31,11 +31,16 @@ export default Input;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginVertical: 8,
+    width: 300,
+    height: 80,
+    // marginVertical: 8,
+    marginBottom: 20,
   },
   label: {
-    color: 'black',
+    color: "black",
     marginBottom: 4,
+    fontWeight: 500,
+    fontSize: 14,
   },
   labelInvalid: {
     color: "red",
@@ -43,9 +48,10 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 8,
     paddingHorizontal: 6,
-    backgroundColor: 'white',
-    borderRadius: 4,
+    backgroundColor: "white",
+    borderRadius: 10,
     fontSize: 16,
+    height: 50,
   },
   inputInvalid: {
     backgroundColor: "rgba(255, 0, 0, 0.2)",
