@@ -46,10 +46,7 @@ function ConfirmFaultScreen({ navigation, route }) {
     setPickedPhoto(imagePath);
   };
 
-
-
   const openFault = async () => {
-
     const fault = {
       domainId,
       domainNameEng,
@@ -119,62 +116,105 @@ function ConfirmFaultScreen({ navigation, route }) {
           </View>
         </View>
       </Modal>
-      <View style={{ marginRight: 20 }}>
+      <View>
         <ScrollView>
           <TitleHeader title={"Confirm Fault"}></TitleHeader>
-          <View>
-            <Text style={styles.sectionTitle}>Fault Details</Text>
-            <Text style={styles.text}>Domain: {domainNameEng}</Text>
-            <Text style={styles.text}>Fault: {faultTypeNameEng}</Text>
-            <Text style={styles.text}>Building Name: {buildingName}</Text>
-            <Text style={styles.text}>Space Type Name: {spaceTypeNameEng}</Text>
-            <Text style={styles.text}>Space Name: {spaceName}</Text>
-            <Text style={styles.text}>Urgency: {urgency}</Text>
-          </View>
-          <View style={{ marginTop: 20 }}>
-            <Text style={styles.sectionTitle}>Fault Description</Text>
-            <TextInput
+          <View
+            style={{
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {/* <View
               style={{
-                height: 100,
-                width: 300,
-                borderColor: "gray",
-                borderWidth: 1,
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.sectionTitle}>Fault Details</Text>
+              <Text style={styles.text}>Domain: {domainNameEng}</Text>
+              <Text style={styles.text}>{faultTypeNameEng}</Text>
+              <Text style={styles.text}>Location: {buildingName}</Text>
+              <Text style={styles.text}>
+                Space Type Name: {spaceTypeNameEng}
+              </Text>
+              <Text style={styles.text}>Space Name: {spaceName}</Text>
+              <Text style={styles.text}>Urgency: {urgency}</Text>
+            </View> */}
+            <View
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 20,
+              }}
+            >
+              <Text style={styles.sectionTitle}>Fault Description</Text>
+              <TextInput
+                style={{
+                  height: 100,
+                  width: 300,
+                  borderRadius: 10,
+                  padding: 10,
+                  paddingTop: 10,
+                  backgroundColor: "white",
+                  fontSize: 16,
+                }}
+                onChangeText={(text) => {
+                  setDescription(text);
+                }}
+                enterKeyHint="next"
+                enablesReturnKeyAutomatically={true}
+                multiline
+                placeholder="Enter a description of the fault ..."
+                onSubmitEditing={() => {
+                  Keyboard.dismiss();
+                }}
+              />
+            </View>
+            <View
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View style={{ flexDirection: "row", marginTop: 20 }}>
+                <Text style={styles.sectionTitle}>Urgency Level</Text>
+              </View>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Slider
+                  style={{ width: 200, height: 40, marginLeft: 20 }}
+                  minimumValue={1}
+                  maximumValue={5}
+                  step={1}
+                  value={urgency}
+                  onValueChange={(value) => setUrgency(value)}
+                  minimumTrackTintColor="#C10D0D"
+                  maximumTrackTintColor="#2BC214"
+                />
+                <Text style={styles.urgencyText}>{displayUrgency()}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text}>Urgency: {urgency}</Text>
+            </View>
+            <View
+              style={{
+                width: "70%",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 20,
+                backgroundColor: "white",
                 borderRadius: 10,
                 padding: 10,
               }}
-              onChangeText={(text) => {
-                setDescription(text);
-              }}
-              enterKeyHint="next"
-              enablesReturnKeyAutomatically={true}
-              multiline
-              placeholder="Enter a description of the fault"
-              onSubmitEditing={() => {
-                Keyboard.dismiss();
-              }}
-            />
-          </View>
-          <View>
-            <View style={{ flexDirection: "row", marginTop: 20 }}>
-              <Text style={styles.sectionTitle}>Urgency Level</Text>
+            >
+              <ImagePicker onImageTaken={imageTakenHandler} />
             </View>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Slider
-                style={{ width: 200, height: 40, marginLeft: 20 }}
-                minimumValue={1}
-                maximumValue={5}
-                step={1}
-                value={urgency}
-                onValueChange={(value) => setUrgency(value)}
-                minimumTrackTintColor="#C10D0D"
-                maximumTrackTintColor="#2BC214"
-              />
-              <Text style={styles.urgencyText}>{displayUrgency()}</Text>
-            </View>
-          </View>
-          <View>
-            <ImagePicker onImageTaken={imageTakenHandler} />
-            <View>
+            <View style={{ marginTop: 30 }}>
               <TouchableOpacity style={styles.button} onPress={openFault}>
                 <Text style={styles.textButton}>Open Fault</Text>
               </TouchableOpacity>
