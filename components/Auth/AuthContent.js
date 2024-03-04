@@ -66,8 +66,12 @@ function AuthContent({ isLogin, onAuthenticate }) {
       <FixitHeader></FixitHeader>
       <View
         style={{
-          flex: 1,
+          // flex: 1,
           margin: 50,
+          backgroundColor: "#DCF2F1",
+          // justifyContent: "center",
+          // alignContent: "center",
+          textAlign: "center",
         }}
       >
         <View
@@ -110,16 +114,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
+    textAlign: "center",
   },
   textBigBold: {
     marginBottom: 15,
     fontWeight: "bold",
     fontSize: 24,
+    textAlign: "center",
   },
   textBold: {
     marginBottom: 5,
     fontWeight: "bold",
     fontSize: 18,
+    textAlign: "center",
   },
 });
 
