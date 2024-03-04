@@ -18,13 +18,21 @@ function StatusScreen({ navigation }) {
   React.useEffect(() => {
     async function getFaults() {
       setIsFetching(true);
-      const faults = await getFaultsByUserId(authCtx.userId);
+      const faults = await getFaultsByUserId(authCtx.userId).catch((err) => {
+        setErr("Error fetching faults");
+        setIsFetching(false);
+        console.log(err);
+        return;
+      });
       if (faults === null) {
         setErr("Error fetching faults");
         setIsFetching(false);
         return;
+      } else if (faults.length === 0) {
+        setErr("No faults found");
+        setIsFetching(false);
+        return;
       }
-
       setIsFetching(false);
       setFetchedFaults(faults);
     }

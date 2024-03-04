@@ -28,7 +28,10 @@ function HistoryScreen({ navigation }) {
     async function getFaults() {
       setIsFetching(true);
 
-      const faults = await getFaultsByUserId(authCtx.userId);
+      const faults = await getFaultsByUserId(authCtx.userId).catch((err) => {
+        setIsFetching(false);
+        console.log(err);
+      });
       if (faults === null) {
         setIsFetching(false);
         return;
