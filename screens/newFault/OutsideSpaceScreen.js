@@ -22,7 +22,7 @@ function OutsideSpaceScreen({ navigation, route }) {
   function renderSpaces({ item }) {
     return (
       <OutsideSpacesGrid
-        // navigation={navigation}
+        navigation={navigation}
         name={item.spaceName}
         nameHebrew={item.spaceNameHeb}
         spaceType={item.spaceType}
