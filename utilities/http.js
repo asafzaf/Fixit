@@ -102,6 +102,23 @@ export async function getAllBuildings() {
   return buildings;
 }
 
+export async function getAllOutsided() {
+  const outsides = [];
+  const response = await axios.get(BACKEND_URL + "/api/v1/outside/");
+  const data = JSON.parse(response.request._response);
+  for (const outside of data.data.outsides) {
+    const outsideObj = {
+      _id: outside._id,
+      name: outside.outsideName,
+      name_hebrew: outside.outsideNameHeb,
+      description: outside.outsideDescription,
+      spaces: outside.spaces,
+    };
+    outsides.push(outsideObj);
+  }
+  return outsides;
+}
+
 export async function getAllSpacesTypes() {
   const spacesTypes = [];
   const response = await axios.get(BACKEND_URL + "/api/v1/space-type/");
