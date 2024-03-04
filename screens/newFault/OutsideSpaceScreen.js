@@ -4,7 +4,7 @@ import { FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
 import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
 import TitleHeader from "../../components/headerTitle";
-import OutsideSpacesGrid from "../../components/outsideSpacesGrid";
+import OutsideSpacesGrid from "../../components/OutsideSpacesGrid";
 
 function OutsideSpaceScreen({ navigation, route }) {
   const outsideId = route.params.outsideId;
