@@ -8,6 +8,7 @@ import ConfirmFaultScreen from "../screens/newFault/ConfirmFaultScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import specificSpaceInBuilding from "../screens/newFault/specificSpaceInBuilding";
+import OutsideSpaceScreen from "../screens/newFault/outsideSpaceScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,12 @@ function NewFaultRoot({ navigation }) {
         name="SpaceTypeChooser"
         title="Choose Space"
         component={spaceInBuilding}
+        options={{ title: "Step 3" }}
+      />
+      <Stack.Screen
+        name="OutsideSpace"
+        title="OutsideSpace"
+        component={OutsideSpaceScreen}
         options={{ title: "Step 3" }}
       />
       <Stack.Screen
