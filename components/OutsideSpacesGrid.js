@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 150,
     height: 120,
-    backgroundColor: "#7FC7D9 !important",
+    backgroundColor: "#7FC7D9",
     padding: 10,
     borderRadius: 10,
     flexDirection: "column",
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 5,
     fontWeight: "bold",
-    color: "#00000",
+    color: "#000",
     textAlign: "center",
   },
   btnPressed: {
@@ -30,28 +30,28 @@ const styles = StyleSheet.create({
 });
 
 function OutsideSpaceGrid({
+  navigation,
   name,
   nameHebrew,
-  spaceTypeId,
   spaceType,
   outsideName,
+  outsideId,
 }) {
-  //   function spaceHandler() {
-  //     navigation.navigate("FaultChoose", {
-  //       spaceName: name,
-  //       //   spaceTypeId: spaceTypeId,
-  //       //   spaceTypeName: spaceTypeName,
-  //       //   spaceTypeNameHebrew: spaceTypeNameHebrew,
-  //       //   buildingId: buildingId,
-  //       //   buildingName: buildingName,
-  //       //   spaceId: spaceId,
-  //     });
-  //   }
+  function spaceHandler() {
+    navigation.navigate("Confirm", {
+      spaceName: name,
+      // outsidSpaceNameHeb: nameHebrew,
+      spaceId: spaceType,
+      outsideName: outsideName,
+      outsideId: outsideId,
+      outside: true,
+    });
+  }
   return (
     <View>
       <Pressable
         style={({ pressed }) => [pressed ? styles.btnPressed : null]}
-        // onPress={spaceHandler}
+        onPress={spaceHandler}
       >
         <View style={styles.item}>
           <Text style={styles.title}>{outsideName}</Text>
