@@ -8,7 +8,7 @@ import ConfirmFaultScreen from "../screens/newFault/ConfirmFaultScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import specificSpaceInBuilding from "../screens/newFault/specificSpaceInBuilding";
-import OutsideSpaceScreen from "../screens/newFault/outsideSpaceScreen";
+import OutsideSpaceScreen from "../screens/newFault/OutsideSpaceScreen";
 
 const Stack = createNativeStackNavigator();
 
