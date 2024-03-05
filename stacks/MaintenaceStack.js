@@ -10,6 +10,7 @@ import MaintenaceHomeScreen from "../screens/maintenace/MaintenaceHomeScreen";
 import HomeScreenUser from "../screens/home/HomeScreenUser";
 import FaultByBuildinsScreen from "../screens/maintenace/FaultsByBuildingsScreen";
 import HomeScreenStack from "./HomeScreenStack";
+import FaultByBuildingIdStack from "./FaultByBuildingIdStack";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -67,7 +68,7 @@ export default function MaintenaceStack() {
         />
         <Drawer.Screen
           name="Faults by Building"
-          component={FaultByBuildinsScreen}
+          component={FaultByBuildingIdStack}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>
