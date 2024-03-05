@@ -68,7 +68,6 @@ function StatusScreen({ navigation }) {
       <TitleHeader title={"Status"}></TitleHeader>
       <View
         style={{
-          // height: "60%",
           width: "85%",
           flex: 1,
           justifyContent: "center",
@@ -80,9 +79,12 @@ function StatusScreen({ navigation }) {
           <FlatList
             data={fetchedFaults}
             keyEtrator={(item) => item._id}
+            contentContainerStyle={{ paddingBottom: 100 }}
             renderItem={({ item }) => (
               <FaultStatusGrid
                 id={item._id}
+                name={item.faultTypeNameEng}
+                location={item.spaceName}
                 status={item.status}
                 navigation={navigation}
               />

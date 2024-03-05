@@ -2,8 +2,7 @@ import { Pressable, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 import React from "react";
 
-
-function FaultsGrid({ id, status, navigation }) {
+function FaultsGrid({ id, name, location, status, navigation }) {
   let color =
     status.toLowerCase() === "pending"
       ? pendingColor
@@ -12,13 +11,23 @@ function FaultsGrid({ id, status, navigation }) {
       : inProgressColor;
 
   return (
-    <View>
-      <Pressable onPress={()=> {
-        navigation.navigate("FaultItem", {faultId: id})
-      }}>
+    <View style={styles.container}>
+      <Pressable
+        onPress={() => {
+          navigation.navigate("FaultItem", { faultId: id });
+        }}
+      >
         <View style={styles.item}>
-          <View style={styles.id}>
-            <Text style={styles.text}>{id}</Text>
+          <View style={styles.text_container}>
+            {/* <Text style={styles.text}>{id}</Text> */}
+            <View style={styles.text_container_secondary}>
+              <Text style={styles.text_secondary}>Fault:</Text>
+              <Text style={styles.text}>{name}</Text>
+            </View>
+            <View style={styles.text_container_secondary}>
+              <Text style={styles.text_secondary}>Location:</Text>
+              <Text style={styles.text}>{location}</Text>
+            </View>
           </View>
           <View style={[styles.status, { backgroundColor: color }]}>
             <Text style={styles.status_text}>{status}</Text>
@@ -35,39 +44,49 @@ const inProgressColor = "#724502";
 
 const styles = StyleSheet.create({
   item: {
-    marginTop: 20,
-    width: "70%",
     borderRadius: 10,
     backgroundColor: "white",
-    flex: 2,
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    // shadowColor: "black",
-    // shadowOffset: { width: -2, height: 4 },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 2,
+    width: 300,
+    height: 70,
+  },
+  text_container: {
+    width: "60%",
+    justifyContent: "center",
+    paddingLeft: 10,
+    padding: 5,
+  },
+  text_container_secondary: {
+    display: "flex",
+    flexDirection: "row",
+    width: "60%",
+    paddingTop: 5,
+  },
+  container: {
+    margin: 10,
+    alignItems: "center",
+    height: "10%",
   },
   status: {
-    // backgroundColor: color,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     height: "100%",
-    width: "50%",
-  },
-  id: {
-    backgroundColor: "white",
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
+    width: "40%",
+    justifyContent: "center",
+    paddingRight: 10,
   },
   text: {
-    margin: 10,
-    fontSize: 12,
-    // textAlign: "left",
+    padding: 2,
+    fontSize: 14,
+  },
+  text_secondary: {
+    padding: 2,
+    fontSize: 14,
+    fontWeight: "bold",
   },
   status_text: {
-    // margin: 10,
     padding: 10,
     fontSize: 16,
     color: "white",
