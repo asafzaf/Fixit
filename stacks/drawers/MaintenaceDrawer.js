@@ -3,13 +3,16 @@ import React, { useContext } from "react";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AuthContext } from "../store/auth-context";
-import IconButton from "../components/buttons/IconButton";
+import { AuthContext } from "../../store/auth-context";
+import IconButton from "../../components/buttons/IconButton";
 
-import MaintenaceHomeScreen from "../screens/maintenace/MaintenaceHomeScreen";
-import HomeScreenUser from "../screens/home/HomeScreenUser";
-import FaultByBuildinsScreen from "../screens/status/FaultsByBuildingsScreen";
-import HomeScreenStack from "./HomeScreenStack";
+import MaintenaceHomeScreen from "../../screens/maintenace/MaintenaceHomeScreen";
+import HomeScreenUser from "../../screens/home/HomeScreenUser";
+import FaultByBuildinsScreen from "../../screens/maintenace/FaultsByBuildingsScreen";
+import HomeScreenStack from "../HomeScreenStack";
+import FaultByBuildingIdStack from "../FaultByBuildingIdStack";
+import MaintenancePendingFaultsStack from "../MaintenancePendingFaultsStack";
+import MaintenanceInProgressFaultsStack from "../MaintenanceInProgressFaultsStack";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -44,7 +47,7 @@ const Drawer = createDrawerNavigator();
 //   );
 // }
 
-export default function MaintenaceStack() {
+export default function MaintenaceDrawer() {
   const authCtx = useContext(AuthContext);
   return (
     <>
@@ -54,14 +57,7 @@ export default function MaintenaceStack() {
           component={MaintenaceHomeScreen}
           options={{
             title: "Home",
-            headerRight: () => (
-              <IconButton
-                icon="exit"
-                color="#0D24F1"
-                size={24}
-                onPress={authCtx.logout}
-              />
-            ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -69,11 +65,21 @@ export default function MaintenaceStack() {
           component={HomeScreenStack}
           options={{
             title: "Faults",
+            headerShown: false,
           }}
         />
         <Drawer.Screen
+          name="Pending Faults"
+          component={MaintenancePendingFaultsStack}
+          options={{ headerShown: false }}
+        /><Drawer.Screen
+        name="In Progress Faults"
+        component={MaintenanceInProgressFaultsStack}
+        options={{ headerShown: false }}
+      />
+        <Drawer.Screen
           name="Faults by Building"
-          component={FaultByBuildinsScreen}
+          component={FaultByBuildingIdStack}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>

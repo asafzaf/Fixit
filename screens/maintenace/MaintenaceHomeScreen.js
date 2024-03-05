@@ -34,6 +34,8 @@ const MaintenaceHomeScreen = ({ navigation }) => {
     setIsFetching(false);
   }, []);
 
+
+  
   return (
     <ScrollView>
       <View style={styles.container}>
