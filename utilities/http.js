@@ -55,6 +55,47 @@ export async function getBuildingsByMaintenanceId(maintenaceId) {
   const buildings = JSON.parse(response.request._response);
   return buildings;
 }
+export async function getFaultsByBuildingIdAndStatus(buildingId, status) {
+  const faults = [];
+  const response = await axios
+    .get(BACKEND_URL + "/api/v1/fault/building/" + buildingId).catch((error) => {
+      return [];
+    });
+  const data = JSON.parse(response.request._response);
+  for (const fault of data.data.fa) {
+    if (fault.status === status) {
+      const faultObj = {
+        _id: fault._id,
+        domainId: fault.domainId,
+        domainNameEng: fault.domainNameEng,
+        domainNameHeb: fault.domainNameHeb,
+        faultTypeId: fault.faultTypeId,
+        faultTypeNameEng: fault.faultTypeNameEng,
+        faultTypeNameHeb: fault.faultTypeNameHeb,
+        buildingId: fault.buildingId,
+        buildingName: fault.buildingName,
+        outSide: fault.outSide,
+        outSideId: fault.outSideId,
+        outSideName: fault.outSideName,
+        floor: fault.floor,
+        spaceTypeId: fault.spaceTypeId,
+        spaceTypeNameEng: fault.spaceTypeNameEng,
+        spaceTypeNameHeb: fault.spaceTypeNameHeb,
+        spaceNumber: fault.spaceNumber,
+        spaceName: fault.spaceName,
+        description: fault.description,
+        status: fault.status,
+        urgency: fault.urgency,
+        reportByUser: fault.reportByUser,
+        assignedToUser: fault.assignedToUser,
+        resolvedAt: fault.resolvedAt,
+        createdAt: fault.createdAt,
+      };
+      faults.push(faultObj);
+    }
+  }
+  return faults;
+}
 
 export async function getFaultsByBuildingId(buildingId) {
   const faults = [];
