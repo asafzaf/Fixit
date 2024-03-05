@@ -102,6 +102,4 @@ function HistoryScreen({ navigation }) {
   );
 }
 
-//test
-
 export default HistoryScreen;
