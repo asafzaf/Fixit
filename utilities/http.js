@@ -271,6 +271,7 @@ export async function postFault(fault) {
       name: "photo.jpg",
     });
   }
+  console.log(JSON.stringify(form));
   const response = await axios.post(BACKEND_URL + "/api/v1/fault/", form, {
     headers: { "Content-Type": "multipart/form-data" },
   });
