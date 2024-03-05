@@ -3,14 +3,14 @@ import React, { useContext } from "react";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AuthContext } from "../store/auth-context";
-import IconButton from "../components/buttons/IconButton";
+import { AuthContext } from "../../store/auth-context";
+import IconButton from "../../components/buttons/IconButton";
 
-import MaintenaceHomeScreen from "../screens/maintenace/MaintenaceHomeScreen";
-import HomeScreenUser from "../screens/home/HomeScreenUser";
-import FaultByBuildinsScreen from "../screens/maintenace/FaultsByBuildingsScreen";
-import HomeScreenStack from "./HomeScreenStack";
-import FaultByBuildingIdStack from "./FaultByBuildingIdStack";
+import MaintenaceHomeScreen from "../../screens/maintenace/MaintenaceHomeScreen";
+import HomeScreenUser from "../../screens/home/HomeScreenUser";
+import FaultByBuildinsScreen from "../../screens/maintenace/FaultsByBuildingsScreen";
+import HomeScreenStack from "../HomeScreenStack";
+import FaultByBuildingIdStack from "../FaultByBuildingIdStack";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -45,7 +45,7 @@ const Drawer = createDrawerNavigator();
 //   );
 // }
 
-export default function MaintenaceStack() {
+export default function MaintenaceDrawer() {
   const authCtx = useContext(AuthContext);
   return (
     <>

@@ -6,7 +6,7 @@ import { useContext } from "react";
 import HomeScreenStack from "./stacks/HomeScreenStack";
 import AuthStack from "./stacks/AuthStack";
 import AuthContextProvider, { AuthContext } from "./store/auth-context";
-import MaintenaceStack from "./stacks/MaintenaceStack";
+import MaintenaceDrawer from "./stacks/drawers/MaintenaceDrawer";
 
 function Navigation() {
   const authCtx = useContext(AuthContext);
@@ -14,7 +14,7 @@ function Navigation() {
     <NavigationContainer>
       {!authCtx.isAuthenticated && <AuthStack />}
       {authCtx.isAuthenticated && !authCtx.isMaintenace && <HomeScreenStack />}
-      {authCtx.isAuthenticated && authCtx.isMaintenace && <MaintenaceStack />}
+      {authCtx.isAuthenticated && authCtx.isMaintenace && <MaintenaceDrawer />}
     </NavigationContainer>
   );
 }
