@@ -300,3 +300,25 @@ export async function loginUser(email, password) {
   });
   return JSON.parse(response.request._response);
 }
+
+export async function updateToInProgress(faultId, maintenaceId) {
+  const response = await axios.put(
+    BACKEND_URL + "/api/v1/fault/" + faultId,
+    {
+      maintananceUser: maintenaceId,
+      status: "in-progress",
+    }
+  );
+  return JSON.parse(response.request._response);
+}
+
+export async function updateToClosed(faultId, maintenaceId) {
+  const response = await axios.put(
+    BACKEND_URL + "/api/v1/fault/" + faultId,
+    {
+      maintananceUser: maintenaceId,
+      status: "closed",
+    }
+  );
+  return JSON.parse(response.request._response);
+}

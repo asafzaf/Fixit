@@ -14,7 +14,7 @@ function FaultsGrid({ id, name, location, status, navigation }) {
     <View style={styles.container}>
       <Pressable
         onPress={() => {
-          navigation.navigate("FaultItem", { faultId: id });
+          navigation.navigate("FaultItem", { faultId: id, faultStatus: status });
         }}
       >
         <View style={styles.item}>

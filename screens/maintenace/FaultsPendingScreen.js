@@ -72,6 +72,7 @@ function FaultsPendingScreen({ navigation }) {
                 domain={item.domainNameEng}
                 faultTypeName={item.faultTypeNameEng}
                 location={item.spaceName}
+                status={item.status}
                 navigation={navigation}
               />
             )}

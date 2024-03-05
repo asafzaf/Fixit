@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function FaultsGrid({ id, domain, faultTypeName, location, navigation }) {
+function FaultsGrid({ id, domain, faultTypeName, location, status, navigation }) {
   return (
     <View>
       <Pressable onPress={() =>{
-        navigation.navigate("FaultItem", {faultId: id});
+        navigation.navigate("FaultItem", {faultId: id, faultStatus: status});
       }}>
         <View style={styles.item}>
           <Text style={styles.text}>{"ID: " + id}</Text>

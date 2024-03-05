@@ -9,7 +9,7 @@ import { FlatList } from "react-native-gesture-handler";
 import FaultsGrid from "../../components/FaultsGrid";
 import ReloadButton from "../../components/buttons/ReloadButton";
 
-function FaultsInProgressScreen({ navigation }) {
+function FaultsClosedScreen({ navigation }) {
   const [isFetching, setIsFetching] = React.useState(true);
   const [Faults, setFaults] = React.useState([]);
   const [numOfFaults, setNumOfFaults] = React.useState(0);
@@ -33,7 +33,7 @@ function FaultsInProgressScreen({ navigation }) {
     await buildings.forEach(async (building) => {
       const faults = await getFaultsByBuildingIdAndStatus(
         building.buildingId,
-        "in-progress"
+        "closed"
       );
       setFaults((prev) => [...prev, ...faults]);
     });
@@ -57,7 +57,7 @@ function FaultsInProgressScreen({ navigation }) {
         }}
       >
         <View style={{ flexDirection: "row" }}>
-          <Text style={styles.title}>In-Progress faults</Text>
+          <Text style={styles.title}>closed faults</Text>
           <ReloadButton onPress={() => fetchData()} />
         </View>
         {isFetching && <Text>Loading...</Text>}
@@ -99,4 +99,4 @@ const styles = {
     padding: 10,
   },
 };
-export default FaultsInProgressScreen;
+export default FaultsClosedScreen;
