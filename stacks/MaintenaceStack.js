@@ -8,7 +8,7 @@ import IconButton from "../components/buttons/IconButton";
 
 import MaintenaceHomeScreen from "../screens/maintenace/MaintenaceHomeScreen";
 import HomeScreenUser from "../screens/home/HomeScreenUser";
-import FaultByBuildinsScreen from "../screens/status/FaultsByBuildingsScreen";
+import FaultByBuildinsScreen from "../screens/maintenace/FaultsByBuildingsScreen";
 import HomeScreenStack from "./HomeScreenStack";
 
 const Stack = createNativeStackNavigator();
@@ -54,14 +54,7 @@ export default function MaintenaceStack() {
           component={MaintenaceHomeScreen}
           options={{
             title: "Home",
-            headerRight: () => (
-              <IconButton
-                icon="exit"
-                color="#0D24F1"
-                size={24}
-                onPress={authCtx.logout}
-              />
-            ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -69,6 +62,7 @@ export default function MaintenaceStack() {
           component={HomeScreenStack}
           options={{
             title: "Faults",
+            headerShown: false,
           }}
         />
         <Drawer.Screen
