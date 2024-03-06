@@ -12,8 +12,8 @@ function SignupScreen() {
   const authCtx = useContext(AuthContext);
 
   async function signupHandler({ new_name, email, password, confirmPassword }) {
-    console.log("Signup button pressed");
-    console.log(new_name, email, password, confirmPassword);
+    // console.log("Signup button pressed");
+    // console.log(new_name, email, password, confirmPassword);
     try {
       setIsAuthenticating(true);
       const result = await createNewUser(
@@ -22,7 +22,12 @@ function SignupScreen() {
         password,
         confirmPassword
       );
-      authCtx.authenticate(result.token, result.data._id, result.data.name, result.data.isMaintenace);
+      authCtx.authenticate(
+        result.token,
+        result.data._id,
+        result.data.name,
+        result.data.isMaintenace
+      );
     } catch (error) {
       Alert.alert("Error", `Could not sign up, please try again\n${error}`, [
         { text: "Okay" },

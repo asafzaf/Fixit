@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, View, Alert, Image } from "react-native";
 import {
   launchCameraAsync,
@@ -6,7 +6,6 @@ import {
   useCameraPermissions,
   PermissionStatus,
 } from "expo-image-picker";
-// import {  } from "expo-camera";
 import React from "react";
 
 function ImagePicker({ onImageTaken }) {
@@ -42,7 +41,7 @@ function ImagePicker({ onImageTaken }) {
       aspect: [16, 9],
       quality: 0.5,
     });
-    console.log(image);
+    // console.log(image);
     setPickedImage(image.assets[0].uri);
     onImageTaken(image.assets[0].uri);
   };
@@ -59,20 +58,24 @@ function ImagePicker({ onImageTaken }) {
     onImageTaken(image.assets[0].uri);
   };
 
-  let imagePreview=null;
+  let imagePreview = null;
 
-  if (pickedImage){
-    imagePreview = <Image source={{ uri: pickedImage }} style={{ width: 200, height: 200 }} />
+  if (pickedImage) {
+    imagePreview = (
+      <Image
+        source={{ uri: pickedImage }}
+        style={{ width: 200, height: 200 }}
+      />
+    );
   }
 
   return (
     <View>
-        {imagePreview}
-        <View>
-          <Button title="Take Image" onPress={takeImageHandler} />
-          <Button title="Pick Image" onPress={pickImageHandler} />
-        </View>
-      
+      {imagePreview}
+      <View>
+        <Button title="Take Image" onPress={takeImageHandler} />
+        <Button title="Pick Image" onPress={pickImageHandler} />
+      </View>
     </View>
   );
 }

@@ -32,7 +32,7 @@ const FaultItemScreen = ({ navigation, route }) => {
       }
       if (fault.data?.fault.photo) {
         setHavePhoto(true);
-        console.log("have photo");
+        // console.log("have photo");
       }
 
       setIsFetching(false);

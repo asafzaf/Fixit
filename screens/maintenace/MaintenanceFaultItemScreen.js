@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../store/auth-context";
-import { getFaultById,updateToInProgress, updateToClosed } from "../../utilities/http";
+import {
+  getFaultById,
+  updateToInProgress,
+  updateToClosed,
+} from "../../utilities/http";
 import {
   StyleSheet,
   ScrollView,
@@ -36,7 +40,7 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
       }
       if (fault.data?.fault.photo) {
         setHavePhoto(true);
-        console.log("have photo");
+        // console.log("have photo");
       }
 
       setIsFetching(false);
@@ -79,7 +83,7 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
     } else {
       return null;
     }
-  }
+  };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -159,9 +163,7 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
               </View>
             </View>
           )}
-          <View style={{ marginBottom: 70 }}>
-            {changeStatusButton()}
-          </View>
+          <View style={{ marginBottom: 70 }}>{changeStatusButton()}</View>
         </View>
       </ScrollView>
       <View style={{ marginBottom: 70 }}>

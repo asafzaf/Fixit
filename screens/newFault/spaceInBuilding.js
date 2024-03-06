@@ -6,7 +6,6 @@ import { styles } from "../../styles";
 import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
 import TitleHeader from "../../components/headerTitle";
 import SpacesGrid from "../../components/SpacesGrid";
-// import SpacesList from "../../data/spaceType.json";
 import { getAllSpacesTypes } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
@@ -65,14 +64,12 @@ function SpaceChooceScreen({ navigation, route }) {
         }}
       >
         <Text style={styles.small_title}>Select a space type</Text>
-        {/* <View style={{ height: "80%" }}> */}
         <FlatList
           data={fetchedSpaceTypes}
           keyEtrator={(item) => item._id}
           renderItem={renderSpaces}
           numColumns={2}
         />
-        {/* </View> */}
       </View>
     </View>
   );

@@ -34,7 +34,6 @@ function OutsidePlaceScreen({ navigation }) {
           <ScrollView style={{ height: 300 }}>
             {fetchedOutsides.map((outside) => (
               <View key={outside._id}>
-                {/* {console.log(outside)} */}
                 <BigSelectionButton
                   key={outside._id}
                   title={outside.name}

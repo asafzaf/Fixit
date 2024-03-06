@@ -2,7 +2,7 @@
 
 import { FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
-import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
+// import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
 import TitleHeader from "../../components/headerTitle";
 import OutsideSpacesGrid from "../../components/OutsideSpacesGrid";
 
@@ -15,16 +15,15 @@ function OutsideSpaceScreen({ navigation, route }) {
 
   for (const space of data.spaces) {
     dataDisplay.push(space);
+    // console.log(space);
   }
-
-  //   console.log(dataDisplay);
 
   function renderSpaces({ item }) {
     return (
       <OutsideSpacesGrid
         navigation={navigation}
         name={item.spaceName}
-        nameHebrew={item.spaceNameHeb}
+        // nameHebrew={item.spaceNameHeb}
         spaceType={item.spaceType}
         outsideId={outsideId}
         outsideName={outsideName}

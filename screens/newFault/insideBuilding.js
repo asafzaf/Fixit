@@ -4,7 +4,6 @@ import * as React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { styles } from "../../styles";
 import BigSelectionButton from "../../components/buttons/BigSelectionButton";
-// import buildingDUMMY from "../../data/buildingDUMMY";
 import TitleHeader from "../../components/headerTitle";
 import { getAllBuildings } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
