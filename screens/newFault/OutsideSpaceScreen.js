@@ -1,8 +1,7 @@
 // ADD TO LOWER CASE !!!!!
 
-import { FlatList, Text, View } from "react-native";
+import { Button, FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
-// import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
 import TitleHeader from "../../components/headerTitle";
 import OutsideSpacesGrid from "../../components/OutsideSpacesGrid";
 
@@ -15,7 +14,6 @@ function OutsideSpaceScreen({ navigation, route }) {
 
   for (const space of data.spaces) {
     dataDisplay.push(space);
-    // console.log(space);
   }
 
   function renderSpaces({ item }) {
@@ -23,7 +21,6 @@ function OutsideSpaceScreen({ navigation, route }) {
       <OutsideSpacesGrid
         navigation={navigation}
         name={item.spaceName}
-        // nameHebrew={item.spaceNameHeb}
         spaceType={item.spaceType}
         outsideId={outsideId}
         outsideName={outsideName}
@@ -44,6 +41,7 @@ function OutsideSpaceScreen({ navigation, route }) {
         style={{
           marginTop: 20,
           alignItems: "center",
+          height: "70%",
         }}
       >
         <Text style={styles.small_title}>Select Space</Text>
@@ -53,7 +51,14 @@ function OutsideSpaceScreen({ navigation, route }) {
             keyEtrator={(item) => item.spaceName}
             renderItem={renderSpaces}
             numColumns={2}
+            contentContainerStyle={{
+              paddingBottom: 20,
+              height: "90%",
+            }}
           />
+        </View>
+        <View>
+          <Button title="Go Back" onPress={() => navigation.popToTop()} />
         </View>
       </View>
     </View>
