@@ -64,7 +64,7 @@ function ImagePicker({ onImageTaken }) {
     imagePreview = (
       <Image
         source={{ uri: pickedImage }}
-        style={{ width: 200, height: 200 }}
+        style={{ width: 200, height: 200, borderRadius: 10 }}
       />
     );
   }
@@ -72,7 +72,7 @@ function ImagePicker({ onImageTaken }) {
   return (
     <View>
       {imagePreview}
-      <View>
+      <View style={{ gap: 10 }}>
         <Button title="Take Image" onPress={takeImageHandler} />
         <Button title="Pick Image" onPress={pickImageHandler} />
       </View>

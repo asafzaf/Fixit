@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 150,
     height: 120,
-    backgroundColor: "#7FC7D9",
+    backgroundColor: "#365486",
     padding: 10,
     borderRadius: 10,
     flexDirection: "column",
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 5,
     fontWeight: "bold",
-    color: "#000",
+    color: "white",
     textAlign: "center",
   },
   btnPressed: {

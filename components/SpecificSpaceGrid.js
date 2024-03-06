@@ -57,8 +57,8 @@ function SpecificSpacesGrid({
         style={({ pressed }) => [pressed ? styles.btnPressed : null]}
         onPress={spaceHandler}
       >
-        {/* <View style={[styles.item, { backgroundColor: color1 }]}> */}
-        <View style={[styles.item]}>
+        <View style={[styles.item, { backgroundColor: color1 }]}>
+          {/* <View style={[styles.item]}> */}
           <Text style={styles.title}>{name}</Text>
         </View>
       </Pressable>

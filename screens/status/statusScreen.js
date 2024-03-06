@@ -68,7 +68,7 @@ function StatusScreen({ navigation }) {
       <TitleHeader title={"Status"}></TitleHeader>
       <View
         style={{
-          width: "85%",
+          width: "90%",
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
@@ -80,7 +80,7 @@ function StatusScreen({ navigation }) {
             data={fetchedFaults}
             keyEtrator={(item) => item._id}
             contentContainerStyle={{ paddingBottom: 100 }}
-            ItemSeparatorComponent={() => <View style={{ height: 50 }} />}
+            ItemSeparatorComponent={() => <View style={{ height: 30 }} />}
             renderItem={({ item }) => (
               <FaultStatusGrid
                 id={item._id}

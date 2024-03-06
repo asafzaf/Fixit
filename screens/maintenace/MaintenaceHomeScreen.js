@@ -34,19 +34,23 @@ const MaintenaceHomeScreen = ({ navigation }) => {
   //   setIsFetching(false);
   // }, []);
 
-
-  
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.small_title}>Hello, {authCtx.userName}</Text>
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.small_title}>Maintenance Home Screen</Text>
-        <StatusChart />
-        {isFetching && <Text>Loading...</Text>}
-        {/* {!isFetching && <Text>{JSON.stringify(faults)}</Text>} */}
-        {/* {faults.map((fault) => {
+    <View style={{ backgroundColor: "transparent" }}>
+      <ScrollView>
+        <View
+          style={[
+            styles.container,
+            { marginTop: 70, backgroundColor: "transparent" },
+          ]}
+        >
+          <Text style={styles.small_title}>Hello {authCtx.userName} !</Text>
+        </View>
+        <View style={[styles.container, { backgroundColor: "transparent" }]}>
+          {/* <Text style={styles.small_title}>Maintenance Home Screen</Text> */}
+          <StatusChart />
+          {isFetching && <Text>Loading...</Text>}
+          {/* {!isFetching && <Text>{JSON.stringify(faults)}</Text>} */}
+          {/* {faults.map((fault) => {
           return (
             <View key={fault._id}>
               <Text>{fault.faultTypeNameEng}</Text>
@@ -54,8 +58,9 @@ const MaintenaceHomeScreen = ({ navigation }) => {
             </View>
           );
         })} */}
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

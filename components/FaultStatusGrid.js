@@ -2,42 +2,6 @@ import { Pressable, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 import React from "react";
 
-function FaultsGrid({ id, name, location, status, navigation }) {
-  let color =
-    status.toLowerCase() === "pending"
-      ? pendingColor
-      : status.toLowerCase() === "closed"
-      ? closedColor
-      : inProgressColor;
-
-  return (
-    <View style={styles.container}>
-      <Pressable
-        onPress={() => {
-          navigation.navigate("FaultItem", { faultId: id, faultStatus: status });
-        }}
-      >
-        <View style={styles.item}>
-          <View style={styles.text_container}>
-            {/* <Text style={styles.text}>{id}</Text> */}
-            <View style={styles.text_container_secondary}>
-              <Text style={styles.text_secondary}>Fault:</Text>
-              <Text style={styles.text}>{name}</Text>
-            </View>
-            <View style={styles.text_container_secondary}>
-              <Text style={styles.text_secondary}>Location:</Text>
-              <Text style={styles.text}>{location}</Text>
-            </View>
-          </View>
-          <View style={[styles.status, { backgroundColor: color }]}>
-            <Text style={styles.status_text}>{status}</Text>
-          </View>
-        </View>
-      </Pressable>
-    </View>
-  );
-}
-
 const pendingColor = "#690202";
 const closedColor = "#024A01";
 const inProgressColor = "#724502";
@@ -49,8 +13,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    width: 300,
     height: 70,
+  },
+  btnPressed: {
+    opacity: 0.5,
   },
   text_container: {
     width: "60%",
@@ -94,5 +60,48 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
 });
+
+function FaultsGrid({ id, name, location, status, navigation }) {
+  let color =
+    status.toLowerCase() === "pending"
+      ? pendingColor
+      : status.toLowerCase() === "closed"
+      ? closedColor
+      : inProgressColor;
+
+  return (
+    // <View style={{ marginTop: 10, backgroundColor: "blue" }}>
+    <Pressable
+      // style={({ pressed }) => [pressed ? styles.btnPressed : null]}
+      style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}
+      onPress={() => {
+        navigation.navigate("FaultItem", {
+          faultId: id,
+          faultStatus: status,
+        });
+      }}
+    >
+      <View style={styles.container}>
+        <View style={styles.item}>
+          <View style={styles.text_container}>
+            {/* <Text style={styles.text}>{id}</Text> */}
+            <View style={styles.text_container_secondary}>
+              <Text style={styles.text_secondary}>Fault:</Text>
+              <Text style={styles.text}>{name}</Text>
+            </View>
+            <View style={styles.text_container_secondary}>
+              <Text style={styles.text_secondary}>Location:</Text>
+              <Text style={styles.text}>{location}</Text>
+            </View>
+          </View>
+          <View style={[styles.status, { backgroundColor: color }]}>
+            <Text style={styles.status_text}>{status}</Text>
+          </View>
+        </View>
+      </View>
+    </Pressable>
+    // </View>
+  );
+}
 
 export default FaultsGrid;

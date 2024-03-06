@@ -8,7 +8,7 @@ import SmallSelectionButton from "../../components/buttons/smallSelectionButton"
 import TitleHeader from "../../components/headerTitle";
 import SpecificSpacesGrid from "../../components/SpecificSpaceGrid";
 
-Colors = ["#6416F8", "#FFA31A", "#E7008C", "#6416F8", "#B339FE", "#00B5CC"];
+Colors = ["#164863", "#1f668c", "#1e3f6b", "#265087"];
 let i = 0;
 
 function ChooceSpecificSpaceScreen({ navigation, route }) {
@@ -69,6 +69,7 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
         style={{
           marginTop: 20,
           alignItems: "center",
+          height: "85%",
         }}
       >
         <Text style={styles.small_title}>Select a {spaceTypeName}</Text>
@@ -77,6 +78,7 @@ function ChooceSpecificSpaceScreen({ navigation, route }) {
             data={dataDisplay}
             keyEtrator={(item) => item.spaceName}
             renderItem={renderSpecificSpaces}
+            contentContainerStyle={{ marginBottom: 30 }}
             numColumns={2}
           />
         </View>

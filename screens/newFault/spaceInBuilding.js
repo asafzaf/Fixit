@@ -61,6 +61,7 @@ function SpaceChooceScreen({ navigation, route }) {
         style={{
           marginTop: 20,
           alignItems: "center",
+          height: "85%",
         }}
       >
         <Text style={styles.small_title}>Select a space type</Text>
@@ -68,6 +69,7 @@ function SpaceChooceScreen({ navigation, route }) {
           data={fetchedSpaceTypes}
           keyEtrator={(item) => item._id}
           renderItem={renderSpaces}
+          contentContainerStyle={{ marginBottom: 30 }}
           numColumns={2}
         />
       </View>

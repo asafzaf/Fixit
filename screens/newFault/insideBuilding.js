@@ -8,7 +8,7 @@ import TitleHeader from "../../components/headerTitle";
 import { getAllBuildings } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
-colors = ["#164863", "#164863", "#427D9D", "#427D9D", "#9BBEC8", "#9BBEC8"];
+colors = ["#164863", "#1f668c", "#1e3f6b", "#265087"];
 let i = 0;
 
 function InsidePlaceScreen({ navigation }) {

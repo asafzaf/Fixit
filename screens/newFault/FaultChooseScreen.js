@@ -13,6 +13,7 @@ import { getAllFaultDomains } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 const FaultChooseScreen = ({ navigation, route }) => {
+  // console.log(route.params);
   const buildingId = route.params.buildingId ? route.params.buildingId : "";
   const buildingName = route.params.buildingName
     ? route.params.buildingName
@@ -28,6 +29,10 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const outSide = route.params.outside ? route.params.outside : false;
   const outSideId = route.params.outsideId ? route.params.outsideId : "";
   const outSideName = route.params.outsideName ? route.params.outsideName : "";
+
+  // console.log("outside", outSide);
+  // console.log("outsideId", outSideId);
+  // console.log("outsideName", outSideName);
 
   const [name, setName] = useState("");
   const [pickedDomain, setPickedDomain] = useState("");
@@ -103,13 +108,11 @@ const FaultChooseScreen = ({ navigation, route }) => {
           }}
         >
           <Text style={{ height: 30, margin: 10, fontSize: 20 }}>
-            Choose Fault Sub-Domain
+            Choose Fault Type:
           </Text>
           <TextInput
             style={{
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 1,
+              height: 50,
               width: 250,
               borderRadius: 10,
               backgroundColor: "white",
@@ -154,7 +157,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
                 <LinearGradient
                   style={styles.container}
                   colors={
-                    item.colors ? [...item.colors] : ["#2768FF", "#2768FF"]
+                    item.colors ? [...item.colors] : ["#164863", "#206387"]
                   }
                 >
                   <Text style={styles.text}>{item.name}</Text>
@@ -189,9 +192,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
           </Text>
           <TextInput
             style={{
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 1,
+              height: 50,
               width: 250,
               borderRadius: 10,
               backgroundColor: "white",
@@ -221,6 +222,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
           <FlatList
             data={filterSuggestions(name)}
             keyEtrator={(item) => item.id}
+            contentContainerStyle={{ marginBottom: 30 }}
             renderItem={({ item }) => (
               <View>
                 <TouchableOpacity
@@ -245,7 +247,7 @@ const styles = StyleSheet.create({
   container: {
     width: 250,
     height: 70,
-    backgroundColor: "#2768FF",
+    backgroundColor: "#164863",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 15,

@@ -52,7 +52,16 @@ export default function MaintenaceDrawer() {
   const authCtx = useContext(AuthContext);
   return (
     <>
-      <Drawer.Navigator>
+      <Drawer.Navigator
+      // drawerStyle={{
+      // backgroundColor: "red",
+      // width: "70%",
+      // alignItems: "center",
+      // justifyContent: "center",
+      // }} // Style for the drawer container
+      // drawerContentStyle={{ alignItems: "flex-end" }}
+      // drawerLabelStyle={{ color: "red" }}
+      >
         <Drawer.Screen
           name="Welcome"
           component={MaintenaceHomeScreen}
