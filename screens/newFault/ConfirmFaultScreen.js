@@ -19,6 +19,7 @@ import { AuthContext } from "../../store/auth-context";
 import ImagePicker from "../../components/ImagePick/ImagePicker";
 
 function ConfirmFaultScreen({ navigation, route }) {
+  console.log(route.params);
   const authCtx = useContext(AuthContext);
   const domainId = route.params.domain?._id ? route.params.domain._id : "";
   const domainNameEng = route.params.domain?.name
@@ -48,9 +49,14 @@ function ConfirmFaultScreen({ navigation, route }) {
   const spaceNumber = route.params.spaceId ? route.params.spaceId : "";
   const spaceName = route.params.spaceName ? route.params.spaceName : "";
   const reportByUser = authCtx.userId;
-  const outSide = route.params.outside ? route.params.outside : false;
-  const outSideId = route.params.outsideId ? route.params.outsideId : "";
-  const outSideName = route.params.outsideName ? route.params.outsideName : "";
+
+  const outSide = route.params.outSide ? route.params.outSide : false;
+  const outSideId = route.params.outSideId ? route.params.outSideId : "";
+  const outSideName = route.params.outSideName ? route.params.outSideName : "";
+
+  // console.log("outside", outSide);
+  // console.log("outsideId", outSideId);
+  // console.log("outsideName", outSideName);
 
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
@@ -142,7 +148,7 @@ function ConfirmFaultScreen({ navigation, route }) {
         </View>
       </Modal>
       <View>
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
           <TitleHeader title={"Confirm Fault"}></TitleHeader>
           <View
             style={{
@@ -151,7 +157,7 @@ function ConfirmFaultScreen({ navigation, route }) {
               alignItems: "center",
             }}
           >
-            {/* <View
+            <View
               style={{
                 width: "100%",
                 justifyContent: "center",
@@ -159,15 +165,39 @@ function ConfirmFaultScreen({ navigation, route }) {
               }}
             >
               <Text style={styles.sectionTitle}>Fault Details</Text>
-              <Text style={styles.text}>Domain: {domainNameEng}</Text>
-              <Text style={styles.text}>{faultTypeNameEng}</Text>
-              <Text style={styles.text}>Location: {buildingName}</Text>
-              <Text style={styles.text}>
-                Space Type Name: {spaceTypeNameEng}
-              </Text>
-              <Text style={styles.text}>Space Name: {spaceName}</Text>
-              <Text style={styles.text}>Urgency: {urgency}</Text>
-            </View> */}
+              <View
+                style={{
+                  width: 300,
+                  borderRadius: 10,
+                  padding: 10,
+                  paddingTop: 10,
+                  backgroundColor: "white",
+                  fontSize: 16,
+                }}
+              >
+                <View style={styles.text_container_secondary}>
+                  <Text style={styles.text_secondary}>Fault Domain: </Text>
+                  <Text style={styles.text}>{domainNameEng}</Text>
+                </View>
+                <View style={styles.text_container_secondary}>
+                  <Text style={styles.text_secondary}>Fault: </Text>
+                  <Text style={styles.text}>{faultTypeNameEng}</Text>
+                </View>
+                <View style={styles.text_container_secondary}>
+                  <Text style={styles.text_secondary}>Location: </Text>
+                  <Text style={styles.text}>{buildingName}</Text>
+                  <Text style={styles.text}>{outSideName}</Text>
+                </View>
+                <View style={styles.text_container_secondary}>
+                  <Text style={styles.text_secondary}>Space Type: </Text>
+                  <Text style={styles.text}>{spaceTypeNameEng}</Text>
+                </View>
+                <View style={styles.text_container_secondary}>
+                  <Text style={styles.text_secondary}>Space Name: </Text>
+                  <Text style={styles.text}>{spaceName}</Text>
+                </View>
+              </View>
+            </View>
             <View
               style={{
                 width: "100%",
@@ -211,7 +241,7 @@ function ConfirmFaultScreen({ navigation, route }) {
               </View>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Slider
-                  style={{ width: 200, height: 40, marginLeft: 20 }}
+                  style={{ width: 300, height: 40, marginLeft: 20 }}
                   minimumValue={1}
                   maximumValue={5}
                   step={1}
@@ -219,6 +249,7 @@ function ConfirmFaultScreen({ navigation, route }) {
                   onValueChange={(value) => setUrgency(value)}
                   minimumTrackTintColor="#C10D0D"
                   maximumTrackTintColor="#2BC214"
+                  thumbTintColor="white"
                 />
                 <Text style={styles.urgencyText}>{displayUrgency()}</Text>
               </View>
@@ -257,6 +288,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     padding: 20,
+  },
+  text_container_secondary: {
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 5,
+  },
+  text_secondary: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
   sectionTitle: {
     fontSize: 20,
