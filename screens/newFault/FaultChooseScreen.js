@@ -7,20 +7,27 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-// import faultCollection from "../../data/faultDomainsDUMMY.json";
 import { LinearGradient } from "expo-linear-gradient";
 import TitleHeader from "../../components/headerTitle";
 import { getAllFaultDomains } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 const FaultChooseScreen = ({ navigation, route }) => {
-  const buildingId = route.params.buildingId;
-  const buildingName = route.params.buildingName;
-  const spaceId = route.params.spaceId;
+  const buildingId = route.params.buildingId ? route.params.buildingId : "";
+  const buildingName = route.params.buildingName
+    ? route.params.buildingName
+    : "";
+  const spaceId = route.params.spaceId ? route.params.spaceId : "";
   const spaceName = route.params.spaceName;
-  const spaceTypeId = route.params.spaceTypeId;
+  const spaceTypeId = route.params.spaceTypeId ? route.params.spaceTypeId : "";
   const spaceTypeName = route.params.spaceTypeName;
-  const spaceTypeNameHebrew = route.params.spaceTypeNameHebrew;
+  const spaceTypeNameHebrew = route.params.spaceTypeNameHebrew
+    ? route.params.spaceTypeNameHebrew
+    : "";
+
+  const outSide = route.params.outside ? route.params.outside : false;
+  const outSideId = route.params.outsideId ? route.params.outsideId : "";
+  const outSideName = route.params.outsideName ? route.params.outsideName : "";
 
   const [name, setName] = useState("");
   const [pickedDomain, setPickedDomain] = useState("");
@@ -138,6 +145,9 @@ const FaultChooseScreen = ({ navigation, route }) => {
                     spaceName: spaceName,
                     domain: pickedDomain,
                     fault: item,
+                    outSide: outSide,
+                    outSideId: outSideId,
+                    outSideName: outSideName,
                   });
                 }}
               >
@@ -223,7 +233,7 @@ const FaultChooseScreen = ({ navigation, route }) => {
                 </TouchableOpacity>
               </View>
             )}
-            keyExtractor={(item) => item}
+            keyExtractor={(item) => item.id}
           />
         </View>
       </View>
