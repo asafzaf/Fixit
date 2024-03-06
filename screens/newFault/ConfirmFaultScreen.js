@@ -10,9 +10,8 @@ import {
   Modal,
   Pressable,
 } from "react-native";
-// import { styles } from "../../styles";
 import TitleHeader from "../../components/headerTitle";
-import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
+// import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
 import { Keyboard } from "react-native";
 import { postFault } from "../../utilities/http";
 import Slider from "@react-native-community/slider";
@@ -86,8 +85,14 @@ function ConfirmFaultScreen({ navigation, route }) {
       reportByUser,
       photo: pickedPhoto,
     };
-    const result = await postFault(fault);
-    setResult(JSON.parse(result));
+    try {
+      const result = await postFault(fault);
+      // if (result.status === "success") {
+      //   console.log("Fault Created Successfully!");
+      // }
+    } catch (error) {
+      console.error(`Colud not create fault ${error}`);
+    }
   };
 
   useEffect(() => {
