@@ -293,23 +293,27 @@ export async function getAllFaultDomains() {
 export async function postFault(fault) {
   try {
     const form = new FormData();
-    console.log("1");
+    // console.log("1");
     form.append("domainId", fault.domainId);
     form.append("domainNameEng", fault.domainNameEng);
     form.append("domainNameHeb", fault.domainNameHeb);
     form.append("faultTypeId", fault.faultTypeId);
     form.append("faultTypeNameEng", fault.faultTypeNameEng);
     form.append("faultTypeNameHeb", fault.faultTypeNameHeb);
-    form.append("buildingId", fault.buildingId);
-    form.append("buildingName", fault.buildingName);
-    form.append("spaceTypeId", fault.spaceTypeId);
+
     form.append("spaceTypeNameEng", fault.spaceTypeNameEng);
     form.append("spaceTypeNameHeb", fault.spaceTypeNameHeb);
     form.append("spaceNumber", fault.spaceNumber);
     form.append("spaceName", fault.spaceName);
-    form.append("outSide", fault.outSide);
-    form.append("outSideId", fault.outSideId);
-    form.append("outSideName", fault.outSideName);
+    if (fault.outSide === true) {
+      form.append("outSide", fault.outSide);
+      form.append("outSideId", fault.outSideId);
+      form.append("outSideName", fault.outSideName);
+    } else {
+      form.append("buildingId", fault.buildingId);
+      form.append("buildingName", fault.buildingName);
+      form.append("spaceTypeId", fault.spaceTypeId);
+    }
     form.append("reportByUser", fault.reportByUser);
     form.append("description", fault.description);
     form.append("urgency", fault.urgency);
@@ -320,14 +324,15 @@ export async function postFault(fault) {
         name: "photo.jpg",
       });
     }
-    console.log("2");
-    console.log(JSON.stringify(form));
+    // console.log("2");
+    // console.log(JSON.stringify(form));
     const response = await axios.post(BACKEND_URL + "/api/v1/fault/", form, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    console.log("3");
+    // console.log("3");
+    console.log("http res:");
     console.log(response.request._response);
-    return response.request._response;
+    return response.request?._response;
   } catch (error) {
     console.error("An error occurred while posting data:", error);
   }

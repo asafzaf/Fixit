@@ -138,6 +138,8 @@ const FaultChooseScreen = ({ navigation, route }) => {
               <TouchableOpacity
                 style={styles.container}
                 onPress={() => {
+                  // console.log("pickedDomain", pickedDomain);
+                  // console.log("item", item);
                   navigation.navigate("Confirm", {
                     buildingId: buildingId,
                     buildingName: buildingName,

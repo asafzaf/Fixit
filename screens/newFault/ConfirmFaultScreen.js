@@ -19,7 +19,7 @@ import { AuthContext } from "../../store/auth-context";
 import ImagePicker from "../../components/ImagePick/ImagePicker";
 
 function ConfirmFaultScreen({ navigation, route }) {
-  console.log(route.params);
+  // console.log(route.params);
   const authCtx = useContext(AuthContext);
   const domainId = route.params.domain?._id ? route.params.domain._id : "";
   const domainNameEng = route.params.domain?.name
@@ -91,11 +91,10 @@ function ConfirmFaultScreen({ navigation, route }) {
       reportByUser,
       photo: pickedPhoto,
     };
+    console.log(JSON.stringify(fault));
     try {
-      const result = await postFault(fault);
-      // if (result.status === "success") {
-      //   console.log("Fault Created Successfully!");
-      // }
+      const res = await postFault(fault);
+      setResult(JSON.parse(res));
     } catch (error) {
       console.error(`Colud not create fault ${error}`);
     }
@@ -254,9 +253,9 @@ function ConfirmFaultScreen({ navigation, route }) {
                 <Text style={styles.urgencyText}>{displayUrgency()}</Text>
               </View>
             </View>
-            <View>
+            {/* <View>
               <Text style={styles.text}>Urgency: {urgency}</Text>
-            </View>
+            </View> */}
             <View
               style={{
                 width: "70%",
