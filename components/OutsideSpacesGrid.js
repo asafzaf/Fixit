@@ -38,10 +38,9 @@ function OutsideSpaceGrid({
   outsideId,
 }) {
   function spaceHandler() {
-    navigation.navigate("Confirm", {
+    navigation.navigate("FaultChoose", {
       spaceName: name,
-      // outsidSpaceNameHeb: nameHebrew,
-      spaceId: spaceType,
+      spaceTypeName: spaceType,
       outsideName: outsideName,
       outsideId: outsideId,
       outside: true,
@@ -54,7 +53,7 @@ function OutsideSpaceGrid({
         onPress={spaceHandler}
       >
         <View style={styles.item}>
-          <Text style={styles.title}>{outsideName}</Text>
+          <Text style={styles.title}>{name}</Text>
         </View>
       </Pressable>
     </View>
