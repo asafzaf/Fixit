@@ -75,7 +75,8 @@ export async function getFaultsByBuildingIdAndStatus(buildingId, status) {
       .catch((error) => {
         return [];
       });
-    const data = JSON.parse(response.request._response);
+    if (response?.request?._response === undefined) return [];
+    const data = JSON.parse(response?.request._response);
     for (const fault of data.data.fa) {
       if (fault.status === status) {
         const faultObj = {
@@ -120,7 +121,8 @@ export async function getFaultsByBuildingId(buildingId) {
     const response = await axios.get(
       BACKEND_URL + "/api/v1/fault/building/" + buildingId
     );
-    const data = JSON.parse(response.request._response);
+    if (response?.request?._response === undefined) return [];
+    const data = JSON.parse(response?.request._response);
     for (const fault of data.data.fa) {
       const faultObj = {
         _id: fault._id,

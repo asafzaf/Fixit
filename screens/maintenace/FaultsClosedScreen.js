@@ -65,7 +65,7 @@ function FaultsClosedScreen({ navigation }) {
         {!isFetching && (
           <FlatList
             data={Faults}
-            keyExtractor={(item) => item.faultId}
+            keyExtractor={(item) => item._id}
             renderItem={({ item }) => (
               <FaultsGrid
                 id={item._id}

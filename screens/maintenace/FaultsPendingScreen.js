@@ -35,10 +35,10 @@ function FaultsPendingScreen({ navigation }) {
         building.buildingId,
         "pending"
       );
-      setFaults((prev) => [...prev, ...faults]);
+      if (faults?.length > 0) setFaults((prev) => [...prev, ...faults]);
     });
     setIsFetching(false);
-  }
+  };
 
   return (
     <View
@@ -56,16 +56,16 @@ function FaultsPendingScreen({ navigation }) {
           marginTop: 100,
         }}
       >
-        <View style={{flexDirection:'row'}}>
-        <Text style={styles.title}>Pending faults</Text>
-        <ReloadButton onPress={() => fetchData()} />
+        <View style={{ flexDirection: "row" }}>
+          <Text style={styles.title}>Pending faults</Text>
+          <ReloadButton onPress={() => fetchData()} />
         </View>
         {isFetching && <Text>Loading...</Text>}
         {!isFetching && <Text>{numOfFaults} faults</Text>}
         {!isFetching && (
           <FlatList
             data={Faults}
-            keyExtractor={(item) => item.faultId}
+            keyExtractor={(item) => item._id}
             renderItem={({ item }) => (
               <FaultsGrid
                 id={item._id}
