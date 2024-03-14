@@ -3,6 +3,8 @@ import FormData from "form-data";
 
 const BACKEND_URL = "https://fixit-gjwz.onrender.com";
 
+// GET
+
 export async function getAllFaults() {
   try {
     const faults = [];
@@ -67,6 +69,7 @@ export async function getBuildingsByMaintenanceId(maintenaceId) {
     console.error("An error occurred while fetching data:", error);
   }
 }
+
 export async function getFaultsByBuildingIdAndStatus(buildingId, status) {
   try {
     const faults = [];
@@ -290,6 +293,8 @@ export async function getAllFaultDomains() {
   }
 }
 
+// POST
+
 export async function postFault(fault) {
   try {
     const form = new FormData();
@@ -330,8 +335,8 @@ export async function postFault(fault) {
       headers: { "Content-Type": "multipart/form-data" },
     });
     // console.log("3");
-    console.log("http res:");
-    console.log(response.request._response);
+    // console.log("http res:");
+    // console.log(response.request._response);
     return response.request?._response;
   } catch (error) {
     console.error("An error occurred while posting data:", error);
@@ -357,6 +362,8 @@ export async function createNewUser(
   }
 }
 
+// LOGIN
+
 export async function loginUser(email, password) {
   try {
     const response = await axios.post(BACKEND_URL + "/api/v1/user/login", {
@@ -368,6 +375,8 @@ export async function loginUser(email, password) {
     console.error("An error occurred while fetching data:", error);
   }
 }
+
+// UPDATE
 
 export async function updateToInProgress(faultId, maintenaceId) {
   try {
@@ -386,6 +395,18 @@ export async function updateToClosed(faultId, maintenaceId) {
     const response = await axios.put(BACKEND_URL + "/api/v1/fault/" + faultId, {
       maintananceUser: maintenaceId,
       status: "closed",
+    });
+    return JSON.parse(response.request._response);
+  } catch (error) {
+    console.error("An error occurred while fetching data:", error);
+  }
+}
+
+export async function updateFault(faultId, status, maintenaceId) {
+  try {
+    const response = await axios.put(BACKEND_URL + "/api/v1/fault/" + faultId, {
+      maintananceUser: maintenaceId,
+      status,
     });
     return JSON.parse(response.request._response);
   } catch (error) {
