@@ -51,6 +51,9 @@ const FaultItemScreen = ({ navigation, route }) => {
     );
   }
 
+  let statusVar =
+    fetchedFault.data?.fault.status.toLowerCase() === "pending" ? true : false;
+
   if (fetchedFault.data?.fault.buildingName) {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -63,7 +66,6 @@ const FaultItemScreen = ({ navigation, route }) => {
             {!isFetching && !err && (
               <View style={styles.text_container}>
                 <Text style={styles.text_primary}></Text>
-                {/* <Text>{JSON.stringify(fetchedFault)}</Text> */}
                 <View style={styles.text_container_secondary}>
                   <Text style={styles.text_secondary}>Building:</Text>
                   <Text style={styles.text_primary}>
@@ -123,6 +125,14 @@ const FaultItemScreen = ({ navigation, route }) => {
                     }}
                   />
                 </View>
+              </View>
+            )}
+            {statusVar && (
+              <View style={styles.text_container_secondary}>
+                <Text style={styles.text_secondary}>Fault Status:</Text>
+                <Text style={styles.text_primary}>
+                  {fetchedFault.data?.fault.status}
+                </Text>
               </View>
             )}
           </View>
@@ -204,6 +214,11 @@ const FaultItemScreen = ({ navigation, route }) => {
                   }}
                 />
               </View>
+            </View>
+          )}
+          {statusVar && (
+            <View style={{ marginTop: 20 }}>
+              <Button title="Edit Fault"></Button>
             </View>
           )}
         </View>
