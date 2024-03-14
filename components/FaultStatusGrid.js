@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   container: {
-    margin: 10,
+    // margin: 10,
     alignItems: "center",
     height: "10%",
   },
