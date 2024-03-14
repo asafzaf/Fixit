@@ -402,12 +402,12 @@ export async function updateToClosed(faultId, maintenaceId) {
   }
 }
 
-export async function updateFault(faultId, status, maintenaceId) {
+export async function updateFault(fault) {
   try {
-    const response = await axios.put(BACKEND_URL + "/api/v1/fault/" + faultId, {
-      maintananceUser: maintenaceId,
-      status,
-    });
+    const response = await axios.put(
+      BACKEND_URL + "/api/v1/fault/" + fault._id,
+      {}
+    );
     return JSON.parse(response.request._response);
   } catch (error) {
     console.error("An error occurred while fetching data:", error);
