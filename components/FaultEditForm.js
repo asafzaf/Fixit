@@ -1,42 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, TextInput, Alert } from "react-native";
+import { updateFault } from "../utilities/http";
 
-const FaultEditForm = ({ updateFault }) => {
-  const [faultData, setFaultData] = useState(null);
+const FaultEditForm = ({ route }) => {
+  const fetchedFault = route.params.faultData;
+  const [formData, setFormData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch fault data from backend API
-    const fetchFaultData = async () => {
-      try {
-        const response = await fetch("backend_api_url_to_fetch_fault_data");
-        if (!response.ok) {
-          throw new Error("Failed to fetch fault data");
-        }
-        const data = await response.json();
-        setFaultData(data);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setIsLoading(false);
-      }
-    };
-    fetchFaultData();
+    console.log("fetchedFault", fetchedFault);
+    if (fetchedFault) {
+      setFormData(fetchedFault);
+      setIsLoading(false);
+    }
   }, []);
 
   const handleChange = (key, value) => {
-    setFaultData({ ...faultData, [key]: value });
+    setFormData({ ...formData, [key]: value });
   };
 
   const handleUpdateFault = () => {
-    updateFault(faultData)
-      .then(() => {
-        Alert.alert("Success", "Fault updated successfully");
-      })
-      .catch((error) => {
-        Alert.alert("Error", `Failed to update fault: ${error.message}`);
-      });
+    // updateFault(formData)
+    console.log("formData", formData);
+    // .then(() => {
+    //   Alert.alert("Success", "Fault updated successfully");
+    // })
+    // .catch((error) => {
+    //   Alert.alert("Error", `Failed to update fault: ${error.message}`);
+    // });
   };
 
   if (isLoading) {
@@ -47,7 +39,7 @@ const FaultEditForm = ({ updateFault }) => {
     return <Text>Error: {error}</Text>;
   }
 
-  if (!faultData) {
+  if (!formData) {
     return <Text>No fault data found</Text>;
   }
 

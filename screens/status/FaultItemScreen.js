@@ -218,7 +218,15 @@ const FaultItemScreen = ({ navigation, route }) => {
           )}
           {statusVar && (
             <View style={{ marginTop: 20 }}>
-              <Button title="Edit Fault"></Button>
+              <Button
+                title="Edit Fault"
+                onPress={() =>
+                  // console.log(fetchedFault),
+                  navigation.navigate("EditItem", {
+                    faultData: fetchedFault.data.fault,
+                  })
+                }
+              ></Button>
             </View>
           )}
         </View>
