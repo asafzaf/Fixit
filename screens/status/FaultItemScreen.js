@@ -37,6 +37,7 @@ const FaultItemScreen = ({ navigation, route }) => {
 
       setIsFetching(false);
       setFetchedFault(fault);
+      console.log(fetchedFault.data?.fault.photo);
     }
     getFault();
   }, []);
@@ -112,9 +113,7 @@ const FaultItemScreen = ({ navigation, route }) => {
                   <Text style={styles.text_secondary}>Fault Image:</Text>
                   <Image
                     source={{
-                      uri:
-                        "https://fixit-gjwz.onrender.com/api/v1/image/" +
-                        fetchedFault.data?.fault.photo.split(".")[0],
+                      uri: fetchedFault.data?.fault.photo,
                     }}
                     style={{
                       width: 200,
@@ -202,8 +201,10 @@ const FaultItemScreen = ({ navigation, route }) => {
                 <Image
                   source={{
                     uri:
-                      "https://fixit-gjwz.onrender.com/api/v1/image/" +
-                      fetchedFault.data?.fault.photo.split(".")[0],
+                      // "https://fixit-gjwz.onrender.com/api/v1/image/" +
+                      fetchedFault.data?.fault.photo,
+                    // .split(".")
+                    // [0],
                   }}
                   style={{
                     width: 200,

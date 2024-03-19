@@ -149,8 +149,7 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
                 <Image
                   source={{
                     uri:
-                      "https://fixit-gjwz.onrender.com/api/v1/image/" +
-                      fetchedFault.data?.fault.photo.split(".")[0],
+                    fetchedFault.data?.fault.photo
                   }}
                   style={{
                     width: 200,
