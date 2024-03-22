@@ -20,19 +20,32 @@ const FaultItemScreen = ({ navigation, route }) => {
 
   const faultId = route.params.faultId;
 
+  const displayUrgency = (urgency) => {
+    // const urgency = fetchedFault.data?.fault.urgency;
+    if (urgency === 1) {
+      return "Lowest";
+    } else if (urgency === 2) {
+      return "Low";
+    } else if (urgency === 3) {
+      return "Medium";
+    } else if (urgency === 4) {
+      return "High";
+    } else if (urgency === 5) {
+      return "Critical";
+    }
+  };
+
   React.useEffect(() => {
     async function getFault() {
       setIsFetching(true);
       const fault = await getFaultById(faultId);
       if (fault === null) {
-        // setErr("Error fetching faults");
         setFetchedFault("Error fetching faults");
         setIsFetching(false);
         return;
       }
       if (fault.data?.fault.photo) {
         setHavePhoto(true);
-        // console.log("have photo");
       }
 
       setIsFetching(false);
@@ -171,16 +184,16 @@ const FaultItemScreen = ({ navigation, route }) => {
                   {fetchedFault.data?.fault.spaceTypeNameEng}
                 </Text>
               </View>
-              {/* <View style={styles.text_container_secondary}>
-                <Text style={styles.text_secondary}>Fault Description:</Text>
-                <Text style={styles.text_primary}>
-                  {fetchedFault.data?.fault.description}
-                </Text>
-              </View> */}
               <View style={styles.text_container_secondary}>
                 <Text style={styles.text_secondary}>Fault Status:</Text>
                 <Text style={styles.text_primary}>
                   {fetchedFault.data?.fault.status}
+                </Text>
+              </View>
+              <View style={styles.text_container_secondary}>
+                <Text style={styles.text_secondary}>Fault Urgency:</Text>
+                <Text style={styles.text_primary}>
+                  {displayUrgency(fetchedFault.data?.fault.urgency)}
                 </Text>
               </View>
               <View style={styles.text_container_description}>
@@ -222,7 +235,6 @@ const FaultItemScreen = ({ navigation, route }) => {
               <Button
                 title="Edit Fault"
                 onPress={() =>
-                  // console.log(fetchedFault),
                   navigation.navigate("EditItem", {
                     faultData: fetchedFault.data.fault,
                   })
