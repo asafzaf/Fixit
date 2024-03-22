@@ -9,47 +9,56 @@ import {
   ScrollView,
 } from "react-native";
 import { updateFault } from "../utilities/http";
+import Slider from "@react-native-community/slider";
+import ImagePicker from "../components/ImagePick/ImagePicker";
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    alignItems: "flex-start",
     marginLeft: 20,
     marginTop: 20,
-    // width: "100%",
+    width: "100%",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
   },
   text_container: {
     backgroundColor: "white",
-    // flexWrap: "wrap",
     padding: 10,
     borderRadius: 5,
-    margin: 10,
+    marginTop: 10,
     fontSize: 16,
-    width: "60%",
-    // height: "100%",
+    width: "100%",
+    height: 100,
   },
-  container_primary: {
+  row_container: {
+    display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
+  },
+  container_primary: {
+    display: "flex",
+    gap: 10,
+    marginBottom: 20,
+    flexDirection: "column",
+    alignItems: "flex-start",
   },
   title_container: {
     fontWeight: "bold",
     fontSize: 16,
-    width: "30%",
   },
   btn_primary: {
     // marginTop: "20px !important",
     // marginBottom: 20,
     // padding: 10,
   },
-  // text_container_secondary: {},
-  // text_secondary: {
-  //   fontWeight: "bold",
-  //   fontSize: 20,
-  // },
 });
 
-const FaultEditForm = ({ route }) => {
+const FaultEditForm = ({ navigation, route }) => {
   const fetchedFault = route.params.faultData;
   const [formData, setFormData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -68,14 +77,42 @@ const FaultEditForm = ({ route }) => {
   };
 
   const handleUpdateFault = () => {
-    // updateFault(formData)
     console.log("formData", formData);
-    // .then(() => {
-    //   Alert.alert("Success", "Fault updated successfully");
-    // })
-    // .catch((error) => {
+    // try {
+    //   updateFault(formData);
+    // } catch (error) {
     //   Alert.alert("Error", `Failed to update fault: ${error.message}`);
-    // });
+    // }
+  };
+
+  const navigatAfterUpdate = () => {
+    navigation.navigate("Status");
+  };
+
+  const handleOnSubmit = () => {
+    handleUpdateFault();
+    navigatAfterUpdate();
+  };
+
+  const [urgency, setUrgency] = useState("");
+
+  const handleUrgencyChange = (key, value) => {
+    setUrgency(value);
+    handleChange(key, value);
+  };
+
+  const displayUrgency = () => {
+    if (urgency === 1) {
+      return "Lowest";
+    } else if (urgency === 2) {
+      return "Low";
+    } else if (urgency === 3) {
+      return "Medium";
+    } else if (urgency === 4) {
+      return "High";
+    } else if (urgency === 5) {
+      return "Critical";
+    }
   };
 
   if (isLoading) {
@@ -92,151 +129,13 @@ const FaultEditForm = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-        {formData._id && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Fault ID:</Text>
-            <TextInput
-              multiline={true}
-              style={styles.text_container}
-              value={formData._id}
-              onChangeText={(text) => handleChange("_id", text)}
-              placeholder="Fault ID"
-            />
-          </View>
-        )}
-        {formData.domainId && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Domain ID:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.domainId}
-              onChangeText={(text) => handleChange("domainId", text)}
-              placeholder="Domain ID"
-            />
-          </View>
-        )}
-        {formData.domainNameEng && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Domain Name:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.domainNameEng}
-              onChangeText={(text) => handleChange("domainNameEng", text)}
-              placeholder="Domain Name (English)"
-            />
-          </View>
-        )}
-        {formData.faultTypeId && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Fault Type ID:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.faultTypeId}
-              onChangeText={(text) => handleChange("faultTypeId", text)}
-              placeholder="Fault Type ID"
-            />
-          </View>
-        )}
-        {formData.faultTypeNameEng && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Fault Type Name:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.faultTypeNameEng}
-              onChangeText={(text) => handleChange("faultTypeNameEng", text)}
-              placeholder="Fault Type Name (English)"
-            />
-          </View>
-        )}
-        {formData.buildingId && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Building ID:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.buildingId}
-              onChangeText={(text) => handleChange("buildingId", text)}
-              placeholder="Building ID"
-            />
-          </View>
-        )}
-        {formData.buildingName && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Building Name:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.buildingName}
-              onChangeText={(text) => handleChange("buildingName", text)}
-              placeholder="Building Name"
-            />
-          </View>
-        )}
-        {formData.outSideId && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Outside ID:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.outSideId}
-              onChangeText={(text) => handleChange("outSideId", text)}
-              placeholder="Outside ID"
-            />
-          </View>
-        )}
-        {formData.outSideName && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Outside Name:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.outSideName}
-              onChangeText={(text) => handleChange("outSideName", text)}
-              placeholder="Outside Name"
-            />
-          </View>
-        )}
-        {formData.spaceTypeId && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Space Type ID:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.spaceTypeId}
-              onChangeText={(text) => handleChange("spaceTypeId", text)}
-              placeholder="Space Type ID"
-            />
-          </View>
-        )}
-        {formData.spaceTypeNameEng && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Space Type Name:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.spaceTypeNameEng}
-              onChangeText={(text) => handleChange("spaceTypeNameEng", text)}
-              placeholder="Space Type Name (English)"
-            />
-          </View>
-        )}
-        {formData.spaceNumber && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Space Number:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.spaceNumber}
-              onChangeText={(text) => handleChange("spaceNumber", text)}
-              placeholder="Space Number"
-            />
-          </View>
-        )}
-        {formData.spaceName && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Space Name:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.spaceName}
-              onChangeText={(text) => handleChange("spaceName", text)}
-              placeholder="Space Name"
-            />
-          </View>
-        )}
+      <ScrollView
+        contentContainerStyle={{
+          paddingBottom: 100,
+          width: "90%",
+        }}
+      >
+        <Text style={styles.title}>Edit Fault</Text>
         {formData.description && (
           <View style={styles.container_primary}>
             <Text style={styles.title_container}>Description:</Text>
@@ -249,43 +148,51 @@ const FaultEditForm = ({ route }) => {
           </View>
         )}
         {formData.urgency && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Urgency:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.urgency.toString()}
-              onChangeText={(text) => handleChange("urgency", parseFloat(text))}
-              placeholder="Urgency"
-            />
-          </View>
-        )}
-        {formData.reportByUser && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Report By User:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.reportByUser}
-              onChangeText={(text) => handleChange("reportByUser", text)}
-              placeholder="Report By User"
-            />
+          <View>
+            <View style={styles.container_primary}>
+              <Text style={styles.title_container}>Urgency:</Text>
+              <View style={styles.row_container}>
+                <Slider
+                  style={{ width: "80%", height: 40 }}
+                  minimumValue={1}
+                  maximumValue={5}
+                  step={1}
+                  value={formData.urgency}
+                  onValueChange={(value) =>
+                    handleUrgencyChange("urgency", value)
+                  }
+                  minimumTrackTintColor="#C10D0D"
+                  maximumTrackTintColor="#2BC214"
+                  thumbTintColor="white"
+                />
+                <Text>{displayUrgency()}</Text>
+              </View>
+            </View>
           </View>
         )}
         {formData.photo && (
           <View style={styles.container_primary}>
             <Text style={styles.title_container}>Photo:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={formData.photo}
-              onChangeText={(text) => handleChange("photo", text)}
-              placeholder="Photo"
-            />
+            <View
+              style={{
+                width: "70%",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 20,
+                backgroundColor: "white",
+                borderRadius: 10,
+                padding: 10,
+              }}
+            >
+              <ImagePicker onImageTaken={imageTakenHandler} />
+            </View>
           </View>
         )}
         <Button
           title="Submit"
-          onPress={handleUpdateFault}
+          onPress={handleOnSubmit}
           style={styles.btn_primary}
-        />
+        ></Button>
       </ScrollView>
     </View>
   );
