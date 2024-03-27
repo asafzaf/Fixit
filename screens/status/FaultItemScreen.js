@@ -140,13 +140,17 @@ const FaultItemScreen = ({ navigation, route }) => {
               </View>
             )}
             {statusVar && (
-              <View style={styles.text_container_secondary}>
-                <Text style={styles.text_secondary}>Fault Status:</Text>
-                <Text style={styles.text_primary}>
-                  {fetchedFault.data?.fault.status}
-                </Text>
-              </View>
-            )}
+            <View style={{ marginTop: 20 }}>
+              <Button
+                title="Edit Fault"
+                onPress={() =>
+                  navigation.navigate("EditItem", {
+                    faultData: fetchedFault.data.fault,
+                  })
+                }
+              ></Button>
+            </View>
+          )}
           </View>
         </ScrollView>
         <View style={{ marginBottom: 70 }}>
