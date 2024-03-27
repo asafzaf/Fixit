@@ -63,26 +63,36 @@ const FaultEditForm = ({ navigation, route }) => {
   const [formData, setFormData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [description, setDescription] = useState();
+  const [urgency, setUrgency] = useState();
+
 
   useEffect(() => {
     console.log("fetchedFault", fetchedFault);
     if (fetchedFault) {
       setFormData(fetchedFault);
+      setUrgency(fetchedFault.urgency);
+      setDescription(fetchedFault.description);
       setIsLoading(false);
     }
   }, []);
 
-  const handleChange = (key, value) => {
+  const handleChange = (key, value) => {  
     setFormData({ ...formData, [key]: value });
   };
 
   const handleUpdateFault = () => {
     console.log("formData", formData);
-    // try {
-    //   updateFault(formData);
-    // } catch (error) {
-    //   Alert.alert("Error", `Failed to update fault: ${error.message}`);
-    // }
+    try {
+      const fault = {
+        _id: formData._id,
+        description: description,
+        urgency: urgency,
+      }
+      updateFault(fault);
+    } catch (error) {
+      Alert.alert("Error", `Failed to update fault: ${error.message}`);
+    }
   };
 
   const navigatAfterUpdate = () => {
@@ -94,11 +104,14 @@ const FaultEditForm = ({ navigation, route }) => {
     navigatAfterUpdate();
   };
 
-  const [urgency, setUrgency] = useState("");
 
   const handleUrgencyChange = (key, value) => {
     setUrgency(value);
     handleChange(key, value);
+  };
+
+  const onDescriptionChange = (text) => {
+    setDescription(text);
   };
 
   const displayUrgency = () => {
@@ -136,18 +149,17 @@ const FaultEditForm = ({ navigation, route }) => {
         }}
       >
         <Text style={styles.title}>Edit Fault</Text>
-        {formData.description && (
+
           <View style={styles.container_primary}>
             <Text style={styles.title_container}>Description:</Text>
             <TextInput
               style={styles.text_container}
-              value={formData.description}
-              onChangeText={(text) => handleChange("description", text)}
+              value={description}
+              onChangeText={(text) => onDescriptionChange(text)}
               placeholder="Description"
+              textAlign="left"
             />
           </View>
-        )}
-        {formData.urgency && (
           <View>
             <View style={styles.container_primary}>
               <Text style={styles.title_container}>Urgency:</Text>
@@ -157,7 +169,7 @@ const FaultEditForm = ({ navigation, route }) => {
                   minimumValue={1}
                   maximumValue={5}
                   step={1}
-                  value={formData.urgency}
+                  value={urgency}
                   onValueChange={(value) =>
                     handleUrgencyChange("urgency", value)
                   }
@@ -168,26 +180,7 @@ const FaultEditForm = ({ navigation, route }) => {
                 <Text>{displayUrgency()}</Text>
               </View>
             </View>
-          </View>
-        )}
-        {formData.photo && (
-          <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Photo:</Text>
-            <View
-              style={{
-                width: "70%",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: 20,
-                backgroundColor: "white",
-                borderRadius: 10,
-                padding: 10,
-              }}
-            >
-              <ImagePicker onImageTaken={imageTakenHandler} />
-            </View>
-          </View>
-        )}
+          </View>  
         <Button
           title="Submit"
           onPress={handleOnSubmit}
