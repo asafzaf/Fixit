@@ -406,7 +406,7 @@ export async function updateFault(fault) {
   try {
     const response = await axios.put(
       BACKEND_URL + "/api/v1/fault/" + fault._id,
-      { fault }
+      { description: fault.description, urgency: fault.urgency }
     );
     return JSON.parse(response.request._response);
   } catch (error) {
