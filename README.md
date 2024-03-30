@@ -1,14 +1,6 @@
-# Project Name
+# Fixit App
 
-A brief description of your project.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+A fault tracking and management system streamlines fault reporting for end-users while ensuring maintenance personnel receive categorized faults based on location and urgency.
 
 ## Installation
 
@@ -17,19 +9,12 @@ A brief description of your project.
 
 ## Usage
 
-1. Start the development server using `npm start`.
+1. Start the app using `npm start`.
 2. Follow the instructions in the console to open the app on your device or emulator.
 
 ## Features
 
-- Feature 1: Description of feature 1.
-- Feature 2: Description of feature 2.
-- ...
+- Feature 1: Open a new fault by clicking on the "Open New Fault" button.
+- Feature 2: View faults status by clicking on the "Faults Status" button.
+- Feature 3: View all closed faults by clicking on the "History" button.
 
-## Contributing
-
-Contributions are welcome! Please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
