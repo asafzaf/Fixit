@@ -9,7 +9,7 @@ A fault tracking and management system streamlines fault reporting for end-users
 
 ## Usage
 
-1. Start the app using `npm start`.
+1. Start the app using `npx expo start`.
 2. Follow the instructions in the console to open the app on your device or emulator.
 
 ## Features
