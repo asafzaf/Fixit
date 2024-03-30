@@ -1,5 +1,3 @@
-// 3rd PAGE OF THE FAULT REPORTING PROCESS
-
 import * as React from "react";
 import { ScrollView, FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";

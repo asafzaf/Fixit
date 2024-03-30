@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { updateFault } from "../utilities/http";
 import Slider from "@react-native-community/slider";
-import ImagePicker from "../components/ImagePick/ImagePicker";
 
 const styles = StyleSheet.create({
   container: {
@@ -51,11 +50,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
-  btn_primary: {
-    // marginTop: "20px !important",
-    // marginBottom: 20,
-    // padding: 10,
-  },
+  btn_primary: {},
 });
 
 const FaultEditForm = ({ navigation, route }) => {
@@ -66,9 +61,7 @@ const FaultEditForm = ({ navigation, route }) => {
   const [description, setDescription] = useState();
   const [urgency, setUrgency] = useState();
 
-
   useEffect(() => {
-    console.log("fetchedFault", fetchedFault);
     if (fetchedFault) {
       setFormData(fetchedFault);
       setUrgency(fetchedFault.urgency);
@@ -77,18 +70,17 @@ const FaultEditForm = ({ navigation, route }) => {
     }
   }, []);
 
-  const handleChange = (key, value) => {  
+  const handleChange = (key, value) => {
     setFormData({ ...formData, [key]: value });
   };
 
   const handleUpdateFault = () => {
-    console.log("formData", formData);
     try {
       const fault = {
         _id: formData._id,
         description: description,
         urgency: urgency,
-      }
+      };
       updateFault(fault);
     } catch (error) {
       Alert.alert("Error", `Failed to update fault: ${error.message}`);
@@ -103,7 +95,6 @@ const FaultEditForm = ({ navigation, route }) => {
     handleUpdateFault();
     navigatAfterUpdate();
   };
-
 
   const handleUrgencyChange = (key, value) => {
     setUrgency(value);
@@ -150,37 +141,35 @@ const FaultEditForm = ({ navigation, route }) => {
       >
         <Text style={styles.title}>Edit Fault</Text>
 
+        <View style={styles.container_primary}>
+          <Text style={styles.title_container}>Description:</Text>
+          <TextInput
+            style={styles.text_container}
+            value={description}
+            onChangeText={(text) => onDescriptionChange(text)}
+            placeholder="Description"
+            textAlign="left"
+          />
+        </View>
+        <View>
           <View style={styles.container_primary}>
-            <Text style={styles.title_container}>Description:</Text>
-            <TextInput
-              style={styles.text_container}
-              value={description}
-              onChangeText={(text) => onDescriptionChange(text)}
-              placeholder="Description"
-              textAlign="left"
-            />
-          </View>
-          <View>
-            <View style={styles.container_primary}>
-              <Text style={styles.title_container}>Urgency:</Text>
-              <View style={styles.row_container}>
-                <Slider
-                  style={{ width: "80%", height: 40 }}
-                  minimumValue={1}
-                  maximumValue={5}
-                  step={1}
-                  value={urgency}
-                  onValueChange={(value) =>
-                    handleUrgencyChange("urgency", value)
-                  }
-                  minimumTrackTintColor="#C10D0D"
-                  maximumTrackTintColor="#2BC214"
-                  thumbTintColor="white"
-                />
-                <Text>{displayUrgency()}</Text>
-              </View>
+            <Text style={styles.title_container}>Urgency:</Text>
+            <View style={styles.row_container}>
+              <Slider
+                style={{ width: "80%", height: 40 }}
+                minimumValue={1}
+                maximumValue={5}
+                step={1}
+                value={urgency}
+                onValueChange={(value) => handleUrgencyChange("urgency", value)}
+                minimumTrackTintColor="#C10D0D"
+                maximumTrackTintColor="#2BC214"
+                thumbTintColor="white"
+              />
+              <Text>{displayUrgency()}</Text>
             </View>
-          </View>  
+          </View>
+        </View>
         <Button
           title="Submit"
           onPress={handleOnSubmit}

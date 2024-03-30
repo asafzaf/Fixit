@@ -35,7 +35,6 @@ function HomeScreenUser({ navigation }) {
         </Text>
         <View
           style={{
-            // marginBottom: 150,
             width: "100vw",
           }}
         >

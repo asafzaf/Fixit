@@ -8,7 +8,6 @@ import { AuthContext } from "../../store/auth-context";
 import { FlatList } from "react-native-gesture-handler";
 import BigSelectionButton from "../../components/buttons/BigSelectionButton";
 import FaultsGrid from "../../components/FaultsGrid";
-import SmallSelectionButton from "../../components/buttons/smallSelectionButton";
 
 function FaultsByBuildingsScreen({ navigation }) {
   const [buildings, setBuildings] = React.useState([]);

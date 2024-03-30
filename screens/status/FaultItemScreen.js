@@ -21,7 +21,6 @@ const FaultItemScreen = ({ navigation, route }) => {
   const faultId = route.params.faultId;
 
   const displayUrgency = (urgency) => {
-    // const urgency = fetchedFault.data?.fault.urgency;
     if (urgency === 1) {
       return "Lowest";
     } else if (urgency === 2) {
@@ -50,7 +49,6 @@ const FaultItemScreen = ({ navigation, route }) => {
 
       setIsFetching(false);
       setFetchedFault(fault);
-      console.log(fetchedFault.data?.fault.photo);
     }
     getFault();
   }, []);
@@ -140,17 +138,17 @@ const FaultItemScreen = ({ navigation, route }) => {
               </View>
             )}
             {statusVar && (
-            <View style={{ marginTop: 20 }}>
-              <Button
-                title="Edit Fault"
-                onPress={() =>
-                  navigation.navigate("EditItem", {
-                    faultData: fetchedFault.data.fault,
-                  })
-                }
-              ></Button>
-            </View>
-          )}
+              <View style={{ marginTop: 20 }}>
+                <Button
+                  title="Edit Fault"
+                  onPress={() =>
+                    navigation.navigate("EditItem", {
+                      faultData: fetchedFault.data.fault,
+                    })
+                  }
+                ></Button>
+              </View>
+            )}
           </View>
         </ScrollView>
         <View style={{ marginBottom: 70 }}>
@@ -214,14 +212,9 @@ const FaultItemScreen = ({ navigation, route }) => {
             <View>
               <View style={styles.image_container}>
                 <Text style={styles.text_secondary}>Fault Image:</Text>
-                {/* </View> */}
                 <Image
                   source={{
-                    uri:
-                      // "https://fixit-gjwz.onrender.com/api/v1/image/" +
-                      fetchedFault.data?.fault.photo,
-                    // .split(".")
-                    // [0],
+                    uri: fetchedFault.data?.fault.photo,
                   }}
                   style={{
                     width: 200,

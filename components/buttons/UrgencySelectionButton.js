@@ -1,4 +1,4 @@
-import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 function UrgencySelectionButton(props) {

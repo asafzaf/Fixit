@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, View, Alert, Image } from "react-native";
 import {
   launchCameraAsync,
@@ -41,7 +41,6 @@ function ImagePicker({ onImageTaken }) {
       aspect: [16, 9],
       quality: 0.5,
     });
-    // console.log(image);
     setPickedImage(image.assets[0].uri);
     onImageTaken(image.assets[0].uri);
   };

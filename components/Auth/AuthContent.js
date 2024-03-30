@@ -66,11 +66,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
       <FixitHeader></FixitHeader>
       <View
         style={{
-          // flex: 1,
           margin: 50,
-          // backgroundColor: "#DCF2F1",
-          // justifyContent: "space-between",
-          // alignContent: "center",
           textAlign: "center",
         }}
       >
@@ -79,7 +75,6 @@ function AuthContent({ isLogin, onAuthenticate }) {
             marginBottom: 150,
             flex: 1,
             justifyContent: "space-around",
-            // backgroundColor: "#DCF2F1",
           }}
         >
           <View>

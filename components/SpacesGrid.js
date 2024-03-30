@@ -1,23 +1,7 @@
 import { Pressable, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 
-spacesColors = [
-  // "#6416F8",
-  // "#FFA31A",
-  // "#E7008C",
-  // "#6416F8",
-  // "#B339FE",
-  // "#00B5CC",
-  "#164863",
-  "#1f668c",
-  "#1e3f6b",
-  "#265087",
-  // "#164863",
-  // "#427D9D",
-  // "#427D9D",
-  // "#9BBEC8",
-  // "#9BBEC8",
-];
+spacesColors = ["#164863", "#1f668c", "#1e3f6b", "#265087"];
 let i = 0;
 
 const styles = StyleSheet.create({

@@ -18,50 +18,11 @@ import MaintenanceClosedFaultsStack from "../MaintenanceClosedFaultsStack";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// export default function MaintenaceStack() {
-//   const authCtx = useContext(AuthContext);
-//   return (
-//     <Stack.Navigator>
-//       <Stack.Screen
-//         name="Welcome"
-//         component={MaintenaceHomeScreen}
-//         options={{
-//           title: "",
-//           headerRight: () => (
-//             <IconButton
-//               icon="exit"
-//               color="#0D24F1"
-//               size={24}
-//               onPress={authCtx.logout}
-//             />
-//           ),
-//         }}
-//       />
-//       <Stack.Screen
-//         name="Faults"
-//         component={HomeScreenUser}
-//         options={{
-//           title: "Faults",
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// }
-
 export default function MaintenaceDrawer() {
   const authCtx = useContext(AuthContext);
   return (
     <>
-      <Drawer.Navigator
-      // drawerStyle={{
-      // backgroundColor: "red",
-      // width: "70%",
-      // alignItems: "center",
-      // justifyContent: "center",
-      // }} // Style for the drawer container
-      // drawerContentStyle={{ alignItems: "flex-end" }}
-      // drawerLabelStyle={{ color: "red" }}
-      >
+      <Drawer.Navigator>
         <Drawer.Screen
           name="Welcome"
           component={MaintenaceHomeScreen}

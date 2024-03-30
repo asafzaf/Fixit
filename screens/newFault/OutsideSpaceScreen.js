@@ -1,5 +1,3 @@
-// ADD TO LOWER CASE !!!!!
-
 import { Button, FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
 import TitleHeader from "../../components/headerTitle";

@@ -1,7 +1,5 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-// import { Colors } from '../../constants/styles';
-
 function Input({
   label,
   keyboardType,
@@ -33,7 +31,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: 300,
     height: 80,
-    // marginVertical: 8,
     marginBottom: 20,
   },
   label: {

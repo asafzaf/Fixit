@@ -13,7 +13,6 @@ import { getAllFaultDomains } from "../../utilities/http";
 import LoadingOverlay from "../../components/UI/LoadingOverlay";
 
 const FaultChooseScreen = ({ navigation, route }) => {
-  // console.log(route.params);
   const buildingId = route.params.buildingId ? route.params.buildingId : "";
   const buildingName = route.params.buildingName
     ? route.params.buildingName
@@ -29,10 +28,6 @@ const FaultChooseScreen = ({ navigation, route }) => {
   const outSide = route.params.outside ? route.params.outside : false;
   const outSideId = route.params.outsideId ? route.params.outsideId : "";
   const outSideName = route.params.outsideName ? route.params.outsideName : "";
-
-  // console.log("outside", outSide);
-  // console.log("outsideId", outSideId);
-  // console.log("outsideName", outSideName);
 
   const [name, setName] = useState("");
   const [pickedDomain, setPickedDomain] = useState("");
@@ -138,8 +133,6 @@ const FaultChooseScreen = ({ navigation, route }) => {
               <TouchableOpacity
                 style={styles.container}
                 onPress={() => {
-                  // console.log("pickedDomain", pickedDomain);
-                  // console.log("item", item);
                   navigation.navigate("Confirm", {
                     buildingId: buildingId,
                     buildingName: buildingName,

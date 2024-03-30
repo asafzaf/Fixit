@@ -1,7 +1,3 @@
-// // 4rd PAGE OF THE FAULT REPORTING PROCESS
-
-// ADD TO LOWER CASE !!!!!
-
 import { FlatList, Text, View } from "react-native";
 import { styles } from "../../styles";
 import SmallSelectionButton from "../../components/buttons/smallSelectionButton";

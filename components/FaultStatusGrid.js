@@ -70,9 +70,7 @@ function FaultsGrid({ id, name, location, status, navigation }) {
       : inProgressColor;
 
   return (
-    // <View style={{ marginTop: 10, backgroundColor: "blue" }}>
     <Pressable
-      // style={({ pressed }) => [pressed ? styles.btnPressed : null]}
       style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}
       onPress={() => {
         navigation.navigate("FaultItem", {
@@ -84,7 +82,6 @@ function FaultsGrid({ id, name, location, status, navigation }) {
       <View style={styles.container}>
         <View style={styles.item}>
           <View style={styles.text_container}>
-            {/* <Text style={styles.text}>{id}</Text> */}
             <View style={styles.text_container_secondary}>
               <Text style={styles.text_secondary}>Fault:</Text>
               <Text style={styles.text}>{name}</Text>
@@ -100,7 +97,6 @@ function FaultsGrid({ id, name, location, status, navigation }) {
         </View>
       </View>
     </Pressable>
-    // </View>
   );
 }
 

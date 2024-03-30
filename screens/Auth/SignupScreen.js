@@ -12,8 +12,6 @@ function SignupScreen() {
   const authCtx = useContext(AuthContext);
 
   async function signupHandler({ new_name, email, password, confirmPassword }) {
-    // console.log("Signup button pressed");
-    // console.log(new_name, email, password, confirmPassword);
     try {
       setIsAuthenticating(true);
       const result = await createNewUser(

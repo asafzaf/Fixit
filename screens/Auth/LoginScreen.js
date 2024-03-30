@@ -10,21 +10,15 @@ function LoginScreen() {
   const authCtx = useContext(AuthContext);
 
   async function loginHandler({ email, password }) {
-    // console.log("Login button pressed");
     try {
       setIsAuthenticating(true);
       const result = await loginUser(email, password);
-      // console.log("login function result:")
-      // console.log(result);
-      authCtx.authenticate(result.token, result.data.user._id, result.data.user.name, result.data.user.isMaintenace);
-      // console.log("auth token:")
-      // console.log(result.token);
-      // console.log("auth data:")
-      // console.log(result.data);
-      // console.log("auth user id:");
-      // console.log(result.data.user._id);
-      // console.log("auth user name:");
-      // console.log(result.data.user.name);
+      authCtx.authenticate(
+        result.token,
+        result.data.user._id,
+        result.data.user.name,
+        result.data.user.isMaintenace
+      );
     } catch (error) {
       Alert.alert("Error", `Could not login, please try again\n${error}`, [
         { text: "Okay" },

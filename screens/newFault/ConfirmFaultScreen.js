@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,7 +10,6 @@ import {
   Pressable,
 } from "react-native";
 import TitleHeader from "../../components/headerTitle";
-// import UrgencyLevelsButtons from "../../components/UI/UrgencyLevelsButtons";
 import { Keyboard } from "react-native";
 import { postFault } from "../../utilities/http";
 import Slider from "@react-native-community/slider";
@@ -19,7 +17,6 @@ import { AuthContext } from "../../store/auth-context";
 import ImagePicker from "../../components/ImagePick/ImagePicker";
 
 function ConfirmFaultScreen({ navigation, route }) {
-  // console.log(route.params);
   const authCtx = useContext(AuthContext);
   const domainId = route.params.domain?._id ? route.params.domain._id : "";
   const domainNameEng = route.params.domain?.name
@@ -54,10 +51,6 @@ function ConfirmFaultScreen({ navigation, route }) {
   const outSideId = route.params.outSideId ? route.params.outSideId : "";
   const outSideName = route.params.outSideName ? route.params.outSideName : "";
 
-  // console.log("outside", outSide);
-  // console.log("outsideId", outSideId);
-  // console.log("outsideName", outSideName);
-
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -91,7 +84,6 @@ function ConfirmFaultScreen({ navigation, route }) {
       reportByUser,
       photo: pickedPhoto,
     };
-    console.log(JSON.stringify(fault));
     try {
       const res = await postFault(fault);
       setResult(JSON.parse(res));
@@ -253,9 +245,7 @@ function ConfirmFaultScreen({ navigation, route }) {
                 <Text style={styles.urgencyText}>{displayUrgency()}</Text>
               </View>
             </View>
-            {/* <View>
-              <Text style={styles.text}>Urgency: {urgency}</Text>
-            </View> */}
+
             <View
               style={{
                 width: "70%",

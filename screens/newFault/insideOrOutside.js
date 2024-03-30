@@ -1,5 +1,3 @@
-// 1st PAGE OF THE FAULT REPORTING PROCESS
-
 import { Button, ScrollView, Text, View } from "react-native";
 import * as React from "react";
 import BigSelectionButton from "../../components/buttons/BigSelectionButton";

@@ -33,14 +33,12 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
       setIsFetching(true);
       const fault = await getFaultById(faultId);
       if (fault === null) {
-        // setErr("Error fetching faults");
         setFetchedFault("Error fetching faults");
         setIsFetching(false);
         return;
       }
       if (fault.data?.fault.photo) {
         setHavePhoto(true);
-        // console.log("have photo");
       }
 
       setIsFetching(false);
@@ -96,7 +94,6 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
           {!isFetching && !err && (
             <View style={styles.text_container}>
               <Text style={styles.text_primary}></Text>
-              {/* <Text>{JSON.stringify(fetchedFault)}</Text> */}
               <View style={styles.text_container_secondary}>
                 <Text style={styles.text_secondary}>Building:</Text>
                 <Text style={styles.text_primary}>
@@ -148,8 +145,7 @@ const MaintenanceFaultItemScreen = ({ navigation, route }) => {
                 {/* </View> */}
                 <Image
                   source={{
-                    uri:
-                    fetchedFault.data?.fault.photo
+                    uri: fetchedFault.data?.fault.photo,
                   }}
                   style={{
                     width: 200,
@@ -207,19 +203,12 @@ const styles = StyleSheet.create({
   image_container: {
     position: "relative",
 
-    // display: "flex",
-    // flexDirection: "row",
-    // gap: 5,
     backgroundColor: "white",
     padding: 5,
     paddingLeft: 20,
     width: 300,
-    // height: 70,
     borderRadius: 10,
     margin: 5,
-    // alignItems: "center",
-    // alignContent: "center",
-    // flexWrap: "wrap",
   },
   text_primary: {
     fontSize: 18,
